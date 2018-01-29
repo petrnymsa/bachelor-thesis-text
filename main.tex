@@ -15,20 +15,28 @@
 % \usepackage{amssymb} %additional math symbols
 
 \usepackage{dirtree} %directory tree visualisation
+\usepackage{cleveref}
 
 % % list of acronyms
-% \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
-% \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
-% \makeglossaries
+\usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
+\iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
+\makeglossaries
 
 \newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
 \newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
 
+
+% following 3 commands (todo, tmp image) Used from http://www.herout.net/blog/2017/03/pomalu-uz-pojdme-psat/
 \usepackage{xcolor} 
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{[#1]}}}
 
 \usepackage{blindtext}
 \newcommand{\blind}[1][1]{\textcolor{gray}{\Blindtext[#1][1]}}
+
+\setlength{\fboxsep}{0.005pt}
+\newcommand{\tmpframe}[1]{\fbox{#1}}
+%\renewcommand{\tmpframe}[1]{#1}  % uncomment before production
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 % ODTUD DAL VSE ZMENTE
@@ -55,15 +63,163 @@
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 
-\begin{introduction}
-	%sem napište úvod Vaší práce
+\newglossaryentry{formula}
+{
+        name=formula,
+        description={A mathematical expression}
+}
+
+\newacronym{dwma}{DWMA}{DEMO WIP Mobile Application}
+\newacronym{rac}{RAC}{Rent-A-Car}
+% \newacronym{ee}{EE}{enterprise engineering}
+% \newacronym{eo}{EO}{enterprise ontology}
+% \newacronym{is}{IS}{information system}
+% \newacronym{it}{IT}{information technology}
+% \newacronym{net}{.NET}{Microsoft .NET framework}
+% \newacronym{uml}{UML}{Unified Modeling Language}
+% \newacronym{xml}{XML}{Extensible Markup Language}
+% \newacronym{ctu}{CTU}{Czech Technical University}
+% \newacronym{fit}{FIT}{Faculty of Information Technology}
+\newacronym{bpm}{BPM}{Business Process Management}
+\newacronym{bpmn}{BPMN}{Business Process Model and Notation}
+\newacronym{bpms}{BPMS}{Business Process Management System}
+\newacronym{demosl}{DEMOSL}{DEMO Specification Language}
+
+
+
+\begin{introduction}    
+    \section{State of the Business Process Management Systems}
+    
+    \section{BPM analysis tools and their focus}
+    
+    \section{DEMO Modeling Methodology}  
+    
+    \subsection{Existing BPMS solutions for DEMO}
+    
 \end{introduction}
 
-\chapter{Cíl práce}
+\chapter{The goal of thesis}
 
-\chapter{Analýza a návrh}
+\chapter{Proposed solution}
 
-\chapter{Realizace}
+	\section{Functional specification \todo{Maybe Example use cases}}    
+   \gls{dwma} is mobile-based application that allows managers to create reports over business data. DWMA allows create many types of overviews, such as graphs, that exposing critical information about running business processes. Second critical function is real-time based graph which displays current state of one concrete instance of business process. 
+    
+	This specification  is not complete and focuses only what end-user of \gls{dwma} can do. Spec does not discussed any "deeper" algorithms and used technologies at background.
+Also provided screens and any graphic assets are not final. They only serves as better overview of discussed scenarios, because ``A picture is worth a thousand words".
+
+	\todo{Info about RAC - insert whole description of RAC?}. 
+    
+    \begin{figure}[h]
+          \centering
+          \includegraphics[width=9cm,keepaspectratio]{img/TODO-image}
+          \caption{\todo{OCD RAC}}
+      \end{figure}   
+    
+    
+	\subsection{Scenario 1 - Janno, one of the CEOs}    
+    Janno is one of the two twins and founders of the \gls{rac} company. He use \gls{dwma} every day mainly for ``top-level" overview of company. He created widget about total amount of request for new car rents at the moment. Also he has a widget which displays number of new requests per day for the last week. Beside this widgets he also created widget where is displayed amount of successfully completed process towards quitted requests grouped by weeks.
+    
+    Of course Janno is very wondered about his employees and their productivity. For this purpose, he has a couple more widgets on his dashboard. First is pie chart where every employee from distribution department is displayed with percentages for requests-state acts. Second chart displays number of succeeded requests (request was stated and accepted) at the main office for new rental contracts sorted by from highest to lowest and grouped by employee.
+   
+   And one of the important indication of successful company is income, outcome and profit. For this Janno has a widget with simple numbers for each indicators.  
+   
+    
+    \subsection{\todo{Scenario 2}}   
+
+	\section{The dashboard}
+    Purpose of dashboard is provide centralized overview of processes such as average waiting time before process is completed or total amount of requests per day. The appearance of dashboard depends on user. \gls{dwma} provides customizable elements called widgets to achieve desired look for every user individually.
+
+    \subsection{Widgets}  
+     Widgets are small independent configurable components for displaying collected data from business processes. Each one has purpose. Notice that widgets are only user-friendly view of query above collected data. For editing widgets there is widget editor. User can simply edit properties of widget such as name, category, tags and of course source of data - the query and second important property is the type of widget. There are following types of widgets:
+     
+     \textbf{The summary widget} (\cref{fig:widget-summary}) provides, by it's name, chart with summarization of collected data. Concrete type of the chart depends on the user and on the data. Summary widget provides several types of charts:
+     
+     \begin{enumerate}
+    	\item \textit{Pie} 
+        \item  \textit{Column bar}
+        \item \textit{Linear}
+    \end{enumerate}
+      
+      \begin{figure}[h]
+          \centering
+          \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
+          \caption{Summary widget example}
+          \label{fig:widget-summary}
+      \end{figure}   
+    
+   	Second type is \textbf{Time period} (\cref{fig:widget-time-period}). Time period displays data at some interval. Typically it can serve as overview \textit{``Number of requests for Rental payment per day"}.        
+      
+      \begin{figure}[h]
+          \centering
+          \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
+          \caption{Time period widget example}
+          \label{fig:widget-time-period}
+      \end{figure}
+    
+    Last type is \textbf{Single query} (\cref{fig:widget-single-query}) which allows display simple result from query. Prerequisite for query is that query returns one single record. 
+      
+      \begin{figure}[h]
+          \centering
+          \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
+          \caption{Single query example}
+           \label{fig:widget-single-query}
+      \end{figure}       
+    
+    \subsection{Query editor}
+    
+    \todo{Information about query editor}
+    
+    \begin{figure}[h]
+          \centering
+          \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
+          \caption{\todo{Query editor}}
+      \end{figure}   
+    
+    \section{The real-time overview of process instance}
+    \todo{Introduction about gantt chart. Make conversation about classic OCD / PSD diagrams and their pros and cons for visualization}
+    Provides real-time overview of one concrete process instance.
+On the left side is tree-view (like in folder explorer) of transactions. Each transaction has identifier and name.
+On the top is timeline which displays important events from process.
+In the middle there are progress bars, one progress bar for each transaction. 
+
+	\todo{Categories}
+    
+    \begin{enumerate}[i]
+    	\item Not active transaction which is displayed as grayed out progress bar. It means this transaction will be probably started at some future time.
+
+        \item Active transaction. Progress bar is displayed with blue color to show whole progress of transaction. 
+        
+        \item Completed transaction. The state where transaction ended successfully. Progress bar is full and filled with green color.
+        
+        \item Stopped transaction. Transaction failed to complete due to fact that it was quitted or stopped.
+    \end{enumerate}
+    
+    \subsection{Conditionals links and cardinality}
+    
+    Each transaction can has several child-transactions and also many conditional links. These conditions are displayed with arrows pointed to another transaction with condition.
+Conditions are divided to two categories.
+
+If condition is ``Some state of transaction A has to be done before transaction B can start (be requested)", e.g. transaction A must be stated before transaction B can be requested (\cref{fig:request-start-condition}).
+
+	 \begin{figure}
+          \centering
+          \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
+          \caption{\todo{Request-start condition}}
+          \label{fig:request-start-condition}
+      \end{figure}  
+
+If condition is ``Some state of transaction A has to be done before transaction B can be at another state", e.g transaction A must be at least stated before transaction B can be promised (\cref{fig:state-state-condition}).
+
+	 \begin{figure}
+          \centering
+          \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
+          \caption{\todo{State-state condition}}
+           \label{fig:state-state-condition}
+      \end{figure}  
+
+
+\chapter{Implementation \todo{better title}}
 
 \begin{conclusion}
 	%sem napište závěr Vaší práce
@@ -74,26 +230,29 @@
 
 \appendix
 
-\chapter{Seznam použitých zkratek}
-% \printglossaries
-\begin{description}
-	\item[GUI] Graphical user interface
-	\item[XML] Extensible markup language
-\end{description}
+\printglossaries
+% \begin{description}
+% 	\item[BPM] \todo{to-do}
+%     \item[BPMN] \todo{to-do}
+%     \item[BPMS] \todo{to-do}
+%     \item[DEMO] \todo{to-do}
+% 	\item[GUI] Graphical user interface
+% 	\item[XML] Extensible markup language
+% \end{description}
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 % % Tuto kapitolu z výsledné práce ODSTRAŇTE.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% 
+
 % \chapter{Návod k~použití této šablony}
-% 
+
 % Tento dokument slouží jako základ pro napsání závěrečné práce na Fakultě informačních technologií ČVUT v~Praze.
-% 
+
 % \section{Výběr základu}
-% 
+
 % Vyberte si šablonu podle druhu práce (bakalářská, diplomová), jazyka (čeština, angličtina) a kódování (ASCII, \mbox{UTF-8}, \mbox{ISO-8859-2} neboli latin2 a nebo \mbox{Windows-1250}). 
-% 
+
 % V~české variantě naleznete šablony v~souborech pojmenovaných ve formátu práce\_kódování.tex. Typ může být:
 % \begin{description}
 % 	\item[BP] bakalářská práce,
@@ -114,69 +273,69 @@
 % 		\item jinak zkuste použít šablonu pro kódování \mbox{ISO-8859-2}.
 % 	\end{itemize}
 % \end{enumerate}
-% 
-% 
+
+
 % V~anglické variantě jsou šablony pojmenované podle typu práce, možnosti jsou:
 % \begin{description}
 % 	\item[bachelors] bakalářská práce,
 % 	\item[masters] diplomová (magisterská) práce.
 % \end{description}
-% 
+
 % \section{Použití šablony}
-% 
+
 % Šablona je určena pro zpracování systémem \LaTeXe{}. Text je možné psát v~textovém editoru jako prostý text, lze však také využít specializovaný editor pro \LaTeX{}, např. Kile.
-% 
+
 % Pro získání tisknutelného výstupu z~takto vytvořeného souboru použijte příkaz \verb|pdflatex|, kterému předáte cestu k~souboru jako parametr. Vhodný editor pro \LaTeX{} toto udělá za Vás. \verb|pdfcslatex| ani \verb|cslatex| \emph{nebudou} s~těmito šablonami fungovat.
-% 
+
 % Více informací o~použití systému \LaTeX{} najdete např. v~\cite{wikilatex}.
-% 
+
 % \subsection{Typografie}
-% 
+
 % Při psaní dodržujte typografické konvence zvoleného jazyka. České \uv{uvozovky} zapisujte použitím příkazu \verb|\uv|, kterému v~parametru předáte text, jenž má být v~uvozovkách. Anglické otevírací uvozovky se v~\LaTeX{}u zadávají jako dva zpětné apostrofy, uzavírací uvozovky jako dva apostrofy. Často chybně uváděný symbol "{} (palce) nemá s~uvozovkami nic společného.
-% 
+
 % Dále je třeba zabránit zalomení řádky mezi některými slovy, v~češtině např. za jednopísmennými předložkami a spojkami (vyjma \uv{a}). To docílíte vložením pružné nezalomitelné mezery -- znakem \texttt{\textasciitilde}. V~tomto případě to není třeba dělat ručně, lze použít program \verb|vlna|.
-% 
+
 % Více o~typografii viz \cite{kobltypo}.
-% 
+
 % \subsection{Obrázky}
-% 
+
 % Pro umožnění vkládání obrázků je vhodné použít balíček \verb|graphicx|, samotné vložení se provede příkazem \verb|\includegraphics|. Takto je možné vkládat obrázky ve formátu PDF, PNG a JPEG jestliže používáte pdf\LaTeX{} nebo ve formátu EPS jestliže používáte \LaTeX{}. Doporučujeme preferovat vektorové obrázky před rastrovými (vyjma fotografií).
-% 
+
 % \subsubsection{Získání vhodného formátu}
-% 
+
 % Pro získání vektorových formátů PDF nebo EPS z~jiných lze použít některý z~vektorových grafických editorů. Pro převod rastrového obrázku na vektorový lze použít rasterizaci, kterou mnohé editory zvládají (např. Inkscape). Pro konverze lze použít též nástroje pro dávkové zpracování běžně dodávané s~\LaTeX{}em, např. \verb|epstopdf|.
-% 
+
 % \subsubsection{Plovoucí prostředí}
-% 
+
 % Příkazem \verb|\includegraphics| lze obrázky vkládat přímo, doporučujeme však použít plovoucí prostředí, konkrétně \verb|figure|. Například obrázek \ref{fig:float} byl vložen tímto způsobem. Vůbec přitom nevadí, když je obrázek umístěn jinde, než bylo původně zamýšleno -- je tomu tak hlavně kvůli dodržení typografických konvencí. Namísto vynucování konkrétní pozice obrázku doporučujeme používat odkazování z~textu (dvojice příkazů \verb|\label| a \verb|\ref|).
-% 
+
 % \begin{figure}\centering
 % 	\includegraphics[width=0.5\textwidth, angle=30]{cvut-logo-bw}
 % 	\caption[Příklad obrázku]{Ukázkový obrázek v~plovoucím prostředí}\label{fig:float}
 % \end{figure}
-% 
+
 % \subsubsection{Verze obrázků}
-% 
+
 % % Gnuplot BW i barevně
 % Může se hodit mít více verzí stejného obrázku, např. pro barevný či černobílý tisk a nebo pro prezentaci. S~pomocí některých nástrojů na generování grafiky je to snadné.
-% 
+
 % Máte-li například graf vytvořený v programu Gnuplot, můžete jeho černobílou variantu (viz obr. \ref{fig:gnuplot-bw}) vytvořit parametrem \verb|monochrome dashed| příkazu \verb|set term|. Barevnou variantu (viz obr. \ref{fig:gnuplot-col}) vhodnou na prezentace lze vytvořit parametrem \verb|colour solid|.
-% 
+
 % \begin{figure}\centering
 % 	\includegraphics{gnuplot-bw}
 % 	\caption{Černobílá varianta obrázku generovaného programem Gnuplot}\label{fig:gnuplot-bw}
 % \end{figure}
-% 
+
 % \begin{figure}\centering
 % 	\includegraphics{gnuplot-col}
 % 	\caption{Barevná varianta obrázku generovaného programem Gnuplot}\label{fig:gnuplot-col}
 % \end{figure}
-% 
-% 
+
+
 % \subsection{Tabulky}
-% 
+
 % Tabulky lze zadávat různě, např. v~prostředí \verb|tabular|, avšak pro jejich vkládání platí to samé, co pro obrázky -- použijte plovoucí prostředí, v~tomto případě \verb|table|. Například tabulka \ref{tab:matematika} byla vložena tímto způsobem.
-% 
+
 % \begin{table}\centering
 % 	\caption[Příklad tabulky]{Zadávání matematiky}\label{tab:matematika}
 % 	\begin{tabular}{|l|l|c|c|}\hline
@@ -185,7 +344,7 @@
 % 		Displayed	& \verb|displaymath|	& \verb|\[...\]|	& \verb|$$...$$|	\tabularnewline \hline
 % 	\end{tabular}
 % \end{table}
-% 
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 \chapter{Obsah přiloženého CD}
