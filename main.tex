@@ -13,7 +13,7 @@
 \usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 
 \usepackage{graphicx} %graphics files inclusion
-% \usepackage{amsmath} %advanced maths
+\usepackage{amsmath} %advanced maths
 % \usepackage{amssymb} %additional math symbols
 
 \usepackage{dirtree} %directory tree visualisation
@@ -38,10 +38,7 @@
 \setlength{\fboxsep}{0.005pt}
 \newcommand{\tmpframe}[1]{\fbox{#1}}
 %\renewcommand{\tmpframe}[1]{#1}  % uncomment before production
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% ODTUD DAL VSE ZMENTE
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 \department{Department of software engineering science}
@@ -56,8 +53,8 @@
 \abstractEN{Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.}
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{4} %volba Prohlášení (číslo 1-6)
-\keywordsCS{Nahraďte seznamem klíčových slov v češtině oddělených čárkou.}
-\keywordsEN{Nahraďte seznamem klíčových slov v angličtině oddělených čárkou.}
+\keywordsCS{podnikové inženýrství, procesní řízení, DEMO, analytické nástroje, mobilní aplikace}
+\keywordsEN{enterprise engineering, business process management, DEMO, analytic tool, mobile application}
 % \website{http://site.example/thesis} %volitelná URL práce, objeví se v tiráži - úplně odstraňte, nemáte-li URL práce
 
 \begin{document}
@@ -73,29 +70,21 @@
 
 \newacronym{dwma}{DWMA}{DEMO WIP Mobile Application}
 \newacronym{rac}{RAC}{Rent-A-Car}
-% \newacronym{ee}{EE}{enterprise engineering}
-% \newacronym{eo}{EO}{enterprise ontology}
-% \newacronym{is}{IS}{information system}
-% \newacronym{it}{IT}{information technology}
-% \newacronym{net}{.NET}{Microsoft .NET framework}
-% \newacronym{uml}{UML}{Unified Modeling Language}
-% \newacronym{xml}{XML}{Extensible Markup Language}
-% \newacronym{ctu}{CTU}{Czech Technical University}
-% \newacronym{fit}{FIT}{Faculty of Information Technology}
+\newacronym{eo}{EO}{Enterprise Ontology}
+\newacronym{demo}{DEMO}{Design and Engineering Methodology for Organizations}
+\newacronym{ocd}{OCD}{Organization Construction Diagram}
+\newacronym{psd}{PSD}{Process Structure Diagram}
 \newacronym{bpm}{BPM}{Business Process Management}
 \newacronym{bpmn}{BPMN}{Business Process Model and Notation}
 \newacronym{bpms}{BPMS}{Business Process Management System}
-\newacronym{demosl}{DEMOSL}{DEMO Specification Language}
-
-
 
 \begin{introduction}
 	\input{chapters/00-introduction.tex}    
 \end{introduction}
 
-\chapter{The goal of thesis}
+\chapter{The theoretical foundations}
 
-\input{chapters/01-the-goal.tex}
+\input{chapters/01-theoretical-foundations.tex}
 
 \chapter{Proposed concept}
 The main goal of the thesis is to propose a concept of the mobile application which will be able to create the overview of critical business data and make decisions based on them. The concept is kept simple as possible and straightforward to achieve the goals. This chapter will describe each part of the concept and all conceptual features and functions. This chapter is divided to four parts:	
@@ -252,7 +241,7 @@ If condition is ``Some state of transaction A has to be done before transaction 
 	%sem napište závěr Vaší práce
 \end{conclusion}
 
-\bibliographystyle{csn690}
+\bibliographystyle{iso690}
 \bibliography{myref.bib}
 
 \appendix
