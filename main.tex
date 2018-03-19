@@ -15,18 +15,16 @@
 \usepackage{graphicx} %graphics files inclusion
 \usepackage{amsmath} %advanced maths
 % \usepackage{amssymb} %additional math symbols
-
 \usepackage{dirtree} %directory tree visualisation
 \usepackage{cleveref}
-
+\usepackage{hyperref}
 % % list of acronyms
 \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
 \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
 \makeglossaries
 
-\newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
-\newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
-
+%\newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
+%\newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
 
 % following 3 commands (todo, tmp image) Used from http://www.herout.net/blog/2017/03/pomalu-uz-pojdme-psat/
 \usepackage{xcolor} 
@@ -49,12 +47,22 @@
 \author{Petr Nymsa} %jméno autora bez akademických titulů
 \supervisor{Ing. Marek Skotnica}
 \acknowledgements{Doplňte, máte-li komu a za co děkovat. V~opačném případě úplně odstraňte tento příkaz.}
-\abstractCS{V~několika větách shrňte obsah a přínos této práce v~češtině. Po přečtení abstraktu by se čtenář měl mít čtenář dost informací pro rozhodnutí, zda chce Vaši práci číst.}
+\abstractCS{
+% Tato bp se zabývá (řeší)...
+% Cílem práce je
+% V práci se zaměřuji na
+% Literární rešerše se zabývá...praktická část práce navazuje...
+Cílem této práce je vytvoření metody vizualizace procesů založených na metodice DEMO. Kromě vizualice jsou rozebrány možnosti sběru dat z těchto procesů a následná jejich analýza a grafické znázornění. V práci je popsána metodika DEMO a čím se liší od systémů, které využívají notaci BPM. Pro ověření vymyšleného konceptu je vypracována ukázková implementace jako mobilní aplikace, která umožní vizualizovat procesy na modelovém příkladu. 
+
+% čím je práce užitečná
+}
 \abstractEN{Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.}
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{4} %volba Prohlášení (číslo 1-6)
-\keywordsCS{podnikové inženýrství, procesní řízení, DEMO, analytické nástroje, mobilní aplikace}
-\keywordsEN{enterprise engineering, business process management, DEMO, analytic tool, mobile application}
+
+\keywordsCS{mobilní aplikace, vizualizace procesů, DEMO, analýza dat, business intelligence, podnikové inženýrství, procesní řízení, BPM, Xamarin}
+
+\keywordsEN{mobile application, business intelligence, DEMO, enterprise engineering, business process management, BPM, analytic tool, Xamarin}
 % \website{http://site.example/thesis} %volitelná URL práce, objeví se v tiráži - úplně odstraňte, nemáte-li URL práce
 
 \begin{document}
@@ -74,19 +82,23 @@
 \newacronym{demo}{DEMO}{Design and Engineering Methodology for Organizations}
 \newacronym{ocd}{OCD}{Organization Construction Diagram}
 \newacronym{psd}{PSD}{Process Structure Diagram}
+\newacronym{kpi}{KPI}{Key Performance Indicator}
 \newacronym{bpm}{BPM}{Business Process Management}
 \newacronym{bpmn}{BPMN}{Business Process Model and Notation}
-\newacronym{bpms}{BPMS}{Business Process Management System}
+\newacronym{bpms}{BPMS}{Business Process Model Systems}
 
 \begin{introduction}
 	\input{chapters/00-introduction.tex}    
 \end{introduction}
 
-\chapter{The theoretical foundations}
+\chapter{The Theoretical Foundations}
+\label{ch:theoretical-foundations}
 
 \input{chapters/01-theoretical-foundations.tex}
 
-\chapter{Proposed concept}
+\chapter{Proposed approach}
+\todo{Concept art of gantt charts and relations with DEMO}
+
 The main goal of the thesis is to propose a concept of the mobile application which will be able to create the overview of critical business data and make decisions based on them. The concept is kept simple as possible and straightforward to achieve the goals. This chapter will describe each part of the concept and all conceptual features and functions. This chapter is divided to four parts:	
     \begin{enumerate}
       \item Which kind of data the application collects and how it works with them.
@@ -247,15 +259,6 @@ If condition is ``Some state of transaction A has to be done before transaction 
 \appendix
 
 \printglossaries
-% \begin{description}
-% 	\item[BPM] \todo{to-do}
-%     \item[BPMN] \todo{to-do}
-%     \item[BPMS] \todo{to-do}
-%     \item[DEMO] \todo{to-do}
-% 	\item[GUI] Graphical user interface
-% 	\item[XML] Extensible markup language
-% \end{description}
-
 
 \chapter{Content of enclosed CD}
 

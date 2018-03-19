@@ -1,12 +1,49 @@
-\todo{Short info about BPM and BPMN. BPM solutions. Intro to DEMO and relationship with concept. About DEMO (see M.Skotnica bachelor for citation). Existing solutions based on DEMO. How my concept is connected with DEMO and how it is exposed to end user.  }
+In this chapter firstly used terms such as BPM, Ontology or Business Intelligence are explained. Then theory of \gls{demo} is briefly described.
 
 \section{Business Process Management}
+\gls{bpm} is an approach that focuses on modelling, analysing, improving and monitoring business processes. 
+The \gls{bpm} life-cycle can be divided to five stages as shown in \cref{fig:bpm-lifecycle}/
+
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=0.6\textwidth, keepaspectratio]{img/bpm-lifecycle.jpg}
+    \caption{BPM Life-cycle\cite{harvey-koeppel-bpm-lifecycle-2015}}
+    \label{fig:bpm-lifecycle}
+\end{figure}
+
+\begin{description}
+	\item[Design] The requirements of the business are collected, analysed and specified. The specification can be ``as is'' (state of how processes currently are) or ``to be'' (how processes would be). Accompanying graphical materials (such as flow-charts) are included.
+    \item[Model] Specification is expressed (modelled) with graphical notation \gls{bpmn}, which will be investigated later.
+    \item[Execute] Changes are implemented and deployed.
+    \item[Monitor] After deployed changes, monitoring system comes to the scene. Processes are monitored and \gls{bpms} tools are used to collect data and analyse performance through metrics - called \gls{kpi}. \gls{kpi} are defined, optimized metrics which help to understand the performance of the current business. As an example of \gls{kpi} can be ``an average number of requests for new order per day'' and many more, individual metrics to concrete business.
+    \item[Optimize] At some point, when an appropriate number of data are collected and analysed with monitoring, optimization is done. The goal of optimization is to find issues or some improvements. After that, new specifications and improvements are created and \textit{design} stage is executed again.
+\end{description}
+
+\subsection{Business Process Management Notation}
+\gls{bpmn} is notation created and standardised by \textit{Object Management Group} (see \url{https://www.omg.org}). According to\cite{bpmn-org-2018} \gls{bpmn} can be described as:
+\begin{quote}
+\gls{bpmn} is a graphical notation that depicts the steps in a business process. BPMN depicts the end to end flow of a business process. The notation has been specifically designed to coordinate the sequence of processes and the messages that flow between different process participants in a related set of activities.
+\end{quote}
+
+For how modelling with \gls{bpmn} is done and what elements are used, see\cite{bpmn-org-2018}.
+
+\section{Business Intelligence}
+
+\section{Enterprise Architecture}
+
+\todo{Short information about BPMN, how it is used and how modelling with BPMN is done. Later in chapter 2, differences between BPMN and DEMO will be discussed and discussion about ``why DEMO is better than BPMN. And as a example short BPMN and note about how students at CCMI (MI-MEP) transformed large flow-chart (no BPMN, many pages) to one DEMO OCD diagram which fits only one page''}
+
+\section{Ontology}
+According to\cite{gruber-translation-1993}, definition of ontology states as ``An ontology is a specification of a conceptualization''. In other words ontology is description, a formal specification, of concepts and relationships.
 
 \section{Enterprise ontology}
+Enterprise Ontology\cite{perinforma-essence-2015} is the understanding of the essence of organisation, completely independent of the way in which this essence is realised and implemented.
 
-The following text was taken from article describing \gls{eo} theory \cite{haan_modeling_2009}:
+The DEMO Methodology\cite{dietz-enterprise-2006} is an engineering methodology, based on theory of enterprise ontology.
 
-\begin{quote}
+The following text was taken from article describing \gls{eo} theory~\cite{haan-modeling-2009}:
+
+\begin{quotation}
 Enterprise ontology is focused on the essence of the operation of an organization, meaning that it is fully independent of the (current) realization and implementation of the organization. The theory that underlies the notion of enterprise ontology as presented by Dietz is called the PSI-theory. Dietz uses this theory to construct a methodology providing an ontological model of an organization, i.e. a model that is coherent, comprehensive, consistent, and concise, and that only shows the essence of the operation of an organization model. This methodology is called \gls{demo}.
 
 Compared to its implementation model, the ontological model of an enterprise offers a reduction of complexity of over 90\%. This reduction of complexity makes an organization for a manager intellectual manageable and transparent. It also shows the coherence between all fields within the enterprise, like business processes, workflow, organization structure, etc.
@@ -26,11 +63,11 @@ By performing production acts (P-acts for short) the subjects contribute to brin
 
 By performing coordination acts (C-acts for short) subjects enter into and comply with commitments towards each other regarding the performance of production acts. A C-act is performed by one actor, the performer, and directed to another actor, the addressee. C-acts consist of an intention (e.g. request, promise, question, assertion) and a proposition (the performer proclaims the fact and the associated time the intention is about) and result in coordination facts (C-facts for short).
 
-The \textbf{transaction axiom} tells us that C-acts are performed as steps in universal patterns, called transactions. This axiom reveals universal socionomic patterns of coordination that hold for all organizations. The standard transaction pattern is shown in \cref{fig:TransactionPattern}. A white box represents a C-act type and a white disk represents a C-fact type. A gray box represents a P-act type and a gray diamond a P-fact type. 
+The \textbf{transaction axiom} tells us that C-acts are performed as steps in universal patterns, called transactions. This axiom reveals universal socionomic patterns of coordination that hold for all organizations. The standard transaction pattern is shown in~ \cref{fig:TransactionPattern}. A white box represents a C-act type and a white disk represents a C-fact type. A gray box represents a P-act type and a gray diamond a P-fact type. 
 
 \begin{figure}[ht!] 
 	\centering
-    \includegraphics[width=12cm, keepaspectratio]{img/TransactionPattern}    
+    \includegraphics[width=8cm, keepaspectratio]{img/TransactionPattern}    
     \caption{The standard transaction pattern \todo{citation}}
     \label{fig:TransactionPattern}
 \end{figure}
@@ -39,7 +76,7 @@ Two actors are involved in a transaction, the initiator and the executor. A tran
 
 The \textbf{composition axiom} tells us how P-facts are interrelated. It states that every transaction is enclosed in some other transaction, or is a customer transaction of the organization under consideration, or is a self-activation transaction. According to Dietz this axiom provides the basis for a well-founded definition of the notion of business process.
 
-The \textbf{distinction axiom} (\cref{fig:DisctinctionAxiom} tells us that actors exert three basic human abilities: performa, informa, and forma. Through the distinction axiom a substantial reduction of complexity and diversity is achieved, regarding both the coordination and the production in an organization.
+The \textbf{distinction axiom} (\cref{fig:DisctinctionAxiom}) tells us that actors exert three basic human abilities: performa, informa, and forma. Through the distinction axiom a substantial reduction of complexity and diversity is achieved, regarding both the coordination and the production in an organization.
 
 \begin{figure}[ht!]
 	\centering
@@ -50,7 +87,7 @@ The \textbf{distinction axiom} (\cref{fig:DisctinctionAxiom} tells us that actor
 
 \subsection{The Organization Theorem}
 
-The organization theorem combines the benefits of these axioms into one concise, comprehensive, coherent, and consistent notion of enterprise. This theorem states that the organization of an enterprise is a heterogeneous system that is constituted as the layered integration of three homogeneous systems: the B-organization (from Business), the I-organization (from Intellect), and the D-organization (from Document). Figure \ref{fig:OrganizationPyramid} visualizes the organization theorem and shows us that the D-organization supports the I-organization, which supports the B-organization. The coordination parts of these three systems are similar, they only differ in the kind of production: the production of the B-organization is ontological, the production in the I-organization is infological, and the production in the D-organization is datalogical.
+The organization theorem combines the benefits of these axioms into one concise, comprehensive, coherent, and consistent notion of enterprise. This theorem states that the organization of an enterprise is a heterogeneous system that is constituted as the layered integration of three homogeneous systems: the B-organization (from Business), the I-organization (from Intellect), and the D-organization (from Document). Figure~ \ref{fig:OrganizationPyramid} visualizes the organization theorem and shows us that the D-organization supports the I-organization, which supports the B-organization. The coordination parts of these three systems are similar, they only differ in the kind of production: the production of the B-organization is ontological, the production in the I-organization is infological, and the production in the D-organization is datalogical.
 
 \begin{figure}[ht!]
 	\centering
@@ -58,14 +95,63 @@ The organization theorem combines the benefits of these axioms into one concise,
     \caption{The organization theorem\todo{citation}}
     \label{fig:OrganizationPyramid}
 \end{figure}
+
+\end{quotation}
+
+\section{Modelling with DEMO}
+In this section, firstly short description of modelling aspects is provided and then a illustrative example how modelling with \gls{demo} can be more precise and shorter than creating model with \gls{bpmn}. 
+
+All used elements in DEMO modelling are described in aspects models arranged as pyramid. However the two core elements are Ontological transaction and Actor roles. Good summarization of these two core elements are from master thesis by Zuzana Vejrazkova~\cite{vejrazkova-demo-2013}:
+
+\begin{quote}
+	\begin{description}
+		\item[Ontological transaction] involves actions that happen on the ontological level, as described by the Distinction axiom. Those involve bringing about the facts that did not exist before, making decisions, or transporting physical elements. Completion of a transaction, in a way that is described by the transaction axiom, results in a new original fact, called the P-fact.
+        \item[Actor role] There are two actor roles, the initiator and the executor. They play an important role in DEMO modeling, as each transaction needs to have exactly one initiator and one executor. On the implementation level, 1~person can (and often does) posses more actor roles.
+	\end{description}
 \end{quote}
 
-\section{Modeling with DEMO}
-In this section, firstly short description of modeling aspects is provided and then a illustrative example how modeling with \gls{demo} can be more precise and shorter than creating model with \gls{bpmn}. 
+Figure \ref{fig:DemoAspectModels} shows that ontological model can be divided to four sub-models. The good and brief explanation is in the book \textit{The essence of organisation: an introduction to enterprise engineering}~\cite{perinforma-essence-2015}:
 
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=10cm, keepaspectratio]{img/DemoAspectModels}
+    \caption{The DEMO Aspect Models pyramid\todo{citation}}
+    \label{fig:DemoAspectModels}
+\end{figure}
 
+\begin{quote}
+	\begin{description}
+		\item[Construction model] (CM) is the most concise sub-model. Therefore it is put at the top of the triangle. An additional meaning of this position is that there is nothing ``above'' the CM. The Construction Model shows the identified transaction kinds, the corresponding actor roles, and the border of the Scope of Interest.
+         \item[Action model] (AM) is the most comprehensive one, in the sense that the other three may be derived from it. The AM of an organisation consists of the action rule specifications for every internal actor role. Action rules are guidelines for dealing with the events that actors have to respond to.
+         
+         \item[Process Model] (PM) shows precisely how the identified transactions are interrelated in tree structures. These tree structures are what people commonly refer to as business process models.
+         
+         \item[Fact Model] (FM) show the fact kinds in the production world of the organisation and their interrelationships. 
+	\end{description}
+\end{quote}
 
-\subsection{Organization Construction Diagram}
+The PM is in between CM and the AM, that means it is more detailed than CM but less than AM. The PM and the FM are on the same layer of the pyramid and it refers to the fact, that PM takes the process view of coordination world, and the FM is for the production world in the same meaning as PM.
 
-\subsection{Process Structure Diagram}
+From the CM is used \gls{ocd} which takes standard process pattern and squeeze it to one symbol with two connected boxes which represent initiator and executor actor roles (see \cref{fig:ocd-symbol-example}).
+
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=6cm, keepaspectratio]{img/ocd-symbol-example}
+    \caption{The transaction symbol element with initiator and executor roles}
+    \label{fig:ocd-symbol-example}
+\end{figure}
+
+From the PM is taken \gls{psd} sub-model which describes business processes and the exact way how each transaction is connected with another. Following explanation how \gls{psd} is modelled is from~\cite{perinforma-essence-2015}:
+
+\begin{quote}
+      The disk of the transaction is stretched horizontally, such that it looks like a sausage. One must imagine that there is an invisible and non-proportional time line from left to right (promise is performed after its request,\dots). Coordination acts and facts are represented by small boxes and disks on the border of the transaction symbol (the sausage). 
+      The production act, execute, is represented by a small grey box on the edge of the production symbol. To the left of it is the order phase, and to the right the result phase.
+      Between two transactions (the sausages) can be added arrows, either solid or dashed. Solid arrows represent \textit{response links}. Response link means that the act at the arrow point is performed in response to the event at the shaft. Dashed arrow represent \textit{waiting links}. Their meaning is that performing the act at the arrow point must wait for the event at the shaft having occurred. Through ``swim lanes'' the responsibility areas of the actor roles are indicated.
+\end{quote}
+\todo{Insert PSD example}
+An example of PSD is shown at \todo{figure} which means exactly ``When the transaction T1 is \textit{requested}, as a response, T2 is also \textit{requested}. After that, T1 can be promised only and only, if T2 is \textit{accepted}.''
+
+\subsection{Advantages of DEMO model}
+
+\section{Gantt chart}
 
