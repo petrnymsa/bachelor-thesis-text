@@ -1,4 +1,4 @@
-In this chapter firstly used terms such as BPM (and BPMN), Ontology or Business Intelligence are explained. Then theory of \gls{demo} is briefly described. In the end comparison between \gls{bpmn} and \gls{demo} is discussed and an example how \gls{demo} can shorten complex model to more smaller model but still with all information included.
+In this chapter firstly used terms such as BPM (and BPMN), Ontology or Business Intelligence are explained. Then theory of \gls{demo} is briefly described. In the end comparison between \gls{bpmn} and \gls{demo} is discussed and an example how \gls{demo} can shorten complex model to more smaller model but still with all information included. \todo{needs revision}
 
 \section{Business Process Management}
 \gls{bpm} is an approach that focuses on modelling, analysing, improving and monitoring business processes. 
@@ -22,16 +22,18 @@ The \gls{bpm} life-cycle can be divided to five stages as shown in \cref{fig:bpm
 \subsection{Business Process Model and Notation}
 \gls{bpmn} is notation created and standardised by \textit{Object Management Group} (see \url{https://www.omg.org}). According to\cite{bpmn-org-2018} \gls{bpmn} can be described as:
 \begin{quote}
-\gls{bpmn} is a graphical notation that depicts the steps in a business process. BPMN depicts the end to end flow of a business process. The notation has been specifically designed to coordinate the sequence of processes and the messages that flow between different process participants in a related set of activities.
+  \gls{bpmn} is a graphical notation that depicts the steps in a business process. BPMN depicts the end to end flow of a business process. The notation has been specifically designed to coordinate the sequence of processes and the messages that flow between different process participants in a related set of activities.
 \end{quote}
 
 For how modelling with \gls{bpmn} is done and what elements are used, see\cite{bpmn-org-2018}.
 
 \section{Business Intelligence}
 
+\todo{TODO}
+
 \section{Enterprise Architecture}
 
-\todo{Short information about BPMN, how it is used and how modelling with BPMN is done. Later in chapter 2, differences between BPMN and DEMO will be discussed and discussion about ``why DEMO is better than BPMN. And as a example short BPMN and note about how students at CCMI (MI-MEP) transformed large flow-chart (no BPMN, many pages) to one DEMO OCD diagram which fits only one page''}
+\todo{TODO}
 
 \section{Ontology}
 According to\cite{gruber-translation-1993}, definition of ontology states as ``An ontology is a specification of a conceptualization''. In other words ontology is description, a formal specification, of concepts and relationships.
@@ -148,10 +150,30 @@ From the PM is taken \gls{psd} sub-model which describes business processes and 
       The production act, execute, is represented by a small grey box on the edge of the production symbol. To the left of it is the order phase, and to the right the result phase.
       Between two transactions (the sausages) can be added arrows, either solid or dashed. Solid arrows represent \textit{response links}. Response link means that the act at the arrow point is performed in response to the event at the shaft. Dashed arrow represent \textit{waiting links}. Their meaning is that performing the act at the arrow point must wait for the event at the shaft having occurred. Through ``swim lanes'' the responsibility areas of the actor roles are indicated.
 \end{quote}
-\todo{Insert PSD example}
-An example of PSD is shown at \todo{figure} which means exactly ``When the transaction T1 is \textit{requested}, as a response, T2 is also \textit{requested}. After that, T1 can be promised only and only, if T2 is \textit{accepted}.''
 
-\subsection{Advantages of DEMO model}
+An example of PSD is shown at \cref{fig:psd-example} which means exactly ``When the transaction T1 (Supply order) is \textit{requested}, as a response, T2 (Tax payment) is also \textit{requested}. After that, T1 can be promised only and only, if T2 is \textit{accepted}. After that T1 can be completed''.
+
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=0.8\textwidth]{img/psd-example}
+    \caption{PSD example}
+    \label{fig:psd-example}
+\end{figure}
+
+\subsection{Conciseness of DEMO Against BPMN}
+	\todo{“why DEMO is better than BPMN. And as a example short BPMN and note about how students at CCMI (MI-MEP) transformed large flow-chart (no BPMN, many pages) to one DEMO OCD diagram which fits only one page”}
 
 \section{Gantt chart}
+According to \cite{gantt-chart-2018}, Gantt chart was proposed in 1890 by Karol Adamiecki, but he did publish his work only in the Polish language. About the year 1910 American engineer, Henry Gantt, introduced his own version of this chart and this work became widely used and is still used by project managers. 
+Gantt chart serves as an overview of activities according to the time schedule. By simplicity, Gantt chart shows, what has to be done (an activity) and when.
+At \cref{fig:gantt-chart-example} is an example of Gantt chart. The core element is some kind of bar chart (progress bar) which starts at some time and is scheduled to end in some another time.
+Nowadays, Gantt charts, has more advanced elements, such as connected activities (one activity must end before another can start), groups of activities, different colours of activities that can indicate different phases of completion and so on. Many systems for time-management support these types of graphs.
+Gantt chart and its usage for this thesis are discussed later, in chapter \todo{ref to chapter}.
+
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=0.8\textwidth]{img/gantt-chart-example.jpg}
+    \caption{Gantt chart example\cite{gantt-chart-2018}}
+    \label{fig:gantt-chart-example}
+\end{figure}
 
