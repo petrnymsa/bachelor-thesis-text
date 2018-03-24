@@ -1,4 +1,4 @@
-In this chapter firstly used terms such as BPM (and BPMN), Ontology or Business Intelligence are explained. Then theory of \gls{demo} is briefly described. In the end comparison between \gls{bpmn} and \gls{demo} is discussed and an example how \gls{demo} can shorten complex model to more smaller model but still with all information included. \todo{needs revision}
+In the first chapter, theoretical foundations are described. Firstly, terms such as BPM, Business Intelligence are explained. Then, the theory of Enterprise Ontology and DEMO methodology follow. In the end, Gantt chart is described, because it is used as part of visualisation approach. 
 
 \section{Business Process Management}
 \gls{bpm} is an approach that focuses on modelling, analysing, improving and monitoring business processes. 
@@ -19,31 +19,45 @@ The \gls{bpm} life-cycle can be divided to five stages as shown in \cref{fig:bpm
     \item[Optimize] At some point, when an appropriate number of data are collected and analysed with monitoring, optimization is done. The goal of optimization is to find issues or some improvements. After that, new specifications and improvements are created and \textit{design} stage is executed again.
 \end{description}
 
+\todo{Some conclusion about BPM?}
+
 \subsection{Business Process Model and Notation}
 \gls{bpmn} is notation created and standardised by \textit{Object Management Group} (see \url{https://www.omg.org}). According to\cite{bpmn-org-2018} \gls{bpmn} can be described as:
 \begin{quote}
   \gls{bpmn} is a graphical notation that depicts the steps in a business process. BPMN depicts the end to end flow of a business process. The notation has been specifically designed to coordinate the sequence of processes and the messages that flow between different process participants in a related set of activities.
 \end{quote}
-
-For how modelling with \gls{bpmn} is done and what elements are used, see\cite{bpmn-org-2018}.
+The notation itself, elements which are used and how modelling is done, are not described. For this information, see\cite{bpmn-org-2018}.
 
 \section{Business Intelligence}
 
-\todo{TODO}
+\gls{bi} is a way how business can collect an enormous amount of data, structure them and analyse (see \cref{fig:bi-diagram}. From \gls{bpm} life-cycle view, \gls{bi} is a \textit{Monitor} stage. Systems which are tagged as \gls{bi} tools typically offers some kind of reporting, dashboards and scorecards. 
 
-\section{Enterprise Architecture}
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=0.6\textwidth]{img/mortgage-business-intelligence-diagram.png}
+    \caption{Business intelligence diagram\cite{business-intelligence-diagram-2018}}
+    \label{fig:bi-diagram}
+\end{figure}
 
-\todo{TODO}
+\textbf{Dashboard} offers graphical overviews of collected data. Dashboards are typically highly customizable and can offer different types of views for each employee to help achieve their job. Dashboards can help understand and find issues within business and potentially more quickly solve them. \cref{fig:bi-dashboard} shows an example. \todo{citation of MS POWER BI?}
 
-\section{Ontology}
-According to\cite{gruber-translation-1993}, definition of ontology states as ``An ontology is a specification of a conceptualization''. In other words ontology is description, a formal specification, of concepts and relationships.
+\textbf{Scorecards} offer monitoring of \gls{kpi} metrics and user can easy compare goals and current results. Scorecards also easily show performance of business, for example if business plan is fulfilled or financial flow (e.g if business is profiting or not,\dots). 
+
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=0.6\textwidth]{img/microsoft-power-bi-dashboard.png}
+    \caption{Business Intelligence dashboard example\cite{ms-business-intelligence-2018}}
+    \label{fig:bi-dashboard}
+\end{figure}
 
 \section{Enterprise ontology}
-Enterprise Ontology\cite{perinforma-essence-2015} is the understanding of the essence of organisation, completely independent of the way in which this essence is realised and implemented.
+According to\cite{gruber-translation-1993}, definition of ontology states as ``An ontology is a specification of a conceptualization''. In other words ontology is description, a formal specification, of concepts and relationships.
+
+Enterprise Ontology\cite{dietz-essence-2015} is the understanding of the essence of organisation, completely independent of the way in which this essence is realised and implemented.
 
 The DEMO Methodology\cite{dietz-enterprise-2006} is an engineering methodology, based on theory of enterprise ontology.
 
-The following text was taken from article describing \gls{eo} theory~\cite{haan-modeling-2009}:
+The following text was taken from article describing \gls{eo} theory\cite{haan-modeling-2009}:
 
 \begin{quotation}
 Enterprise ontology is focused on the essence of the operation of an organization, meaning that it is fully independent of the (current) realization and implementation of the organization. The theory that underlies the notion of enterprise ontology as presented by Dietz is called the PSI-theory. Dietz uses this theory to construct a methodology providing an ontological model of an organization, i.e. a model that is coherent, comprehensive, consistent, and concise, and that only shows the essence of the operation of an organization model. This methodology is called \gls{demo}.
@@ -57,7 +71,7 @@ The \textbf{operation axiom} (\cref{fig:OperationAxiom}) tells us that the imple
 \begin{figure}[ht!]
 	\centering
     \includegraphics[width=10cm, keepaspectratio]{img/OperationAxiom}
-    \caption{The operation axiom\todo{citation}}
+    \caption{The operation axiom\cite{haan-modeling-2009}}
     \label{fig:OperationAxiom}
 \end{figure}
 
@@ -70,7 +84,7 @@ The \textbf{transaction axiom} tells us that C-acts are performed as steps in un
 \begin{figure}[ht!] 
 	\centering
     \includegraphics[width=8cm, keepaspectratio]{img/TransactionPattern}    
-    \caption{The standard transaction pattern \todo{citation}}
+    \caption{The standard transaction pattern\cite{haan-modeling-2009}}
     \label{fig:TransactionPattern}
 \end{figure}
 
@@ -83,7 +97,7 @@ The \textbf{distinction axiom} (\cref{fig:DisctinctionAxiom}) tells us that acto
 \begin{figure}[ht!]
 	\centering
     \includegraphics[width=10cm, keepaspectratio]{img/DistinctionAxiom}
-    \caption{The distinction axiom\todo{citation}}
+    \caption{The distinction axiom\cite{haan-modeling-2009}}
     \label{fig:DisctinctionAxiom}
 \end{figure}
 
@@ -93,8 +107,8 @@ The organization theorem combines the benefits of these axioms into one concise,
 
 \begin{figure}[ht!]
 	\centering
-    \includegraphics[width=10cm, keepaspectratio]{img/OrganizationPyramid}
-    \caption{The organization theorem\todo{citation}}
+    \includegraphics[width=6cm, keepaspectratio]{img/OrganizationPyramid}
+    \caption{The organization theorem\cite{haan-modeling-2009}}
     \label{fig:OrganizationPyramid}
 \end{figure}
 
@@ -108,67 +122,68 @@ All used elements in DEMO modelling are described in aspects models arranged as 
 \begin{quote}
 	\begin{description}
 		\item[Ontological transaction] involves actions that happen on the ontological level, as described by the Distinction axiom. Those involve bringing about the facts that did not exist before, making decisions, or transporting physical elements. Completion of a transaction, in a way that is described by the transaction axiom, results in a new original fact, called the P-fact.
-        \item[Actor role] There are two actor roles, the initiator and the executor. They play an important role in DEMO modeling, as each transaction needs to have exactly one initiator and one executor. On the implementation level, 1~person can (and often does) posses more actor roles.
+        \item[Actor role] There are two actor roles, the initiator and the executor. They play an important role in DEMO modelling, as each transaction needs to have exactly one initiator and one executor. On the implementation level, 1~person can (and often does) posses more actor roles.
 	\end{description}
 \end{quote}
 
-Figure \ref{fig:DemoAspectModels} shows that ontological model can be divided to four sub-models. The good and brief explanation is in the book \textit{The essence of organisation: an introduction to enterprise engineering}~\cite{perinforma-essence-2015}:
+Figure \ref{fig:DemoAspectModels} shows that ontological model can be divided to four sub-models. The good and brief explanation is in the book \textit{The essence of organisation: an introduction to enterprise engineering}~\cite{dietz-essence-2015}:
 
 \begin{figure}[ht!]
 	\centering
-    \includegraphics[width=10cm, keepaspectratio]{img/DemoAspectModels}
-    \caption{The DEMO Aspect Models pyramid\todo{citation}}
+    \includegraphics[width=8cm, keepaspectratio]{img/DemoAspectModels}
+    \caption{The DEMO Aspect Models pyramid\cite{dietz-discipline-2013}}
     \label{fig:DemoAspectModels}
 \end{figure}
 
 \begin{quote}
 	\begin{description}
 		\item[Construction model] (CM) is the most concise sub-model. Therefore it is put at the top of the triangle. An additional meaning of this position is that there is nothing ``above'' the CM. The Construction Model shows the identified transaction kinds, the corresponding actor roles, and the border of the Scope of Interest.
-         \item[Action model] (AM) is the most comprehensive one, in the sense that the other three may be derived from it. The AM of an organisation consists of the action rule specifications for every internal actor role. Action rules are guidelines for dealing with the events that actors have to respond to.
-         
-         \item[Process Model] (PM) shows precisely how the identified transactions are interrelated in tree structures. These tree structures are what people commonly refer to as business process models.
-         
+         \item[Action model] (AM) is the most comprehensive one, in the sense that the other three may be derived from it. The AM of an organisation consists of the action rule specifications for every internal actor role. Action rules are guidelines for dealing with the events that actors have to respond to.         
+         \item[Process Model] (PM) shows precisely how the identified transactions are interrelated in tree structures. These tree structures are what people commonly refer to as business process models.         
          \item[Fact Model] (FM) show the fact kinds in the production world of the organisation and their interrelationships. 
 	\end{description}
 \end{quote}
+
+\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=6cm, keepaspectratio]{img/ocd-symbol-example}
+    \caption{The core OCD element - transaction symbol with assigned actor roles}
+    \label{fig:ocd-symbol-example}
+\end{figure}
 
 The PM is in between CM and the AM, that means it is more detailed than CM but less than AM. The PM and the FM are on the same layer of the pyramid and it refers to the fact, that PM takes the process view of coordination world, and the FM is for the production world in the same meaning as PM.
 
 From the CM is used \gls{ocd} which takes standard process pattern and squeeze it to one symbol with two connected boxes which represent initiator and executor actor roles (see \cref{fig:ocd-symbol-example}).
 
-\begin{figure}[ht!]
-	\centering
-    \includegraphics[width=6cm, keepaspectratio]{img/ocd-symbol-example}
-    \caption{The transaction symbol element with initiator and executor roles}
-    \label{fig:ocd-symbol-example}
-\end{figure}
-
-From the PM is taken \gls{psd} sub-model which describes business processes and the exact way how each transaction is connected with another. Following explanation how \gls{psd} is modelled is from~\cite{perinforma-essence-2015}:
+From the PM is taken \gls{psd} sub-model which describes business processes and the exact way how each transaction is connected with another. Following explanation how \gls{psd} is modelled is from~\cite{dietz-essence-2015}:
 
 \begin{quote}
       The disk of the transaction is stretched horizontally, such that it looks like a sausage. One must imagine that there is an invisible and non-proportional time line from left to right (promise is performed after its request,\dots). Coordination acts and facts are represented by small boxes and disks on the border of the transaction symbol (the sausage). 
       The production act, execute, is represented by a small grey box on the edge of the production symbol. To the left of it is the order phase, and to the right the result phase.
       Between two transactions (the sausages) can be added arrows, either solid or dashed. Solid arrows represent \textit{response links}. Response link means that the act at the arrow point is performed in response to the event at the shaft. Dashed arrow represent \textit{waiting links}. Their meaning is that performing the act at the arrow point must wait for the event at the shaft having occurred. Through ``swim lanes'' the responsibility areas of the actor roles are indicated.
 \end{quote}
-
 An example of PSD is shown at \cref{fig:psd-example} which means exactly ``When the transaction T1 (Supply order) is \textit{requested}, as a response, T2 (Tax payment) is also \textit{requested}. After that, T1 can be promised only and only, if T2 is \textit{accepted}. After that T1 can be completed''.
 
 \begin{figure}[ht!]
 	\centering
-    \includegraphics[width=0.8\textwidth]{img/psd-example}
+    \includegraphics[width=0.7\textwidth]{img/psd-example}
     \caption{PSD example}
     \label{fig:psd-example}
 \end{figure}
 
-\subsection{Conciseness of DEMO Against BPMN}
-	\todo{“why DEMO is better than BPMN. And as a example short BPMN and note about how students at CCMI (MI-MEP) transformed large flow-chart (no BPMN, many pages) to one DEMO OCD diagram which fits only one page”}
+\subsection{Advantage of DEMO Against BPMN}
+    
+\gls{bpm} notation is well defined, established and widely used. Many \gls{bpms} exists around and of course, \gls{bpmn} is used ``under the hood''. These systems will be described later in \cref{ch:bpms}.
+    
+One thing is very clear, with enlarging business requirements, the business processes "grow up" too and so \gls{bpmn} diagrams. This can lead to very large and complex diagrams, which can be harder to read and understand. One of the advantages of DEMO is fact, that same \gls{bpmn} diagram can be represented within DEMO notation. The result is reduced complexity with the same understanding as diagram within \gls{bpmn}. However, advantages of DEMO notation can be used not only within \gls{bpmn}. For example, students at subject MI-MEP (Modelling economic processes, translated) at \gls{ctu}\cite{ccmi-2018} transferred large Trump's flow chart\cite{quartz-trump-2017} (about highway building process) to DEMO OCD diagram. The flow chart that fills several pages, \gls{demo}'s \gls{ocd} fills only one page of size A4. 
+To summarize, DEMO can really help to better understand business processes without too much complexity of diagrams itself.
 
 \section{Gantt chart}
 According to \cite{gantt-chart-2018}, Gantt chart was proposed in 1890 by Karol Adamiecki, but he did publish his work only in the Polish language. About the year 1910 American engineer, Henry Gantt, introduced his own version of this chart and this work became widely used and is still used by project managers. 
 Gantt chart serves as an overview of activities according to the time schedule. By simplicity, Gantt chart shows, what has to be done (an activity) and when.
 At \cref{fig:gantt-chart-example} is an example of Gantt chart. The core element is some kind of bar chart (progress bar) which starts at some time and is scheduled to end in some another time.
 Nowadays, Gantt charts, has more advanced elements, such as connected activities (one activity must end before another can start), groups of activities, different colours of activities that can indicate different phases of completion and so on. Many systems for time-management support these types of graphs.
-Gantt chart and its usage for this thesis are discussed later, in chapter \todo{ref to chapter}.
+Gantt chart and its usage for this thesis are discussed later, in chapter \cref{ch:proposed-approach}.
 
 \begin{figure}[ht!]
 	\centering
