@@ -1,4 +1,6 @@
+\todo{intro}
 \section{State of BPMS Solutions}
+
 
 \begin{figure}[ht!]
 	\centering
@@ -30,7 +32,7 @@ According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used s
     \subfloat{{\includegraphics[width=10cm, keepaspectratio]{img/process-maker-dashboard.PNG} }}%
     \qquad
     \subfloat{{\includegraphics[width=10cm, keepaspectratio]{img/process-maker-employee-kpi.PNG} }}%
-    \caption{ProcessMaker dashboard and KPI examples}%
+    \caption{ProcessMaker dashboard and KPI examples\todo{cite}}%
     \label{fig:process-maker-dashboard}%
 \end{figure}
 
@@ -42,7 +44,7 @@ According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used s
  \begin{figure}[ht!]
 	\centering
     \includegraphics[width=10cm, keepaspectratio]{img/process-maker-map.PNG}
-    \caption{ProcessMaker process map}
+    \caption{ProcessMaker process map\todo{cite}}
     \label{fig:process-maker-process-map}
 \end{figure} 
  
@@ -51,7 +53,7 @@ According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used s
 \subsection{Process Simulation and Analysis}
 Another tool, \textit{Bizagi Modeler} (\href{https://www.bizagi.com/uk/products/bpm-suite/modeler}{https://www.bizagi.com/uk/products/bpm-suite/modeler}), offers modelling processes with \gls{bpmn} and run simulations on top of them.
 
-\textit{Bizagi Modeler} for simulations defines scenarios. Each scenario has many attributes, but mainly
+\textit{Bizagi Modeler} for simulations defines scenarios. Each scenario has many attributes, but mainly:
 \begin{description}
     \item[Resources] Resource is some entity (e.g. customer, employee role, equipment) which is used to define how each task of the process uses these resources (e.g. task verification uses resource ``Inspection agent'').
     \item[Time consumption] For each task users can define how much time is consumed to complete. Consumption can be defined as simple (constant) number or with the probability distribution.
@@ -62,7 +64,7 @@ For gateways (element from \gls{bpmn}) users can define probability next flow (e
     \begin{description}
         \item[Process validation] User defines a duration of simulation and amount of generated instances (number of requests). Gateways are also configurable. After simulation ends, the result with summarization is displayed and the user can check if process behaves as expected. For example, if the number of requests is equal to the number of completed instances. This could occur if there are issues with synchronization with parallel gateways.
         \item[Throughput time analysis] Focuses only on time measurement and resources are not included. The user defines consumption for requests (interval time between two instances can be generated) and also for every task (how much time task gets to complete). Analysis counts total completed tasks and also average time and total time spent on each task. For example, it is useful for predictions, e.g. ``how long customer will wait until his request is completed''.
-        \item[Resource analysis] Users can define resources and how much resource costs (fixed or cost per hour). Each task has defined which resources needs and how much to execute. Also, the cost of each task and time consumption are included. This analysis is more complex and serves as the real-world simulation to achieve better results, which can help to optimize processes. A simulation results example is shown at \cref{fig:bizagi-example}.
+        \item[Resource analysis] Users can define resources and how much resource costs (fixed or cost per hour). Each task has defined which resources need and how much to execute. Also, the cost of each task and time consumption are included. This analysis is more complex and serves as the real-world simulation to achieve better results, which can help to optimize processes. A simulation results example is shown at \cref{fig:bizagi-example}.
     \end{description}
 
 \begin{figure}[ht!]
@@ -77,37 +79,28 @@ For gateways (element from \gls{bpmn}) users can define probability next flow (e
 % In this section a more details how \gls{bpms} works were provided. A two concrete solutions were shown and briefly described. These two systems became base inspiration for providing similar functionalities to \gls{bpms} based on DEMO (from now called \textit{Demo Machine}) . In the next section follows summarization, how DEMO Machine could work and how data could be aggregated and prepared to 
 % visualisation.  
 
-\section{DEMO Machine Based on BPMS}
-As was told in introduction, thesis focuses mainly on fourth stage of \gls{bpm} life-cycle - a monitoring. However, to be able to visualise processes and collected data, some kind of process ``machine'' must be created. This ``machine'' must have ability to describe business processes or better, to model and run them. In other words, ``machine'' must support at least first three stages of life-cycle. In this thesis, details about this kind of ``machine'' are not provided. In introduction was mentioned work\cite{diploma-skotnica-2016} which is focused on creating and defining this kind of machine. Thesis uses knowledge about this DEMO Machine and assumes, that ``machine'' is created and behaves as is described from mentioned work.
+\section{BPMS Architecture}
+The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Business analysts and process developers design process models and deploy them within \gls{bpms} solution. Users (process participants) has access to unified user interface which is connected with all layers of \gls{bpms}. On the right side of overview, the \textit{monitoring} stage of \gls{bpm} stage is included. Users has access to highly precious collected data through graphical views. They can more easily determine what happens and decide what next steps could be to make their business even better. 
 
-\subsection{DEMO Machine Architecture}
-Architecture of solution from  higher point of view can be described with \cref{fig:demo-machine-top}. This overview shows only main components (services) that are necessary to work. It is obvious, that every mentioned system must have many subsystems and dependencies (e.g. SQL databases, external resources,\dots). Each component can be described as:
 \begin{figure}[ht!]
 	\centering
     \includegraphics[width=12cm]{img/tibco-bpm-architecture.png}
     \caption{BPMS Architecture\cite{tibco-bpm-2016}}
-    \label{fig:demo-machine-top}
+    \label{fig:bpms-architecture}
 \end{figure}
-\begin{description}
-	\item[Client Applications] They are client's specific systems and software within business. These applications are connected with \textit{Enterprise Service Bus}, which connects clients and \textit{DEMO Machine} together. It means, that done work within client's applications is projected to business processes inside \textit{DEMO Machine}.
-    
-    \item[Enterprise Service Bus] Data aggregation point where data from specific \textit{client's applications} are transformed to data that can be used within \textit{DEMO Machine}. Also it provides functionalities to provide data back from \textit{DEMO Machine} to clients.
-	
-    \item[DEMO Machine] The core system of whole solution. As was told earlier, \textit{DEMO Machine} supports at least first three stages of life-cycle (design, model, execute). Inside \textit{DEMO Machine} DEMO models (business processes) are defined along with actor roles. Into \textit{DEMO Machine} are connected external sources which use internal definitions of processes and machine is executing them. 
-    
-    \item[DEMO Machine Portal] Along side \textit{DEMO Machine} the portal serves to manage \textit{DEMO Machine}. Portal is divided to two sections:  
-    
-    \begin{enumerate}
-    \item \textbf{Administration} section offers managing the \gls{demo} models. With graphical editors users can create \gls{ocd} diagrams, define actor roles and also create \gls{psd} diagrams and define \textit{Action rules}. Alongside designing models, inside administration users can assign actors (external users from client applications) to actor roles and manage running models.
-    
-    \item \textbf{Customer} section serves as end-user application which behaves according to defined processes. It has same behaviours and purpose as like many other \gls{bpms} solutions.
-    \end{enumerate}
-    
-    \item[Data Aggregation Service] Another type of aggregation service. This time, collected data within defined processes inside \textit{DEMO Machine} are transformed a prepared for \textit{Business Intelligence Services}, which can be used for data visualisation.
-    
-    \item[Business Intelligence Services] Set of systems that provides \gls{bi} functionalities with interfaces to provide best overviews of precious collected data.   
-\end{description}
 
-Thesis focuses on ``Business Intelligence Services''. From Proposed approach is created proof-of-concept\footnote{Demonstration of concept. Its purpose is to verify that concept has potential for real-world usage\cite{proof-of-concept-2018}.} as mobile-application.
+\section{DEMO Role within Business Intelligence}
+The thesis focuses on ``Business Intelligence'', in other words on the fourth stage of \gls{bpm} life cycle. The goal is to provide an approach which can more precisely describe business processes and connections between collected data and these processes. In \cref{ch:theoretical-foundations} the \gls{demo} methodology was introduced and explained. Describing business processes from collected data within enterprise solution with \gls{demo} brings mainly these advantages: 
+\begin{enumerate}
+\item Consistency -- within \gls{demo} the models are consistent. 
+\item Clear assignment of responsibility -- within \gls{demo}, each transaction has clearly defined the responsibility of actor roles. 
+\item Reduced complexity –- there is only and only one way how to describe an enterprise within DEMO.
+\end{enumerate}
 
-In this chapter, firstly more details about \gls{bpms} were provided. On the two concrete solutions available were taken the core concepts of process definitions and their visualisations. The \gls{bpms} solution based on DEMO was briefly described. High-level architecture overview of \textit{DEMO Machine} were explained. In the next chapter, visualisations of processes based on DEMO are described. 
+The first stage of \gls{bpm} life-cycle (design) within \gls{demo} is well described by Dietz\cite{dietz-essence-2015}\cite{dietz-enterprise-2006}. However next stages of \gls{bpm} life-cycle are only theories ``on paper'' and they are not stated to practice. For example, \textit{M. Skotnica}\cite{diploma-skotnica-2016} with his thesis focused on first three stages and introduced an approach of \gls{bpms} based on \gls{demo}. But the next stages are not examined yet.
+
+This thesis focuses on fourth stage (the monitoring) and the premise is that underlying \gls{bpms} solutions are not necessary based on \gls{demo}. The goal is to aggregate data from any enterprise solution, connect them with modelled enterprise within \gls{demo} methodology and display them to the user. The main difference is with the feature of process visualisation itself. Systems based on \gls{bpmn} visualise processes within \gls{bpmn} which, as was told, can be more complex, inconsistent and not so clear as approach with \gls{demo}. 
+
+In this chapter, firstly more details about \gls{bpms} were provided. On the two concrete solutions available were taken the core concepts of process modelling and their visualisations. The role of \gls{demo} within \gls{bpms} and Business Intelligence was explained. In the next chapter, the proposed approach itself is introduced and described.
+
+
