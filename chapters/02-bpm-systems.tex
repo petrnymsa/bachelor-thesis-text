@@ -1,7 +1,5 @@
-\todo{intro}
-\section{State of BPMS Solutions}
-
-
+In this chapter state of BPM solutions is described. Two concrete solutions are examined closer. Role of DEMO within BPM systems is explained. 
+\section{State of BPM Solutions}
 \begin{figure}[ht!]
 	\centering
     \includegraphics[width=0.6\textwidth, keepaspectratio]{img/gartner-magic-quadrant.png}
@@ -9,7 +7,7 @@
     \label{fig:gartner-magic-quadrant}
 \end{figure}
 
-Nowadays \gls{bpms} software supports all stages of \gls{bpm} life-cycle (design, modelling, execution, monitoring and optimization). These systems also offer real-time collaboration, integration with cloud and mobile devices. Many systems also integrate artificial intelligence - for predictive analysis or some automatic decisions. \gls{bpms} software allows to create highly productive application, where is no need to manual implementation of business rules. \gls{bpms} includes defining processes, data models and also user interfaces. Also highly customized monitoring stage is included, which means users can customize \gls{kpi} metrics, appearance of dashboard and so on. On top of that functions, some solutions have ability to display (visualise) current running processes.  
+Nowadays \gls{bpm} software supports all stages of \gls{bpm} life-cycle (design, modelling, execution, monitoring and optimization). These systems also offer real-time collaboration, integration with cloud and mobile devices. Many systems also integrate artificial intelligence - for predictive analysis or some automatic decisions. \gls{bpm} software allows to create highly productive application, where is no need to manual implementation of business rules. \gls{bpms} includes defining processes, data models and also user interfaces. Also highly customized monitoring stage is included, which means users can customize \gls{kpi} metrics, appearance of dashboard and so on. On top of that functions, some solutions have ability to display (visualise) current running processes.  
 
 Result is typically web based application which employees can use to do their jobs without knowing that there are some defined processes and layer of some BPM software. 
 
@@ -17,15 +15,7 @@ According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used s
 
  \subsection{Closer Look at Process Maker}
  
- \textit{ProcessMaker} (\href{https://www.processmaker.com/}{https://www.processmaker.com/}) is web-based \gls{bpm} solution which allows to build, run, monitor and optimize business processes. Building of processes is done via \gls{bpmn}. Inside designer %(see \cref{fig:process-maker-designer},
- users can define data sources (variables) which will be used later within running processes. 
- 
-%  \begin{figure}[ht!]
-% 	\centering
-%     \includegraphics[width=0.8\textwidth, keepaspectratio]{img/process-maker-designer.PNG}
-%     \caption{ProcessMaker designer}
-%     \label{fig:process-maker-designer}
-% \end{figure} 
+ \textit{ProcessMaker} (\href{https://www.processmaker.com/}{https://www.processmaker.com/}) is web-based \gls{bpm} solution which allows to build, run, monitor and optimize business processes. Building of processes is done via \gls{bpmn}. Inside designer users can define data sources (variables) which will be used later within running processes. 
  
 \begin{figure}[ht!]
     \centering
@@ -76,9 +66,6 @@ For gateways (element from \gls{bpmn}) users can define probability next flow (e
     \label{fig:bizagi-example}%
 \end{figure}
 
-% In this section a more details how \gls{bpms} works were provided. A two concrete solutions were shown and briefly described. These two systems became base inspiration for providing similar functionalities to \gls{bpms} based on DEMO (from now called \textit{Demo Machine}) . In the next section follows summarization, how DEMO Machine could work and how data could be aggregated and prepared to 
-% visualisation.  
-
 \section{BPMS Architecture}
 The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Business analysts and process developers design process models and deploy them within \gls{bpms} solution. Users (process participants) has access to unified user interface which is connected with all layers of \gls{bpms}. On the right side of overview, the \textit{monitoring} stage of \gls{bpm} stage is included. Users has access to highly precious collected data through graphical views. They can more easily determine what happens and decide what next steps could be to make their business even better. 
 
@@ -99,7 +86,7 @@ The thesis focuses on ``Business Intelligence'', in other words on the fourth st
 
 The first stage of \gls{bpm} life-cycle (design) within \gls{demo} is well described by Dietz\cite{dietz-essence-2015}\cite{dietz-enterprise-2006}. However next stages of \gls{bpm} life-cycle are only theories ``on paper'' and they are not stated to practice. For example, \textit{M. Skotnica}\cite{diploma-skotnica-2016} with his thesis focused on first three stages and introduced an approach of \gls{bpms} based on \gls{demo}. But the next stages are not examined yet.
 
-This thesis focuses on fourth stage (the monitoring) and the premise is that underlying \gls{bpms} solutions are not necessary based on \gls{demo}. The goal is to aggregate data from any enterprise solution, connect them with modelled enterprise within \gls{demo} methodology and display them to the user. The main difference is with the feature of process visualisation itself. Systems based on \gls{bpmn} visualise processes within \gls{bpmn} which, as was told, can be more complex, inconsistent and not so clear as approach with \gls{demo}. 
+This thesis focuses on fourth stage (the monitoring) and the premise is that underlying \gls{bpm} solutions are not necessary based on \gls{demo}. The goal is to aggregate data from any enterprise solution, connect them with modelled enterprise within \gls{demo} methodology and display them to the user. The main difference is with the feature of process visualisation itself. Systems based on \gls{bpmn} visualise processes within \gls{bpmn} which, as was told, can be more complex, inconsistent and not so clear as approach with \gls{demo}. 
 
 In this chapter, firstly more details about \gls{bpms} were provided. On the two concrete solutions available were taken the core concepts of process modelling and their visualisations. The role of \gls{demo} within \gls{bpms} and Business Intelligence was explained. In the next chapter, the proposed approach itself is introduced and described.
 

@@ -1,24 +1,14 @@
-% In these days, there are many systems, that help companies to analyse and monitor their business processes and performance. These systems are well established and widely used. Besides of monitoring, better and more complex systems offer the whole bunch of functionalities, from the defining business process, running them to analysing and monitoring. However, these systems are built on top of notation BPMN, which is again, well known and widely used. The standardly used term for these systems is Business Process Management System (BPMS).
+Nowadays almost every company has more independent systems which help employees to do their job. For example one system for accountancy, another for warehouses and another one for managing orders or something similar. However how business grows, some kind of business analysis is required. Usually some person is instructed to analyse the business, how to make it better. The person collects all required data from every system, typically in some form of  ``Excel table'' and over it he does analysis. This approach at the beginning can be sufficient, however sooner or later, it will become heavy, uncomfortable and mainly not effective way how to do this kind of analysis. All required data are spread over all systems without any order. Some systems can have functions to export data in some suitable form, but from another systems they can export data only in some form of plain-text and so on.  At some point people find out that in their business ``reigns chaos''. Fortunately this ``chaos'' can be controlled with some well known approaches. Most well known term of how ``chaos' can be controlled is Business Process Management (BPM).
 
-% This thesis relies on the theory of another approach - DEMO methodology, which is quite new and there are likely no systems build on this methodology. The thesis is not focused on every aspect of the existing BPMS solutions. The thesis is only focused on how processes can be monitored and displayed in graphical overviews. How processes can be modelled and executed is the different topic, which was researched for example by \textit{M. Skotnica}\cite{diploma-skotnica-2016}. 
+\section{Analysis within BPM}
+Every task or set of tasks within the business can be formulated as \textit{business process}. For example task ``Order of new components for machine'' (which consists of many additional steps)  can be expressed as business process ``New machine components order''. The well-defined business processes are the first step to having better control over own business and also for further analysis. 
 
-% The motivation for focusing on this problem comes out from the school project, which was about creating chat-bot for pizza delivery system. This chatbot was relying on DEMO Engine, which is the system, that can design and run DEMO models. However, this system did not have the ability to display or visualise processes in some ``user-friendly'' graphical overview. These graphical overviews can help to better understand business processes, monitor performance and many more metrics, which can lead to more effective business.
+Next step is that these defined processes connect under one system with internal business applications. The ``one system'' is typically marked as BPM System (BPMS). Within BPMS the business processes are defined, modelled and executed. Modelling is typically done through Business Process Model and Notation (BPMN) which is a well-known method to model business processes. Execution means, that dependent internal systems within business communicates with BPMS and output from these systems is reflected in BPMS. This is the second important step to have a more precise analysis of own business.
 
-% \subsection{Structure}
-% The thesis is organized into main four chapters:
-% \begin{enumerate}
-% \item In \cref{ch:theoretical-foundations} underlying theories are introduced and described.
-% \item In \cref{ch:bpms} research of existing BPMS solutions follows. Then some specific solutions are showed and how knowledge from research is used to propose a similar system based on DEMO.
-% \item In \cref{ch:proposed-approach} proposed approach is explained. The theory and research from previous chapters are used. The concept of a system is described. Explanation how system collects data from business systems and how visualises them is also discussed.
-% \item In \cref{ch:proof-of-concept} implementation of proof-of-concept is created. Architecture and used technologies are described. An example model of business processes is demonstrated.
-% \end{enumerate}
+If the company has some kind of BPMS, they have also well-defined data and aggregated them in one place. Usually, every BPMS offers functionalities to do analysis and monitoring over collected data. These functionalities can help people managing their business, more easily finding issues and potentially solving them. Monitoring is typically done through graphical overviews, which offer varied views on the business metrics. These metrics can be for example business efficiency, employee performance (how much the desired goals are fulfilled), financial efficiency and so on. Thanks to these systems people have the better understanding of their business and they can more easily focus on the critical places that can be improved.
 
-% At Conclusions the results are summarized and discussed.
-
-Nowadays systems for modelling a business processes are well known and used. Commonly these systems are called Business Process Management Systems(BPMS). They usually use Business Process Model and Notation (BPMN) for defining and modelling processes . Complex solutions offer whole bunch of functionalities from modelling business processes, their executing to monitoring and analysing. Every BPMS which offer full solution (designing, modelling,  executing, monitoring and optimizing) have functions which can help people to manage their business, more easily find issues and potentially solve them.  Monitoring is typically done through graphical overviews, which offer varied views on the business metrics. These metrics can be for example business efficiency, employee performance (how much the desired goals are fulfilled), financial efficiency and so on. Thanks to these systems people have better understanding of their business and they can more easily focus on the critical places that can be improved.
-
-Against BPMN the new methodology was founded which is considered as (better) it's replacement. This new methodology is called DEMO and it was introduced by J. Dietz\todo{citation Dietz}. DEMO is build on high-quality scientific foundations, which brings against BPMN (and similar methods) better modelling of business processes.
-Although DEMO is well defined methodology, BPMS based on DEMO does not (nearly) exists. The problem of BPMS based on DEMO is subject of many researches. There are first attempts to achieve solution based on DEMO, which can model and execute models within DEMO. However the monitoring and analysis are missing.
+\section{A New Approach}
+While BPMN is well known and widely used, the new methodology was introduced by \textit{J.Dietz}~\cite{dietz-essence-2015}. This new methodology called DEMO is considered as successor of BPMN. DEMO is build on high-quality scientific foundations, which brings against BPMN (and similar methods) better modelling of business processes. Although DEMO is well defined methodology, BPMS based on DEMO does not (nearly) exists. The problem of BPMS based on DEMO is subject of many researches. There are first attempts to achieve a solution based on DEMO, which can design processes and execute them. However the monitoring and analysis are missing.
 
 This thesis focuses on visualisation of business processes based on DEMO methodology. Within defined process the goal of thesis is to find a way:
 
@@ -28,13 +18,10 @@ This thesis focuses on visualisation of business processes based on DEMO methodo
 \item Real-time visualisation of running processes.
 \end{itemize}
 
-\subsection{Motivation}
+\section{Motivation}
+The main reason why I have focused on this topic comes from a school project. With our team we created chatbot application for pizza delivering system which was based on DEMO methodology. In fact we used \textit{DEMO Engine}, the BPMS based on DEMO developed by \textit{ForMetis} company\todo{citation needed}. Moreover, on this \textit{DEMO Engine} worked also my supervisor (and also the team leader of our team) \textit{M.Skotnica}~\cite{diploma-skotnica-2016}. With \textit{engine} we defined model within DEMO for ``imaginary'' pizzeria. Then we used this defined processes and connected them with the chatbot. However, this system had only ability to design, model and execute processes. The monitoring of collected data or visualisation of processes were missed. That's why I have chosen this topic.
 
-\todo{check this}
-
-The main impulse to focus on this topic was from school subject \textit{Software team project}. With our team we created chatbot for pizza delivering system which was based on DEMO methodology. In fact, we used \textit{DEMO Engine}, the DEMO based BPMS developed by \textit{Formetis} company\todo{citation needed}. Moreover, on this \textit{DEMO Engine} worked also my supervisor (and also team leader of our team) \textit{M.Skotnica}\todo{citation needed}. Inside \textit{DEMO Engine} we defined model within DEMO for ``imaginary'' pizzeria. Then we used defined processes and connected them with chatbot. However this system had only ability to design, model and execute processes. The monitoring of collected data or visualisation of processes missed. This was the subject of discussion and the topic for this thesis was involved. 
-
-\subsection{Structure}
+\section{Structure}
 The thesis is divided to four chapters:
 \begin{itemize}
 \item In \cref{ch:theoretical-foundations} underlying theories and terms are explained.
@@ -42,7 +29,7 @@ The thesis is divided to four chapters:
 \item Then in \cref{ch:proposed-approach} the proposed approach is introduced. The theory and research from previous chapters are used. The concept of a system is described. Principle of real-time visualisation is more precisely explained. 
 \item In \cref{ch:proof-of-concept} implementation of proof-of-concept is created. Architecture and used technologies are described. An example model of business processes is demonstrated.
 \end{itemize}
-At conclusions the results are compared with thesis goals.
+In conclusion the results are compared with the goals of this thesis. 
 
 
 
