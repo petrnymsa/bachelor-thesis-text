@@ -10,6 +10,7 @@
 *.acn
 *.lof
 *.glsdefs
+*.lot
 
 # PDF output - usually a bad idea to keep this in Git
 *.pdf
@@ -29,3 +30,7 @@
 # BibTeX
 *.bbl
 *.blg
+
+# build
+build.sh
+bibtex.out
