@@ -32,5 +32,5 @@
 *.blg
 
 # build
-build.sh
+*.sh
 bibtex.out
