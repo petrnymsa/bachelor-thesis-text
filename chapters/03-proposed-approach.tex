@@ -122,7 +122,7 @@ Firstly used terms are defined:
 \item[role] A user role which invoked an activity.
 \end{description}
 
-Suppose, that \cref{tab:rac-log} is an shortened log from \textit{Rent-A-Car} company. The ``case id'' is equal to 1 (which is generally some internal identifier) and it is omitted from table. Also timestamps are omitted because they are not, for now, important.  
+\Cref{tab:rac-log} is an shortened log from \textit{Rent-A-Car} company. The ``case id'' is equal to 1 (which is generally some internal identifier) and it is omitted from table. Also timestamps are omitted because they are not, for now, important.  
 
 There are several activities, resources and roles. ``Labelling'' mechanism must distinguish each one of activities and assign appropriate \textit{Transaction} and \textit{Coordination-act} from \gls{demo} model. Also ``roles'' must be assigned to \textit{Actor roles} and ``resource'' is assigned as \textit{Actor}. An shortened example of ``labelling'' is shown at~\cref{tab:rac-log-labelling}. The ``role'' and \textit{Actor roles} are absolutely the same. 
 
@@ -141,6 +141,8 @@ There are several activities, resources and roles. ``Labelling'' mechanism must 
 	Hand Over Contract to Customer & Alice Gree & Rental Contracter \\ \hline
 	Customer Accepted Contract & Peter Freeman & Renter \\ \hline
 	Create Car Pick Up  Requisition & Peter Freeman & Driver \\ \hline
+    \multicolumn{3}{|c|}{\dots} \\ \hline
+    
 % 	Acquire Car Pick Up Request & Bob Hershel & Car Issuer \\ \hline
 % 	Create Car Drop Off Requisition & Bob Hershel & Car Issuer \\ \hline
 % 	Drop Off Requisition Agreement & Peter Freeman & Driver \\ \hline
@@ -167,6 +169,7 @@ There are several activities, resources and roles. ``Labelling'' mechanism must 
 	Hand Over Contract to Customer & T1 & State \\ \hline
 	Customer Accepted Contract & T1 & Accept \\ \hline
 	Create Car Pick Up  Requisition & T3 & Request \\ \hline
+    \multicolumn{3}{|c|}{\dots} \\ \hline
 % 	Acquire Car Pick Up Request & T3 & Promise \\ \hline
 % 	Create Car Drop Off Requisition & T4 & Request \\ \hline
 % 	Drop Off Requisition Agreement & T4 & Promise \\ \hline
@@ -180,7 +183,7 @@ There are several activities, resources and roles. ``Labelling'' mechanism must 
 \caption{Activities labelling from RAC log}
 \label{tab:rac-log-labelling}
 \end{table}
-\newpage
+\clearpage
 
 \section{Process Instance Visualisation}
 System must have ability to visualise running process instances in real-time. User can open running process and can be informed how it continues. 
@@ -197,8 +200,8 @@ There are four conditions how visualisation must be proposed:
 
 The first idea of visualisation was highly inspired from investigated existing solutions (\textit{Process Maker}, \textit{Bizagi Modeler}). Visualisation could be done with \gls{demo} \gls{ocd} model itself. With this approach user could have:
 \begin{enumerate}
-\item The exactly same understanding of modelled enterprise.
-\item The straightforward visualisation of instances through defined models. If user understand \gls{demo} models, this approach of visualisation has the same meaning.
+  \item The exactly same understanding of modelled enterprise.
+  \item The straightforward visualisation of instances through defined models. If user understand \gls{demo} models, this approach of visualisation has the same meaning.
 \end{enumerate}
 
 With this approach first two conditions are accomplished:
@@ -209,7 +212,9 @@ With this approach first two conditions are accomplished:
 
 However the (iii) and (iv) are not so straightforward. The third condition (iii) is not accomplished because DEMO is used and it does not have to be easy to use and understand. In every enterprise there are specialists (business analysts) that have the responsibility to analyse given enterprise and specify models (for example within \gls{demo}). Other people do not need to have knowledge about this methodology, overall they do not need to have knowledge about some models either. Although \gls{ocd} itself is very concise, it is not so suitable to smaller screens of mobile devices. This implies, that also (iv) is violated.
 
-\section{\todo{Gantt chart}}
+\section{A Better Option}
+Gantt chart is widely used in time-management projects and systems. It is well known, established and used. From the business point of view, Gantt chart offer the best approach, how tasks can be visualised. 
+It is uses a time-line, which user naturally understands and it is nicely connected
 
 \subsection{\todo{PERT - beta distribution}}
 \subsection{\todo{Elements}}
