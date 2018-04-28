@@ -15,7 +15,7 @@ The \gls{bpm} life-cycle can be divided to five stages as shown in \cref{fig:bpm
 	\item[Design] The requirements of the business are collected, analysed and specified. The specification can be ``as is'' (state of how processes currently are) or ``to be'' (how processes would be). Accompanying graphical materials (such as flow-charts) are included.
     \item[Model] Specification is expressed (modelled) with graphical notation \gls{bpmn}, which will be investigated later.
     \item[Execute] Changes are implemented and deployed.
-    \item[Monitor] After deployed changes, monitoring system comes to the scene. Processes are monitored and \gls{bpms} tools are used to collect data and analyse performance through metrics - called \gls{kpi}. \gls{kpi} are defined, optimized metrics which help to understand the performance of the current business. As an example of \gls{kpi} can be ``an average number of requests for new order per day'' and many more, individual metrics to concrete business.
+    \item[Monitor] After deployed changes, monitoring system comes to the scene. Processes are monitored and \gls{bpms} tools are used to collect data and analyse performance through metrics - called \gls{kpi}. \gls{kpi} are defined, optimized metrics which can help to understand the performance of the current business. As an example of \gls{kpi} can be ``an average number of requests for new order per day'' and many more, individual metrics to concrete business.
     \item[Optimize] At some point, when an appropriate number of data are collected and analysed with monitoring, optimization is done. The goal of optimization is to find issues or some improvements. After that, new specifications and improvements are created and \textit{design} stage is executed again.
 \end{description}
 
@@ -171,17 +171,16 @@ An example of PSD is shown at \cref{fig:psd-example} which means exactly ``When 
     \label{fig:psd-example}
 \end{figure}
 
-\subsection{Advantage of DEMO Over BPMN}
-    
-\gls{bpm} notation is well defined, established and widely used. Many \gls{bpms} exists around and of course, \gls{bpmn} is used ``under the hood''. These systems will be described later in \cref{ch:bpms}.
-    
-One thing is very clear, with enlarging business requirements, the business processes "grow up" too and so \gls{bpmn} diagrams. This can lead to very large and complex diagrams, which can be harder to read and understand. One of the advantages of DEMO is fact, that same \gls{bpmn} diagram can be represented within DEMO notation. The result is reduced complexity with the same understanding as diagram within \gls{bpmn}. However, advantages of DEMO notation can be used not only within \gls{bpmn}. For example, students at subject MI-MEP (Modelling economic processes, translated) at \gls{ctu}\cite{ccmi-2018} transferred large Trump's flow chart\cite{quartz-trump-2017} (about highway building process) to DEMO OCD diagram. The flow chart that fills several pages, \gls{demo}'s \gls{ocd} fills only one page of size A4. 
+\subsection{Advantage of DEMO Over BPMN}    
+\gls{bpm} notation is well defined, established and widely used. Many \gls{bpm} solutions exist around and of course, \gls{bpmn} is used ``under the hood''. These systems will be described later in \cref{ch:bpms}.
+
+One thing is absolutely clear, with enlarging business requirements, the business processes "grow up" too and so \gls{bpmn} diagrams. This can lead to very large and complex diagrams, which can be harder to read and understand. One of the advantages of DEMO is the fact, that same \gls{bpmn} diagram can be represented within DEMO notation. The result is reduced complexity with the same understanding as diagram within \gls{bpmn}. However, advantages of DEMO notation can be used not only within \gls{bpmn}. For example, students at subject MI-MEP (Modelling economic processes, translated) at \gls{ctu}\cite{ccmi-2018} transferred large Trump's flow chart\cite{quartz-trump-2017} (about highway building process) to DEMO OCD diagram. The flow chart that fills several pages, \gls{demo}'s \gls{ocd} fills only one page of size A4. 
 To summarize, DEMO can really help to better understand business processes without too much complexity of diagrams itself.
 
 \section{Gantt chart}
 According to \cite{gantt-chart-2018}, Gantt chart was proposed in 1890 by Karol Adamiecki, but he did publish his work only in the Polish language. About the year 1910 American engineer, Henry Gantt, introduced his own version of this chart and this work became widely used and is still used by project managers. 
 Gantt chart serves as an overview of activities according to the time schedule. By simplicity, Gantt chart shows, what has to be done (an activity) and when.
-At \cref{fig:gantt-chart-example} is an example of Gantt chart. The core element is some kind of bar chart (progress bar) which starts at some time and is scheduled to end in some another time.
+At \cref{fig:gantt-chart-example} is an example of Gantt chart. The core element is some kind of bar chart (progress bar) which starts at some time and is scheduled to end in another time.
 Nowadays, Gantt charts, has more advanced elements, such as connected activities (one activity must end before another can start), groups of activities, different colours of activities that can indicate different phases of completion and so on. Many systems for time-management support these types of graphs.
 Gantt chart and its usage for this thesis are discussed later, in chapter \cref{ch:proposed-approach}.
 

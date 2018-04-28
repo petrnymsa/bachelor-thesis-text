@@ -1,25 +1,10 @@
-% \todo{
-% \begin{itemize}
-% \item introduction
-% \item ``the blind way?'' - first attempts, visualisation directly with OCD
-%   \begin{itemize}
-%   \item Why it was bad idea
-%   \end{itemize}
-% \item Better approach - gantt chart
-%   \begin{itemize}
-%   \item Proposed first concept
-%   \item Time calculation via PERT (beta distribution)
-%   \item Gantt chart elements (progress bars, tree transaction view, transaction links,...)
-%   \end{itemize}
-% \end{itemize}}
-
 The main goal of the thesis is to propose an approach which will be able to create the graphical overviews of critical business data and make decisions based on them. This chapter describes each part of the proposed approach. The chapter is divided to these parts:	
     \begin{enumerate}
       \item Which kind of data the application collects and how works with them.
       \item How real-time process visualization is done.
       \item What kind of overviews the application can display. 
     \end{enumerate}
-    
+% -----------------------------------------------------------------------
 \section{Business Data Aggregation}
 Each enterprise system collects precious data within business. These data are important in many ways. One is for business analysts. Analyst can with these collected data analyse processes and optimize them. Although every enterprise solution has differently defined structure of these data and every \gls{bpms} has different approach how it works with them, the core concept of how data can be described remains the same. 
 Within \gls{bpms} there are elements which can be transformed always to the \gls{demo} concepts.
@@ -38,9 +23,9 @@ Within \gls{bpms} there are elements which can be transformed always to the \gls
 
 In this way the system of visualisation based on \gls{demo} can be nearly independent from other systems within enterprise. The architecture of Business Intelligence based on \gls{demo} is shown at~\cref{fig:bi-demo-overview}. The enterprise does not need necessary a \gls{bpms}. Within enterprise, many systems and applications exists. Even without BPMS solutions within enterprise there are still the same kind of processes and actor roles which can be modelled through \gls{demo}.
 
-Inside an enterprise there can be many systems and (not necessary) in front of them can be a \gls{bpms} solution. On the ``borders'' of the \textit{Enterprise} is placed \textit{Data Aggregation Service}. This service has responsibility of getting data from an \textit{Enterprise} and transforming them to the structure that \textit{Business Intelligence Services} can it use. Collected data from \textit{Data Aggregation Service} are mapped to defined \textit{DEMO Model}.
+Inside an enterprise there can be many systems and (not necessary) in front of them can be a \gls{bpm} solution. On the ``borders'' of the \textit{Enterprise} is placed \textit{Data Aggregation Service}. This service has responsibility of getting data from an \textit{Enterprise} and transforming them to the structure that \textit{Business Intelligence Services} can use. Collected data from \textit{Data Aggregation Service} are mapped to defined \textit{DEMO Model}.
 With this approach, \textit{Business Intelligence Services} can take advantages of \gls{demo} without requirement to be dependent directly on enterprise systems.
-
+% -----------------------------------------------------------------------
 \subsection{Business Data Domain Model}
 \begin{figure}[ht!]
   \centering
@@ -53,27 +38,27 @@ The one of the most important thing what needs to be defined is how collected da
 
 \Cref{fig:domain-data-model} is divided to three parts:
 \begin{description}
-\item[Model] Defines how \gls{demo} model can be described. It corresponds with \gls{ocd} and \gls{psd} models.
-\item[Instance] The one concrete running process. It indicates state of transactions. 
-\item[Event] Last part defines the concrete occurred events from internal systems which can be collected and transformed to data, that can be used. 
+\item[Model] -- Defines how \gls{demo} model can be described. It corresponds with \gls{ocd} and \gls{psd} models.
+\item[Instance] -- The one concrete running process. It indicates state of transactions. 
+\item[Event] -- Last part defines the concrete occurred events from internal systems which can be collected and transformed to data, that can be used. 
 \end{description}
 
 The brief explanation of each entity from domain model:
 \begin{description}
-\item[Actor Role] Defines role within enterprise. 
-\item[Actor] Defines concrete user within enterprise, which has assigned \textit{Actor Role}.
+\item[Actor Role] -- Defines role within enterprise. 
+\item[Actor] -- Defines concrete user within enterprise, which has assigned \textit{Actor Role}.
 
-\item[Process Kind] Defines exactly one concrete business process inside enterprise. Each \textit{Process Kind} has linked amount of \textit{Transaction Kinds}.
+\item[Process Kind] -- Defines exactly one concrete business process inside enterprise. Each \textit{Process Kind} has linked amount of \textit{Transaction Kinds}.
 
-\item[Process Instance] The instance of concrete \textit{Process Kind}. Defines process \textit{Completion}, date when process instance was created (\textit{StartTime}) and expected time when whole process will be completed (\textit{ExpectedEndTime}).
+\item[Process Instance] -- The instance of concrete \textit{Process Kind}. Defines process \textit{Completion}, date when process instance was created (\textit{StartTime}) and expected time when whole process will be completed (\textit{ExpectedEndTime}).
 
-\item[Transaction Kind] Defines the transaction kind. It has linked information, which \textit{Actor Role} is initiator or executor respectively. Also defines the time estimates for transaction completion. These three time estimates -- \textit{Optimistic}, \textit{Normal}, \textit{Pessimistic} are used to compute real expected time. 
+\item[Transaction Kind] -- Defines the transaction kind. It has linked information, which \textit{Actor Role} is initiator or executor respectively. Also defines the time estimates for transaction completion. These three time estimates -- \textit{Optimistic}, \textit{Normal}, \textit{Pessimistic} are used to compute real expected time. 
 
-\item[Transaction Link] Defines the \textit{response} or \textit{waiting} links. Each link has defined \textit{target Transaction Kind}  and \textit{source Transaction Kind} to determine which two \textit{Transaction Kinds} link connects. Link also defines \textit{Source Cardinality} and \textit{Target Cardinality} to define cardinalities. Moreover link defines which \textit{C-Act} is assigned to source and target transactions.  
+\item[Transaction Link] -- Defines the \textit{response} or \textit{waiting} links. Each link has defined \textit{target Transaction Kind}  and \textit{source Transaction Kind} to determine which two \textit{Transaction Kinds} link connects. Link also defines \textit{Source Cardinality} and \textit{Target Cardinality} to define cardinalities. Moreover link defines which \textit{C-Act} is assigned to source and target transactions.  
 
-\item[Transaction Instance] Each \textit{Transaction Kind} could have more than one instance. Transaction Instance includes information about \textit{Completion} and \textit{Requested Time}. The instance itself could have more than one children. 
+\item[Transaction Instance] -- Each \textit{Transaction Kind} could have more than one instance. Transaction Instance includes information about \textit{Completion} and \textit{Requested Time}. The instance itself could have more than one children. 
 
-\item[Event] An entity to define events which can occur during the running process. Each event has time creation (\textit{Created}) and duration how long it take to between last event and before event was created.
+\item[Event] -- An entity to define events which can occur during the running process. Each event has time creation (\textit{Created}) and duration how long it take to between last event and before event was created.
 
 % \item[Completion Changed Event] Event which describes that some C-Act happened within transaction. 
 % \item[Initiator / Executor Event] Events which describe that initiator or executor were assigned to \textit{Transaction Instance}. In other words, \textit{Transaction Instance} was initiated or executed by given initiator or executor respectively.
@@ -81,6 +66,7 @@ The brief explanation of each entity from domain model:
 
 % These entities serves mainly for defining model within enterprise with \gls{demo} methodology and collecting events from internal enterprise applications.
 
+% -----------------------------------------------------------------------
 \section{Case Study Rent-A-Car}
 Although all proposed approaches are defined generally, the case study is used to demonstrate usage and show examples. The case study is taken from book by J.Dietz~\cite{dietz-essence-2015}. A Rent-A-Car is company which offers cars for rent. Simplified description:
 
