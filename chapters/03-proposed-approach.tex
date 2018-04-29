@@ -63,6 +63,7 @@ The brief explanation of each entity from domain model:
 % \item[Completion Changed Event] Event which describes that some C-Act happened within transaction. 
 % \item[Initiator / Executor Event] Events which describe that initiator or executor were assigned to \textit{Transaction Instance}. In other words, \textit{Transaction Instance} was initiated or executed by given initiator or executor respectively.
 \end{description}
+% ---------------------------------------------------------------------------------------
 
 \subsection{A Time Estimate Computation}
 Each \textit{Transaction Kind} has three time attributes -- \textit{Optimistic}, \textit{Normal}, \textit{Pessimistic} time estimate. Each one indicates how quickly given task could be completed. These attributes are set manually and it is important decision which values are given. From this three attributes the resulting one is computed.  
@@ -102,7 +103,7 @@ The \gls{ocd} and \gls{psd} of \gls{rac} are shown at~\cref{fig:rac-ocd} and \cr
  \label{fig:rac-psd}%
 \end{figure}
 \newpage
-
+% ----------------------------------------------------------------------------------------
 \section{Data Labelling}
 As has been said, every system within enterprise provides some collection of data. Problem is, if enterprise does note use centralized solution (a some form of \gls{bpms}), format of collected data can be very different. 
 However collected data can be structured and then processed via procedure, named ``labelling''. Every system can provide collected data with some structured form. Then sooner defined \textit{Data Aggregation Service} must have mechanism how this structure map to defined \gls{demo} model. This mechanism will be for every enterprise and theirs systems unique, however fundamental idea and work-flow is the same.
@@ -207,37 +208,72 @@ With this approach first two conditions are accomplished:
 \end{enumerate}
 
 However the (iii) and (iv) are not so straightforward. The third condition (iii) is not accomplished because DEMO is used and it does not have to be easy to use and understand. In every enterprise there are specialists (business analysts) that have the responsibility to analyse given enterprise and specify models (for example within \gls{demo}). Other people do not need to have knowledge about this methodology, overall they do not need to have knowledge about some models either. Although \gls{ocd} itself is very concise, it is not so suitable to smaller screens of mobile devices. This implies, that also (iv) is violated.
-
+% ----------------------------------------------------------------------------------------
 \section{A Better Option}
-Gantt chart is widely used in time-management projects and systems. It is well known, established and used. It was found, that Gantt chart offers the best approach, how tasks can be visualised. 
+Gantt chart is widely used in time-management projects and systems. It is well known, established and used. It was found, that Gantt chart offers the best approach, how tasks can be visualised. Chosen approach is highly inspired from it and visualisation is based on it. 
 
 The visualisation is divided to two parts:
 \begin{enumerate}
 \item The ``Gantt-chart canvas'' where each transaction has own form of progress bars which displays transaction's current state.
 \item Time-line which offers chronological overview which events occurred and when. 
 \end{enumerate}
-
+% ----------------------------------------------------------------------------------------
 \subsection{Transaction Box Element}
-Transaction box is associated rectangle with transaction which indicates current state of transaction. The state is where the transaction within \textit{Transaction Pattern} currently is. Current state also indicates progress value which is displayed as inner rectangle inside transaction box filled with colour. Progress value is computed as percentage value from current state. The state \textit{Requested} corresponds to 10 \%, \textit{Promised} to 25 \%, \textit{Executed} to 50 \%, \textit{Stated} to 75 \% and so on.  
+Transaction box is associated rectangle with transaction which indicates current state of transaction. The state corresponds to actual C-Act within \textit{Transaction Pattern}. Current state also indicates progress value which is displayed as inner rectangle inside transaction box filled with colour. Progress value is computed as percentage value from current state. The C-Act \textit{Request} corresponds to 10 \%, \textit{Promise} to 25 \%, \textit{Execute} to 50 \%, \textit{State} to 75 \% and so on.  
 
 The transaction box has four colour stages. \textbf{White} for not requested transaction yet (the box has also dashed border), a \textbf{green} which indicates ``happy path'' through \textit{Transaction Pattern}, a \textbf{yellow} if transaction is \textit{rejected} or \textit{declined} and \textbf{red} for transaction which is \textit{stopped} or \textit{quitted}. 
 
-The transaction boxes are placed accordingly to \gls{ocd} model. This means:
+The transaction boxes are placed accordingly to \gls{ocd} model. That means:
 \begin{itemize}
 \item The transaction which ``starts'' whole process is placed as first. 
 \item If transaction is dependent on another, it is placed ``under'' it and shifted to the right. Also that means, that ``parent'' transaction is wider than their descendants. 
 \end{itemize}
-
+% ----------------------------------------------------------------------------------------
 \subsection{Transaction Link Element}
 As has been said, \gls{psd} model defines associations between transactions. Each transaction can have many \textit{response} links and \textit{waiting} links. For better understanding, how process is defined, these links are within visualisation included. 
 
 The links appearance is taken from \gls{psd} itself. 
 \begin{itemize}
-\item Response link is displayed as straight line with arrow at the end. On one side it has circle with \textit{Source C-Act} abbreviation, on the other side with arrow it has square with \textit{Target C-Act} abbreviation.
+\item Response link is displayed as straight line with arrow at the end. On one side it has circle with \textit{source} C-Act, on the other side with arrow it has square with \textit{target} C-Act.
 \item Waiting links is displayed as response link, but line between is dashed. 
 \end{itemize}
 
-Links are placed between appropriate transactions accordingly to \textit{source} and \textit{target} C-Acts, just like at \gls{psd}. However, if \textit{response} link has \textit{target} C-Act as ``Request'', the abbreviation of \textit{target} is omitted and link itself is displayed little differently \todo{img state-to-request}. It is totally clear, that this type of response means exactly ``If given C-Act at  source transaction occurred then target transaction is also requested''.
+Links are placed between appropriate transactions accordingly to \textit{source} and \textit{target} C-Acts, just like at \gls{psd}. However, if \textit{response} link has \textit{target} C-Act as ``Requested'', the abbreviation of \textit{target} is omitted and link itself is displayed as angled arrow which points to ``start'' of \textit{target} transaction. It is totally clear, that this type of response means exactly ``If given C-Act at  source transaction occurred then target transaction is also requested''.
+
+Example shown at \cref{fig:box-state-state} means exactly: ``When transaction T1 is \textit{promised}, T2 is \textit{requested}. Then T1 can be \textit{stated} only if T2 was already \textit{promised}. Also T1 can be \textit{accepted} only if T2 was \textit{stated}.''
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=9cm,keepaspectratio]{img/box-links-example}
+\caption{The transaction links example}
+\label{fig:box-state-state}
+\end{figure}
+
+On the canvas's left side are placed transaction labels. Label corresponds to transaction's name and identifier. The labels are structured to tree-form like in folder explorer. Each transaction box has same height position as corresponding label. 
+
+With this approach, user has quick and easy way how can check state of concrete process. User can easily determine which transactions are not yet completed and how they are connected  together. 
+
+However the time-based information still missing and that is the point, where time-line comes in.
+% ----------------------------------------------------------------------------------------
+\subsection{Time-line}
+Main purpose of time-line is to provide chronological overview of incoming events. The time-line is scalable. This means, that user can zoom in or out to level of details. Typically more events can occur within one minute, so it is important to have ability to zoom to more detailed view. 
+
+Each event is marked with timestamp (when event occurred) and what kind of event it is. If event is kind of ``C-Act occurred'', event has also information about associated transaction with C-Act's abbreviation. To help user more easily distinguish which transaction is associated with given event, each transaction has own colour, that is reflected to colour of text within time-line. 
+
+Time-line is independently controllable and provide another point of view to the state of current running process. 
+
+One note aside, the first idea was to provide connected associations between time-line and transaction boxes. The intent was to provide visuals (anchors) within transaction box that could indicate that ``at this point something happened''. If the user `click'' on this anchor then a visual connection between anchor and associated event within time-line appears. 
+
+With this approach, the canvas must be capable of responding to time-line ``stretching'' -- transaction box must resize accordingly to positions of events within time-line. Although it makes perfectly sense from user ``point-of-view'', the usability within mobile-devices is reduced. Each event within time-line must be readable and with adding of events, width of transaction box grows. Result is, that each transaction box is really wide and it becomes very unclear and nearly unusable.
+
+Resulting approach can be summarized as follows:
+\begin{itemize}
+\item The visualisation is divided to two views.
+\item First one, the time-line offer chronological overviews of occurred events associated with transactions.
+\item The second one offers the overview current transactions states and the associated links between them. 
+\end{itemize}
+% ----------------------------------------------------------------------------------------
+\section{The Dashboard}
 
 \section{\todo{Graphs as Widgets, Dashboard}}
 \section{\todo{Queries and editor}}
