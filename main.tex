@@ -39,6 +39,9 @@
 \newcommand{\blind}[1][1]{\textcolor{gray}{\Blindtext[#1][1]}}
 
 \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+% ---------------------------------------------
+\newenvironment{graytext}{\color{gray}}{\ignorespacesafterend}
+
 
 %\setlength{\fboxsep}{0.005pt}
 %\newcommand{\tmpframe}[1]{\fbox{#1}}
@@ -100,26 +103,23 @@ Cílem této práce je vytvoření metody vizualizace procesů založených na m
 
 \chapter{The Theoretical Foundations}
 \label{ch:theoretical-foundations}
-
 \input{chapters/01-theoretical-foundations.tex}
 
 \chapter{Process Visualisation}
 \label{ch:bpms}
-
 \input{chapters/02-bpm-systems.tex}
 
 \chapter{Proposed Approach}
 \label{ch:proposed-approach}
-
 \input{chapters/03-proposed-approach.tex}
 
 \chapter{Proof of Concept}
 \label{ch:proof-of-concept}
-
 \input{chapters/04-proof-of-concept.tex}
 
 \begin{conclusion}
 	%sem napište závěr Vaší práce
+    \todo{todo}
 \end{conclusion}
 
 \bibliographystyle{iso690}

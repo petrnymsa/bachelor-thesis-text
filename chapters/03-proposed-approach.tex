@@ -188,8 +188,8 @@ System must have ability to visualise running process instances in real-time. Us
 The biggest challenge was how to propose a way to visualise models modelled with \gls{demo}. Moreover, the intent was mainly to provide visualisation on mobile devices (smart-phones, tablets).
 
 There are four conditions how visualisation must be proposed:
-\begin{enumerate}
-	\item The proposed way must preserve the intention of modelled model through \gls{demo}.
+\begin{enumerate}[i]
+	\item The proposed way must preserve the intention of modelled model through \gls{demo}
     \item Visualisation must be consistent accordingly to defined \gls{demo} model.
     \item The proposed way must be easy to use and understand.  
     \item It must be adaptive to different sizes of mobile devices. 
@@ -203,7 +203,7 @@ The first idea of visualisation was highly inspired from investigated existing s
 
 With this approach first two conditions are accomplished:
 \begin{enumerate}
-\item Defined enterprise is directly exposed with \gls{ocd} model. However some information are hidden. As is known, the \gls{psd} brings more information how processes are defined and how they work. (i).
+\item Defined enterprise is directly exposed with \gls{ocd} model. However some information are hidden. As is known, the \gls{psd} brings more information how processes are defined and how they work (i). 
 \item Consistency is tied with \gls{ocd} itself (ii).
 \end{enumerate}
 
@@ -266,12 +266,26 @@ One note aside, the first idea was to provide connected associations between tim
 
 With this approach, the canvas must be capable of responding to time-line ``stretching'' -- transaction box must resize accordingly to positions of events within time-line. Although it makes perfectly sense from user ``point-of-view'', the usability within mobile-devices is reduced. Each event within time-line must be readable and with adding of events, width of transaction box grows. Result is, that each transaction box is really wide and it becomes very unclear and nearly unusable.
 
-Resulting approach can be summarized as follows:
-\begin{itemize}
-\item The visualisation is divided to two views.
-\item First one, the time-line offer chronological overviews of occurred events associated with transactions.
-\item The second one offers the overview current transactions states and the associated links between them. 
-\end{itemize}
+Result is that, the visualisation is divided to two views. First one, the time-line offer chronological overviews of occurred events associated with transactions. The second one offers the overview current transactions states and the associated links between them. 
+
+The earlier four defined conditions for visualisation are fully accomplished.
+
+\begin{enumerate}[i]
+	\item \begin{graytext}
+    ``The proposed way must preserve the intention of modelled model through \gls{demo}''\end{graytext}
+    
+    The defined model through \gls{demo} is displayed within \textit{Gantt-chart canvas}. \gls{ocd} is transformed to \textit{transaction boxes} and \gls{psd} is transformed to \textit{transaction links}.
+    \item \begin{graytext}``Visualisation must be consistent accordingly to defined \gls{demo} model.`` \end{graytext}
+    
+    The \gls{ocd} model is transformed to another form on view, but the name of transactions and associations between them remains. The links from \gls{psd} are taken as they are, without any significant changes.
+    \item \begin{graytext}``The proposed way must be easy to use and understand.''\end{graytext}
+    
+    As has been said, the Gantt charts are well known and many people on management positions or analysts naturally understand to this concept of views. The \textit{transaction boxes} easily  show current state of given transaction and \textit{transaction links} show associations between them.    
+    \item \begin{graytext}``It must be adaptive to different sizes of mobile devices.''\end{graytext}
+    
+    The time-line part is perfectly adaptive to various screen sizes. The ``Gantt-chart canvas'' is more concise than more larger \gls{ocd} and it can more easily adapt to smaller screens.
+\end{enumerate}
+
 % ----------------------------------------------------------------------------------------
 \section{The Dashboard}
 Although the ``process visualisation'' brings usable kinds of overviews, there are many types of overviews which can't be done through this. As has been said in \cref{ch:bpms}, typical \gls{bpm} solutions offers some kind of ``dashboard'' where these various types of overviews are placed together. 
@@ -288,7 +302,14 @@ To provide a specific view over collected data, it is required to collected data
 
 \textit{Data Query} is basically named query over collected data. This also can be also compared as ``stored-procedure'' within DBMS (Database Management System). From end-user point of view, user only select defined query and data are returned. Within \textit{Data Aggregation Service} query is defined and transformed to ``real'' query over collected data. In most of cases, it will be transformed to SQL-like query. 
 
-Within \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}. It is simple, form-based editor, where employees within an enterprise can define \textit{data queries}. User defines \textit{name} of query and builds the query with interactive guide. For simplicity, the guide can be imagined as interactive way how to build a SQL query with clauses as ``join, where, group by, order by, etc.''. Result is, that editor allows to non-technical users still define basic queries over collected data without requirement to have knowledge, how concretely ``grab'' the data in technical way. 
+Within \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}. It is simple, form-based editor, where employees within an enterprise can define \textit{data queries}. User defines \textit{name} of query and builds the query with interactive guide. For simplicity, the guide can be imagined as interactive way how to build a SQL query with clauses as ``join, where, group by, order by, etc.''. Result is, that editor allows to non-technical users still define basic queries over collected data without requirement to have knowledge, how concretely ``grab'' the data in technical way. An example of query editor (as prototype) is shown at \cref{fig:query-editor}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=6cm,keepaspectratio]{img/query-editor}
+\caption{The Query editor prototype example}
+\label{fig:query-editor}
+\end{figure}
 
 Each overview within dashboard is called \textit{widget}. Widgets provide one concrete type of view. Widgets has defined \textit{name} and associated \textit{data query}. Each widget is highly customisable, but they are sorted to a several base types.
 
