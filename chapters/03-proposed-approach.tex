@@ -274,21 +274,40 @@ Resulting approach can be summarized as follows:
 \end{itemize}
 % ----------------------------------------------------------------------------------------
 \section{The Dashboard}
-Although the ``process visualisation'' brings many usable kinds of overviews, there are many types of overviews which can't be done through this. As has been said in \cref{ch:bpms}, typical \gls{bpm} solutions offers some kind of ``dashboard'' where these various types of overviews are placed together. 
+Although the ``process visualisation'' brings usable kinds of overviews, there are many types of overviews which can't be done through this. As has been said in \cref{ch:bpms}, typical \gls{bpm} solutions offers some kind of ``dashboard'' where these various types of overviews are placed together. 
 
-Within dashboard, the main goal is to provide:
+The dashboard's main goal is to provide:
 \begin{enumerate}
 \item The comprehensive and effective way how to get precious information over collected data.
 \item Ability to provide highly customized and individual types of overviews. A company will want to propose a different overviews for sales manager than for accountant and so on. 
 \item The overviews must be easy to understand and must be very clear, what they display.
 \end{enumerate}
+
+\subsection{Data Query}
+To provide a specific view over collected data, it is required to collected data be specifically aggregated according to defined overviews. For this purpose, the \textit{data query} is defined.
+
+\textit{Data Query} is basically named query over collected data. This also can be also compared as ``stored-procedure'' within DBMS (Database Management System). From end-user point of view, user only select defined query and data are returned. Within \textit{Data Aggregation Service} query is defined and transformed to ``real'' query over collected data. In most of cases, it will be transformed to SQL-like query. 
+
+Within \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}. It is simple, form-based editor, where employees within an enterprise can define \textit{data queries}. User defines \textit{name} of query and builds the query with interactive guide. For simplicity, the guide can be imagined as interactive way how to build a SQL query with clauses as ``join, where, group by, order by, etc.''. Result is, that editor allows to non-technical users still define basic queries over collected data without requirement to have knowledge, how concretely ``grab'' the data in technical way. 
+
+Each overview within dashboard is called \textit{widget}. Widgets provide one concrete type of view. Widgets has defined \textit{name} and associated \textit{data query}. Each widget is highly customisable, but they are sorted to a several base types.
+
+\subsection{Summary Widget}
+The summary widget provides, by its name, summarization about collected data. It is commonly displayed as ``Pie chart''. The typical usage for example can be: ``Summary of ratio between Accepted and Declined contracts'' or ``Actual state of all contracts, number of requested, stated, declined, accepted and so on'',~\dots
+
+\subsection{Time Based Widget}
+This widget displays data between defined time period. It uses ``Column chart''  (each \textit{time x-value} is displayed as column with height of \textit{y-value}) or ``Line series chart''. An example of typical usage can be: ``Monthly income-expense'', ``Daily number of new contracts'',~\dots
+
+\subsection{Single Value Widget}
+An single value computed from collected data. This can be for example ``Actual number of unresolved contracts'', ``Actual financial balance'',~\dots 
+
+\subsection{Widgets As Placeable Elements}
+Dashboard can be divided to ``grid layout'' -- a unspecified number of rows and from one up to three columns. Each widget has defined the \textit{width} and the \textit{height} -- how many columns and rows it will take. The the user can simply arranges widgets exactly how he wants.
+
+
 \section{\todo{Graphs as Widgets, Dashboard}}
 \section{\todo{Queries and editor}}
 \section{\todo{A Few More Ideas of Visualisation}}
-
-\todo{heat map, as-is, what-if,...}
-
-
 %     \section{Overviews}
     
 %     \section{Process visualization}
