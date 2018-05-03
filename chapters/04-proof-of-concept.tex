@@ -10,7 +10,7 @@ In this chapter, firstly the used technologies are introduced. Then the brief ar
 % ---------------------------------------------------------------------------------
 \section{.NET Platform}
 
-For implementation is used .NET platform and programming language C\#. The .NET is free, open-source and cross-platform framework for building many different types of applications \todo{cite}. There is a lot of frameworks within platform, such as WPF for building native desktop applications for Windows or ASP .NET framework for building websites and server-side applications. Also there is cross-platform Xamarin framework for building mobile applications. These all frameworks were used to implement proof-of-concept. 
+For implementation is used .NET platform and programming language C\#. The .NET is free, open-source and cross-platform framework for building many different types of applications \cite{what-is-dotnet}. There is a lot of frameworks within platform, such as WPF for building native desktop applications for Windows or ASP .NET framework for building websites and server-side applications. Also there is cross-platform Xamarin framework for building mobile applications. These all frameworks were used to implement proof-of-concept. 
 % ---------------------------------------------------------------------------------
 \subsection{.NET Standard}
 \begin{figure}[ht!]
@@ -42,7 +42,7 @@ Within Xamarin there are two main approaches how to build applications (see \cre
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=12cm,keepaspectratio]{img/xamarin-vs-xamarin-forms}
-\caption{The Xamarin.* vs Xamarin.Forms \cite{xamarin-native-forms}}
+\caption{The Xamarin.* vs. Xamarin.Forms \cite{xamarin-native-forms}}
 \label{fig:xamarin-native-vs-forms}
 \end{figure}
 
@@ -75,7 +75,7 @@ On the server, developer defines a \textit{Hub}. Hub defines contract which clie
 % ---------------------------------------------------------------------------------
 \section{Implementation Decisions}
 For implementation were chosen a quite new and interesting technologies and combinations of them.
-The .NET Standard is for now the only one right way how to create shared C\# back-end. Older approaches with Portable Class Libraries (PCL) are deprecated and Xamarin recommends to use .NET Standard. Although it is recommended and PCL are deprecated, many problems occurred. More discussion about problems with implementation is in the end of this chapter.
+The .NET Standard is for now the only one right way how to create shared C\# back-end. Older approaches with \gls{pcl} are deprecated and Xamarin recommends to use .NET Standard. Although it is recommended and \gls{pcl} are deprecated, many problems occurred. More discussion about problems with implementation is in the end of this chapter.
 
 For mobile-application was chosen Xamarin.Forms for this reasons:
 \begin{itemize}
@@ -91,7 +91,7 @@ A many different approaches were tried. First one was to edit already exists con
 SkiaSharp library \cite{skiasharp} provides a way how to quickly and easily do custom 2D drawing. It is used for process visualisation. Each \textit{transaction box} is custom control created with SkiaSharp's canvas -- a place-holder for custom drawings. Each \textit{transaction link} and events on timeline are also custom controls made with this library. 
 % ---------------------------------------------------------------------------------
 \subsection{SyncFusion Controls Library}
-SyncFusion Controls Library \todo{cite} adds many new controls to Xamarin.Forms. The Dashboard uses this library for its various types of charts. 
+SyncFusion Controls Library \cite{syncfusion} adds many new controls to Xamarin.Forms. The Dashboard uses this library for its various types of charts. 
 % ---------------------------------------------------------------------------------
 \subsection{Simulation Cases}
 Main goal of proof-of-concept is to verify that proposed visualisation approach is usable. In real-world usage, many other systems and services must be developed. Also, there is not any ``real-world'' data source. So, the simulation approach was chosen. As base model was chosen Rent-A-Car company. Above that, a several simulation cases are prepared. 
@@ -179,13 +179,13 @@ The process instance visualisation is done as follows:
 \item Created controls are inserted to \mintinline{C}{RelativeLayout} control. This control allows to place controls relatively to another. 
 \end{enumerate}
 
-A note about the Transaction Box Control. It derives from \mintinline{C}{SKCanvasView}, which comes from SkiaSharp. The class provides method \mintinline{C}{void OnPaintSurface(SKPaintSurfaceEventArgs e)} which is called every time when the graphics must be refreshed. \mintinline{C}{SKPaintSurfaceEventArgs} object provides \mintinline{C}{SKCanvas} which contains methods for basic 2D drawing. 
+A note about the Transaction Box Control. It derives from \mintinline{C}{SKCanvasView}, which comes from SkiaSharp. The class provides method \mintinline{C}{OnPaintSurface} which is called every time when the graphics must be refreshed. An argument \mintinline{C}{SKPaintSurfaceEventArgs} provides \mintinline{C}{SKCanvas} which contains methods for basic 2D drawing. 
 % ---------------------------------------------------------------------------------
 \section{Implementation Issues and Consequences}
 The implementation uses .NET Standard 2.0. This version is recommended for creation of new Xamarin applications. But many used libraries, such as SkiaSharp (which is originally written as PCL) are ported to work within .NET Standard.
 
 During implementation many issues occurred, especially with Xamarin and SignalR library.
-
+% ---------------------------------------------------------------------------------
 \subsection{Xamarin.Forms Issues}
 As has been said there are two main approaches how to develop with Xamarin platform. For implementation was chosen Xamarin.Forms. During implementation many issues with compatibility, run-time errors a bugs occurred. 
 
@@ -199,7 +199,7 @@ Although Xamarin platform is not new and by authors well used, there are still m
 Fortunately, this issues are addressed and they are in repairing process. These issues led to, that only Android platform is tested. UWP platform was during development omitted due to incompatibility with current version. The iOS platform was omitted at the beginning, because development for this platform requires device with macOS. 
 
 In the end, result is that Xamarin.Native is better approach. Xamarin.Forms are really great for form-based applications, but if developers want something really specific, it is better to define user interfaces within each platform separately. 
-
+% ---------------------------------------------------------------------------------
 \subsection{SignalR Core Issues}
 The SignalR for now is in the development process. Although it is supported within .NET Standard 2.0 during development was find out, that there are incompatibility issues between SignalR Core, .NET Standard 2.0 and Xamarin platform. Again this issues are now reported and they will be repaired with version 2.1 which will come out in Q2 2018.
 
@@ -208,9 +208,9 @@ This issue led to two things:
 \item The server-side and mobile clients are separated. On the mobile client, the fake embedded server is included -- simulation are loaded within mobile application itself and it behaves like server communication. 
 \item The server side is implemented and tested through simple JavaScript client, which works as expected. 
 \end{enumerate}
-
+% ---------------------------------------------------------------------------------
 \section{The Result}
-Implementation was successfully completed, if the described issues are omitted. The process visualisation is implemented and proofed with prepared simulation cases. The mobile application is implemented as ``Mobile Service for Rent-A-Car  company''. On the following figures is shown result. 
+The goal of implementation was successfully completed, despite the described issues. The process visualisation is implemented and proofed with prepared simulation cases. The mobile application is implemented as ``Mobile Service for Rent-A-Car  company''. On the following figures is shown result. 
 
 
 \begin{figure}[ht!]
