@@ -110,7 +110,7 @@ Only fundamental implementation decisions and circumstances are described. At th
 \item[Core.Business] -- The \textit{Data Domain Model} is placed here, because mobile and server applications use it. Also classes for simulations and XML parsers are there.
 \item[Server] -- The simple ASP .NET Core with SignalR application for serving a simulation data.
 \item[Mobile.Shared] -- A shared part of Xamarin application. All business logic and user interface are implemented here.
-\item[Mobile.Shared.Android] -- A Xamarin.Android project. There are Android specific implementations and boot-strapper for Xamarin.Forms on Android. Also all the graphic assets (logo, icons, \dots) are placed within this project.
+\item[Mobile.Shared.Android] -- A Xamarin.Android project. There are Android specific implementations and initialization for Xamarin.Forms on Android. Also all the graphic assets (logo, icons, \dots) are placed within this project.
 \item[Mobile.Shared.iOS] -- A Xamarin.iOS project. Same purpose as Mobile.Shared.Android.
 \item{Mobile.Shared.UWP} -- A Xamarin.UWP (Universal Windows Platform) project. Same purpose as Mobile.Shared.Android.
 \item[Tests] -- Package contains several unit tests for Core.Business. 
@@ -120,18 +120,18 @@ Only fundamental implementation decisions and circumstances are described. At th
 As has been said, Dashboard uses several charts from SyncFusion library. Each chart is predefined and customized for better look. 
 % ---------------------------------------------------------------------------------
 \subsection{Simulation Cases}
-Each simulation cases is defined as XML file. Because creating and wirting testing data within XML is not so comfortable, the simple utility was implemented. The utility allows interactivetly define new simulation case.
+Each simulation cases is defined as XML file. Because creating and writing testing data within XML is not so comfortable, the simple utility was implemented. The utility allows interactively define new simulation case.
 
 Each simulation case has three parts:
 \begin{itemize}
-\item First part defines \textit{Actors} -- the instnaces of \textit{Actor Roles}.
-\item Second part defines \textit{Process Instance} with \textit{Transaction Instaces}.
+\item First part defines \textit{Actors} -- the instances of \textit{Actor Roles}.
+\item Second part defines \textit{Process Instance} with \textit{Transaction Instances}.
 \item Third part defines simulation \textit{chunks}. Each chunks store one or more \textit{Events}.
 \end{itemize}
 
 When simulation case runs, every ``step'' new chunk is loaded and all events from current chunk is returned to client. With this approach, it can simulate incoming data from some real data source.
 
-The utility allows to define chunks and events with interactive editor, where user can simply fill transaction id, event type, time creation and so on. 
+The utility allows to define chunks and events with interactive editor, where user can simply fill transaction id, event type, time creation and so on. An example of simulation case:
 
 \begin{minted}[breaklines, breakaftersymbolpre= ]{xml}
 <?xml version="1.0" encoding="utf-8"?>
@@ -171,7 +171,69 @@ The utility allows to define chunks and events with interactive editor, where us
 </Simulation>
 \end{minted}
 % ---------------------------------------------------------------------------------
-\subsection{Transaction Box Control}
-The Transaction Box Control derives from \mintinline{C}{SKCanvasView}, which comes from SkiaSharp. The class provides method \mintinline{C}{void OnPaintSurface(SKPaintSurfaceEventArgs e)} which is called everytime when the graphics must be refreshed. \mintinline{C}{SKPaintSurfaceEventArgs} object provides \mintinline{C}{SKCanvas} object. \mintinline{C}{SKCanvas} contains methods for basic 2D drawing such as \mintinline{C}{DrawLine}, \mintinline{C}{DrawCircle} or for example \mintinline{C}{DrawPath} which can be used to draw any defined path, method support also SVG syntax. 
+\subsection{Process Visualisation}
+The process instance visualisation is done as follows:
+\begin{enumerate}
+\item Simulation case is loaded through \mintinline{C}{SimulationProvider}.
+\item Process instance from simulation case is passed to \mintinline{C}{GanttChartBuilder}. This class is responsible for creating \textit{Transaction Boxes} and \textit{Transaction links} controls and wiring them together.
+\item Created controls are inserted to \mintinline{C}{RelativeLayout} control. This control allows to place controls relatively to another. 
+\end{enumerate}
+
+A note about the Transaction Box Control. It derives from \mintinline{C}{SKCanvasView}, which comes from SkiaSharp. The class provides method \mintinline{C}{void OnPaintSurface(SKPaintSurfaceEventArgs e)} which is called every time when the graphics must be refreshed. \mintinline{C}{SKPaintSurfaceEventArgs} object provides \mintinline{C}{SKCanvas} which contains methods for basic 2D drawing. 
 % ---------------------------------------------------------------------------------
 \section{Implementation Issues and Consequences}
+The implementation uses .NET Standard 2.0. This version is recommended for creation of new Xamarin applications. But many used libraries, such as SkiaSharp (which is originally written as PCL) are ported to work within .NET Standard.
+
+During implementation many issues occurred, especially with Xamarin and SignalR library.
+
+\subsection{Xamarin.Forms Issues}
+As has been said there are two main approaches how to develop with Xamarin platform. For implementation was chosen Xamarin.Forms. During implementation many issues with compatibility, run-time errors a bugs occurred. 
+
+Although Xamarin platform is not new and by authors well used, there are still many issues, which make development very hard, sometimes nearly impossible. There are few common issues. For example:
+\begin{itemize}
+\item Sometimes shared code still behaved differently on each platforms. For example, simple selecting item within ListView control (a list of items which is scrollable). On UWP platform, the ListView selected internally always different item then was really selected. 
+\item Debugging application hangs with unknown errors.
+\item Many issues with compiling XAML and ``fake'' error messages. 
+\end{itemize}
+
+Fortunately, this issues are addressed and they are in repairing process. These issues led to, that only Android platform is tested. UWP platform was during development omitted due to incompatibility with current version. The iOS platform was omitted at the beginning, because development for this platform requires device with macOS. 
+
+In the end, result is that Xamarin.Native is better approach. Xamarin.Forms are really great for form-based applications, but if developers want something really specific, it is better to define user interfaces within each platform separately. 
+
+\subsection{SignalR Core Issues}
+The SignalR for now is in the development process. Although it is supported within .NET Standard 2.0 during development was find out, that there are incompatibility issues between SignalR Core, .NET Standard 2.0 and Xamarin platform. Again this issues are now reported and they will be repaired with version 2.1 which will come out in Q2 2018.
+
+This issue led to two things:
+\begin{enumerate}
+\item The server-side and mobile clients are separated. On the mobile client, the fake embedded server is included -- simulation are loaded within mobile application itself and it behaves like server communication. 
+\item The server side is implemented and tested through simple JavaScript client, which works as expected. 
+\end{enumerate}
+
+\section{The Result}
+Implementation was successfully completed, if the described issues are omitted. The process visualisation is implemented and proofed with prepared simulation cases. The mobile application is implemented as ``Mobile Service for Rent-A-Car  company''. On the following figures is shown result. 
+
+
+\begin{figure}[ht!]
+ \centering
+ \subfloat{{\includegraphics[width=6cm, keepaspectratio]{img/app-dashboard} }}%
+ \qquad
+ \subfloat{{\includegraphics[width=6cm, keepaspectratio]{img/app-menu} }}%
+ \caption{The Dashboard (on the left) and the menu (on the right)}%
+ \label{fig:app-dashboard-menu}%
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=6cm,keepaspectratio]{img/app-process-list}
+\caption{The predefined simulation cases}
+\label{fig:app-list}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=12cm,keepaspectratio]{img/app-process-progress}
+\caption{The process visualisation}
+\label{fig:app-process-progress}
+\end{figure}
+
+
