@@ -283,7 +283,7 @@ The earlier four defined conditions for visualisation are fully accomplished.
     As has been said, the Gantt charts are well known and many people on management positions or analysts naturally understand to this concept of views. The \textit{transaction boxes} easily  show current state of given transaction and \textit{transaction links} show associations between them.    
     \item \begin{graytext}``It must be adaptive to different sizes of mobile devices.''\end{graytext}
     
-    The time-line part is perfectly adaptive to various screen sizes. The ``Gantt-chart canvas'' is more concise than more larger \gls{ocd} and it can more easily adapt to smaller screens.
+    The time-line part is perfectly adaptive to various screen sizes. The ``Gantt-chart canvas'' is more concise than larger \gls{ocd} and it can adapt to smaller screens more easily.
 \end{enumerate}
 
 % ----------------------------------------------------------------------------------------
@@ -296,13 +296,11 @@ The dashboard's main goal is to provide:
 \item Ability to provide highly customized and individual types of overviews. A company will want to propose a different overviews for sales manager than for accountant and so on. 
 \item The overviews must be easy to understand and must be very clear, what they display.
 \end{enumerate}
-
+% ----------------------------------------------------------------------------------------
 \subsection{Data Query}
-To provide a specific view over collected data, it is required to collected data be specifically aggregated according to defined overviews. For this purpose, the \textit{data query} is defined.
+To provide a specific view over collected data, it is required to process collected data specifically according to defined overviews. For this purpose, the \textit{data query} is defined.
 
-\textit{Data Query} is basically named query over collected data. This also can be also compared as ``stored-procedure'' within DBMS (Database Management System). From end-user point of view, user only select defined query and data are returned. Within \textit{Data Aggregation Service} query is defined and transformed to ``real'' query over collected data. In most of cases, it will be transformed to SQL-like query. 
-
-Within \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}. It is simple, form-based editor, where employees within an enterprise can define \textit{data queries}. User defines \textit{name} of query and builds the query with interactive guide. For simplicity, the guide can be imagined as interactive way how to build a SQL query with clauses as ``join, where, group by, order by, etc.''. Result is, that editor allows to non-technical users still define basic queries over collected data without requirement to have knowledge, how concretely ``grab'' the data in technical way. An example of query editor (as prototype) is shown at \cref{fig:query-editor}.
+To put it simply, \textit{Data Query} is named query over collected data. This can be also compared to ``stored-procedure'' within DBMS (Database Management System). From end-user point of view, user only select defined query and data are returned. Within \textit{Data Aggregation Service} query is defined and transformed to ``real'' query over collected data. In most of cases, it will be transformed to SQL-like query. 
 
 \begin{figure}[ht!]
 \centering
@@ -311,124 +309,58 @@ Within \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}
 \label{fig:query-editor}
 \end{figure}
 
-Each overview within dashboard is called \textit{widget}. Widgets provide one concrete type of view. Widgets has defined \textit{name} and associated \textit{data query}. Each widget is highly customisable, but they are sorted to a several base types.
+Within \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}. It is simple, form-based editor, where employees within an enterprise can define \textit{data queries}. User defines \textit{name} of query and builds the query with interactive guide. For simplicity, the guide can be imagined as interactive way how to build a SQL query with clauses as ``join, where, group by, order by, \dots'' Result is, that editor allows to non-technical users still define basic queries over collected data without requirement to have knowledge, how concretely ``grab'' the data . An example of query editor (as prototype) is shown at \cref{fig:query-editor}.
 
+\subsection{Widgets}
+Each overview within dashboard is called \textit{widget}. Widgets provide one concrete type of view. Widgets has defined \textit{name} and associated \textit{data query}. Each widget is highly customisable, but they are sorted to a several base types.
+% ----------------------------------------------------------------------------------------
 \subsection{Summary Widget}
 The summary widget provides, by its name, summarization about collected data. It is commonly displayed as ``Pie chart''. The typical usage for example can be: ``Summary of ratio between Accepted and Declined contracts'' or ``Actual state of all contracts, number of requested, stated, declined, accepted and so on'',~\dots
-
+% ----------------------------------------------------------------------------------------
 \subsection{Time Based Widget}
 This widget displays data between defined time period. It uses ``Column chart''  (each \textit{time x-value} is displayed as column with height of \textit{y-value}) or ``Line series chart''. An example of typical usage can be: ``Monthly income-expense'', ``Daily number of new contracts'',~\dots
-
+% ----------------------------------------------------------------------------------------
 \subsection{Single Value Widget}
 An single value computed from collected data. This can be for example ``Actual number of unresolved contracts'', ``Actual financial balance'',~\dots 
-
+% ----------------------------------------------------------------------------------------
 \subsection{Widgets As Placeable Elements}
-Dashboard can be divided to ``grid layout'' -- a unspecified number of rows and from one up to three columns. Each widget has defined the \textit{width} and the \textit{height} -- how many columns and rows it will take. The the user can simply arranges widgets exactly how he wants.
+Dashboard can be divided to ``grid layout'' -- a unspecified number of rows and from one up to three columns. Each widget has defined the \textit{width} and the \textit{height} -- how many columns and rows it will take. Widgets can be arranged as needed. 
 
+\section{The End-User Mobile Application}
+As has been noted, the visualisation is proposed as ``mobile friendly''. The concept of dashboard, widgets is also considered mainly for mobile devices. The mobile application provides these basic functionalities:
 
-\section{\todo{Graphs as Widgets, Dashboard}}
-\section{\todo{Queries and editor}}
-\section{\todo{A Few More Ideas of Visualisation}}
-%     \section{Overviews}
-    
-%     \section{Process visualization}
-    
-%     \section{Mobile application concept}
-	
-% 	\todo{Domain model of collected data. Proposed way of real time visualization. Type of charts. Dashboard. Whole concept of application, e.g dashboard, editor. Functional specification, a.k.a example use cases?? Domain model of collected data.}
-    
-%     \section{Analysis}    
+\begin{itemize}
+\item The dashboard with widgets.
+\item The list of process instances.
+\item The real-time process instance visualisation.
+\end{itemize}
 
-   
+Within enterprise, the dashboard and widgets will be most likely predefined by eligible employees (e.g. business analysts). The end-users (e.g. managers) will only have access to dashboard at ``read-only'' mode -- they will not be allowed to edit widgets. This implies that within the \textit{Business Intelligence Service} and \textit{Data Aggregation Service} the \textit{data queries} and the \textit{widgets} are defined. The mobile application then take these definitions and display them. Within these services, the default arrangement of widgets is defined. Then the end-users can rearrange them for their best fit. 
 
-% 	\section{The dashboard}
-%     Purpose of dashboard is provide centralized overview of processes such as average waiting time before process is completed or total amount of requests per day. The appearance of dashboard depends on user. \gls{dwma} provides customizable elements called widgets to achieve desired look for every user individually.
+The users can also list all process instances and view visualisation of them. Also application offers the current running instances, where user will see visualisation in real-time. 
+% ----------------------------------------------------------------------------------------
+\section{Another Visualisation Approaches}
+The main approach how visualise processes was explained. However, there are many another ways how to provide ``look'' at the data and processes. 
+% ----------------------------------------------------------------------------------------
+\subsection{\gls{ocd} with Summary Information}
+At the beginning of this chapter has been said, that \gls{ocd} is not suitable for real-time visualisation, but it still has a valuable information and it can be suitable for another approach. 
 
-%     \subsection{Widgets}  
-%      Widgets are small independent configurable components for displaying collected data from business processes. Each one has purpose. Notice that widgets are only user-friendly view of query above collected data. For editing widgets there is widget editor. User can simply edit properties of widget such as name, category, tags and of course source of data - the query and second important property is the type of widget. There are following types of widgets:
-     
-%      \textbf{The summary widget} (\cref{fig:widget-summary}) provides, by it's name, chart with summarization of collected data. Concrete type of the chart depends on the user and on the data. Summary widget provides several types of charts:
-     
-%      \begin{enumerate}
-%     	\item \textit{Pie} chart is used to illustrate numerical proportion.         
-%         \item  \textit{Bar} chart displays categorical data with numerical value.
-%         %\item \textit{Line}
-%     \end{enumerate}
-      
-%       \begin{figure}[ht!]
-%           \centering
-%           \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
-%           \caption{Summary widget example}
-%           \label{fig:widget-summary}
-%       \end{figure}   
-    
-%    	Second type is \textbf{Time period} (\cref{fig:widget-time-period}). Time period displays data in some interval. Typically it can serve as overview \textit{``Number of requests for Rental payment per day"}.        
-      
-%       \begin{figure}[ht!]
-%           \centering
-%           \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
-%           \caption{Time period widget example}
-%           \label{fig:widget-time-period}
-%       \end{figure}
-    
-%     Last type is \textbf{Single query} (\cref{fig:widget-single-query}) which allows display simple result from query. Prerequisite for query is that query returns one single record. 
-      
-%       \begin{figure}[ht!]
-%           \centering
-%           \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
-%           \caption{Single query example}
-%            \label{fig:widget-single-query}
-%       \end{figure}       
-    
-%     \subsection{Query editor}
-    
-%     \todo{Information about query editor}
-    
-%     \begin{figure}[ht!]
-%           \centering
-%           \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
-%           \caption{\todo{Query editor}}
-%       \end{figure}   
-    
-%     \section{The real-time overview of process instance}
-%     \todo{Introduction about gantt chart. Make conversation about classic OCD / PSD diagrams and their pros and cons for visualizations}
-%     Provides the real-time overview of one concrete process instance.
-% On the left side is tree-view (like in folder explorer) of transactions. Each transaction has identifier and name.
-% On the top is the timeline which displays important events from the process. Above timeline is visualization itself. Each transaction is displayed as progress bar with some visual tweak, which will be discussed later.
+On top of diagram, the collected summary of information can be shown. For example on top of each transaction can be the summary of success rate -- ratio between accepted and failed transactions. An example is shown at \cref{fig:ocd-sum}.
 
-% 	Each transaction can be at one of the following state, which has different visual: 
-% 	\todo{Categories}
-    
-%     \begin{description}
-%     	\item[Not active transaction] Is displayed as greyed out progress bar. It means that this instance of transaction will be probably started at some future time.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=7cm,keepaspectratio]{img/ocd-sum}
+\caption{OCD with summary information}
+\label{fig:ocd-sum}
+\end{figure}
+% ----------------------------------------------------------------------------------------
+\subsection{Heat map}
+An interesting visualisation is heat map. The \gls{ocd} can be used again. Heat map can display various information. For example, for each transaction is collected average ``executing time'' -- the time how long  \textit{execution phase} takes to finish. Then the more waiting time is, the more heat around transaction is. In another words, more heat, means more colour to red around. This can be easily used to indicate ``bottle-necks'' within defined processes -- to find problematic transactions where the improvements steps are required. An example is show at \cref{fig:ocd-heat-map}
 
-%         \item[Active transaction] Progress bar is displayed with green colour to show current progress of instance transaction. 
-        
-%         \item[Completed transaction] Progress bar is fulfilled with green colour. It means that given transaction successfully ended (was accepted).
-        
-%         \item[Stopped transaction] Progress bar changed colour to red which indicates that transaction failed to complete due to fact that it was quitted or stopped. 
-%     \end{description}
-    
-%  \subsection{Response and waiting links}
-%     \todo{Change this}
-%    Each transaction can have several child-transactions and also many conditional links. These conditions are displayed with arrows pointed to another transaction with the condition.
-% Conditions are divided into two categories.
-
-% If the condition is ``Some state of transaction A has to be done before transaction B can start (be requested)", e.g. transaction A must be stated before transaction B can be requested (\cref{fig:request-start-condition}).
-
-% \begin{figure}
-%   \centering
-%   \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
-%   \caption{\todo{Request-start condition}}
-%   \label{fig:request-start-condition}
-% \end{figure}  
-
-% If condition is ``Some state of transaction A has to be done before transaction B can be at another state", e.g transaction A must be at least stated before transaction B can be promised (\cref{fig:state-state-condition}).
-
-% \begin{figure}
-%   \centering
-%   \includegraphics[width=6cm,keepaspectratio]{img/TODO-image}
-%   \caption{\todo{State-state condition}}
-%   \label{fig:state-state-condition}
-% \end{figure}  
-
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=12cm,keepaspectratio]{img/ocd-heat-map}
+\caption{OCD heat map example -- average executing time}
+\label{fig:ocd-heat-map}
+\end{figure}
+% --------------------------------------------------------------------------------------

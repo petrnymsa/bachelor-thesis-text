@@ -1,1 +1,122 @@
 \todo{Used technologies. Brief description of Xamarin, Signal R, .NET standard / .NET Core, XAML, ASP .NET Core.Screens, screens :)Good explanation how state of implementation is so "bad". Problems with Xamarin, SIgnalR, incompatibility. And heck, the whole implementation of Gantt chart...}
+
+To verify proposed approaches, the simple mobile application as proof-of-concept was implemented. To verification was chosen especially process instance visualisation.
+
+The given application offers:
+\begin{enumerate}
+\item Process instance visualisation with simulated data
+\item Concept of dashboard
+\end{enumerate}
+
+In this chapter, firstly the used technologies are introduced. Then the brief architecture of mobile application and implementation itself are explained. In the end, the
+% ---------------------------------------------------------------------------------
+\section{.NET Platform}
+
+For implementation is used .NET platform and programming language C\#. The .NET is free, open-source and cross-platform framework for building many different types of applications \todo{cite}. There is a lot of frameworks within platform, such as WPF for building native desktop applications for Windows or ASP .NET framework for building websites and server-side applications. Also there is cross-platform Xamarin framework for building mobile applications. These all frameworks were used to implement proof-of-concept. 
+% ---------------------------------------------------------------------------------
+\subsection{.NET Standard}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=12cm,keepaspectratio]{img/dotnet-overview}
+\caption{The .NET platform overview \cite{introducing-dotnet-standard}}
+\label{fig:dotnet-overview}
+\end{figure}
+
+Earlier years within .NET platform was problem with many different implementations of .NET itself. There was the ``original'' (full) .NET. Then a newer, open-source and cross-platform version .NET Core and third was Xamarin. Each platform have different base libraries and if developers wanted to share code between these platforms, there was a lot of work to do. 
+
+The new approach was introduced \cite{introducing-dotnet-standard}, the .NET Standard -- the unified platform which defines set of APIs that each .NET subset platform must implement. This allows to developers easily share code and write libraries that can be used anywhere. The great graphical summarization is shown at \cref{fig:dotnet-overview}. Actual version is .NET Standard 2.0. The newer version 2.1 will be introduced within Q2 2018. 
+% ---------------------------------------------------------------------------------
+\subsection{.NET Core}
+The .NET Core is open-source, cross-platform version of .NET Framework. It is new and highly frequently updated framework which becomes very popular. It has many ``ports'' of frameworks from full .NET such as ASP .NET or Entity Framework -- an Object-Relationship-Mapping tool for databases. 
+% ---------------------------------------------------------------------------------
+\section{Xamarin}
+Xamarin is platform for developing native mobile applications in cross-platform way. Developers use C\# language and .NET Standard to implement mobile application. When the application is being build, the code is compiled to native platform code. 
+
+Following summarization is taken from \cite{xamarin-understand-platform}:
+\begin{itemize}
+\item On iOS, C\# is ahead-of-time (AOT) compiled to ARM assembly language. The .NET framework is included, with unused classes being stripped out during linking to reduce the application size. Apple does not allow runtime code generation on iOS, so some language features are not available.
+\item On Android, C\# is compiled to IL and packaged with MonoVM. Unused classes in the framework are stripped out during linking. The application runs side-by-side with Android runtime.
+\item Windows and UWP use directly C\# and included .NET. 
+\end{itemize}
+
+Within Xamarin there are two main approaches how to build applications (see \cref{fig:xamarin-native-vs-forms}). First one is commonly called ``Xamarin Native'' or ``Xamarin.*'' where * is targeted platform. With this approach, the code for business logic is written independently from target platform, but user interface for each platform is implemented separately with native approaches (e.g. for Android developer uses XML based declarations).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=12cm,keepaspectratio]{img/xamarin-vs-xamarin-forms}
+\caption{The Xamarin.* vs Xamarin.Forms \cite{xamarin-native-forms}}
+\label{fig:xamarin-native-vs-forms}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=10cm,keepaspectratio]{img/xamarin-forms-ui-render}
+\caption{The Xamarin.Forms control renderer \cite{xamarin-native-forms}}
+\label{fig:xamarin-ui-renderer}
+\end{figure}
+
+Second one is called Xamarin.Forms, which is build on top of first one and allows to define user interfaces in cross-platform way. Developers use XAML, the declaration language similar to XML to define user interface. When application is being build, defined controls are transformed to native controls. This transformation is done through concept called ``Control renderer''. Within shared library, an interface for control is defined. On each platform is implemented render which transforms given control to native one. An example is shown at \cref{fig:xamarin-ui-renderer}.
+% ---------------------------------------------------------------------------------
+\section{Another Used Technologies}
+The implementation is divided to two parts. First one is mobile application and second one is server-side, the concept of \textit{Data Aggregation Service}. 
+
+For server-side implementation was chosen ASP .NET Core -- a newer version of ASP .NET, framework for creating server applications  (services, REST API, \dots) and websites.
+
+Within ASP .NET Core a web application was created and library SignalR was chosen.
+% ---------------------------------------------------------------------------------
+\subsection{SignalR}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=8cm,keepaspectratio]{img/signal-r-overview}
+\caption{How SignalR works \cite{signal-r-overview}}
+\label{fig:signal-r-overview}
+\end{figure}
+According to \cite{signal-r-overview} SignalR is: ``a library for ASP .NET which offers adding real-time web functionality to applications. Real-time web functionality is the ability to have server code push content to connected clients instantly as it becomes available, rather than having the server wait for a client to request new data''. SignalR handles ``many things'' for developers automatically, such as connection management or choosing transporting types. SignalR firstly try to use WebSocket and if it fails, automatically fall back to older transports.
+
+On the server, developer defines a \textit{Hub}. Hub defines contract which clients will use and communicate through. On the client-side, developers creates \textit{Hub Proxy} -- connection to specific \textit{Hub}. An example how it works is shown at \cref{fig:signal-r-overview}.
+% ---------------------------------------------------------------------------------
+\section{Implementation Choices}
+For implementation were chosen a quite new and interesting technologies and combinations of them.
+The .NET Standard is for now the only one right way how to create shared C\# back-end. Older approaches with Portable Class Libraries (PCL) are deprecated and Xamarin recommends to use .NET Standard. Although it is recommended and PCL are deprecated, many problems occurred. More discussion about problems with implementation is in the end of this chapter.
+
+For mobile-application was chosen Xamarin.Forms for this reasons:
+\begin{itemize}
+\item Author has many experiences with XAML from similar frameworks such as WPF or Universal Windows Platform.
+\item Xamarin.Forms are more faster for developing with cross-platform way -- the user interface is written once.
+\end{itemize}
+
+Xamarin.Forms offers many prepared controls for use, but for creation of process instance visualisation a custom control were created.  
+
+A many different approaches were tried. First one was to edit already exists controls, but it comes, that it is not suitable. Another approach was to find existing controls, which resulted to, that the requirements are too specific. Third option was to use some basic 2D engine for custom drawing and rendering. The third option seemed as best option to do, so it was chosen. 
+
+\subsection{SkiaSharp}
+SkiaSharp library \cite{skiasharp} provides a way how to quickly and easily do custom 2D drawing. It is used for process visualisation. Each \textit{transaction box} is custom control created with SkiaSharp's canvas -- a place-holder for custom drawings. Each \textit{transaction link} and events on timeline are also custom controls made with this library. 
+
+\subsection{SyncFusion Controls Library}
+SyncFusion Controls Library \todo{cite} adds many new controls to Xamarin.Forms. The Dashboard uses this library for its various types of charts. 
+
+\subsection{Simulation Cases}
+Main goal of proof-of-concept is to verify that proposed visualisation approach is usable. In real-world usage, many other systems and services must be developed. Also, there is not any ``real-world'' data source. So, the simulation approach was chosen. As base model was chosen Rent-A-Car company. Above that, a several simulation cases are prepared. 
+
+\section{Implementation Details}
+Only fundamental implementation decisions and circumstances are described. At the \cref{fig:impl-dependecies-graph} is shown ``high-level'' architecture of application. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=10cm,keepaspectratio]{img/dependecies-graph}
+\caption{The implementation packages}
+\label{fig:impl-dependecies-graph}
+\end{figure}
+
+\begin{description}
+\item[Core.Business] -- The \textit{Data Domain Model} is placed here, because mobile and server applications use it. Also classes for simulations and XML parsers are there.
+\item[Server] -- The simple ASP .NET Core with SignalR application for serving a simulation data.
+\item[Mobile.Shared] -- A shared part of Xamarin application. All business logic and user interface are implemented here.
+\item[Mobile.Shared.Android] -- A Xamarin.Android project. There are Android specific implementations and boot-strapper for Xamarin.Forms on Android. Also all the graphic assets (logo, icons, \dots) are placed within this project.
+\item[Mobile.Shared.iOS] -- A Xamarin.iOS project. Same purpose as Mobile.Shared.Android.
+\item{Mobile.Shared.UWP} -- A Xamarin.UWP (Universal Windows Platform) project. Same purpose as Mobile.Shared.Android.
+\item[Tests] -- Package contains several unit tests for Core.Business. 
+\end{description}
+
+
+

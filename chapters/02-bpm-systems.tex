@@ -12,7 +12,7 @@ Nowadays \gls{bpm} software supports all stages of \gls{bpm} life-cycle (design,
 The result is typically web based application which employees can use to do their jobs without knowing that there are some defined processes and layer of some BPM software. 
 
 According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used systems are \textit{Appian}, \textit{Pegasystems}, \textit{IBM} and many more as shown at~\cref{fig:gartner-magic-quadrant}.
-
+% -------------------------------------------------------------------------------
  \subsection{Closer Look at Process Maker}
  
  \textit{ProcessMaker} (\href{https://www.processmaker.com/}{https://www.processmaker.com/}) is web-based \gls{bpm} solution which allows to build, run, monitor and optimize business processes. Building of processes is done via \gls{bpmn}. Inside designer users can define data sources (variables) which will be used later within running processes. 
@@ -39,22 +39,22 @@ According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used s
 \end{figure} 
  
  From end-user view, \textit{ProcessMaker} (as many others \gls{bpms}) behaves as web-based application, which allows to do his job via predefined \textit{DynaForms}. ProcessMaker moreover offers process map, which is graphical visualisation of running process. Process map is in \gls{bpmn} and each activity element has different colour to indicate its state (\cref{fig:process-maker-process-map}).
- 
+ % -------------------------------------------------------------------------------
 \subsection{Process Simulation and Analysis}
 Another tool, \textit{Bizagi Modeler} (\href{https://www.bizagi.com/uk/products/bpm-suite/modeler}{https://www.bizagi.com/uk/products/bpm-suite/modeler}), offers modelling processes with \gls{bpmn} and run simulations on top of them.
 
 \textit{Bizagi Modeler} for simulations defines scenarios. Each scenario has many attributes, but mainly:
 \begin{description}
-    \item[Resources] Resource is some entity (e.g. customer, employee role, equipment) which is used to define how each task of the process use these resources (e.g. task verification uses resource ``Inspection agent'').
-    \item[Time consumption] For each task users can define how much time is consumed to complete. Consumption can be defined as simple (constant) number or with the probability distribution.
-    \item[Cost] Users can define for tasks how much execution cost (in a financial way).    
+    \item[Resources] -- Resource is some entity (e.g. customer, employee role, equipment) which is used to define how each task of the process use these resources (e.g. task verification uses resource ``Inspection agent'').
+    \item[Time consumption] -- For each task users can define how much time is consumed to complete. Consumption can be defined as simple (constant) number or with the probability distribution.
+    \item[Cost] -- Users can define for tasks how much execution cost (in a financial way).    
 \end{description}
 
 For gateways (element from \gls{bpmn}) users can define probability next flow (e.g. probability for ``yes'' than ``no''). \textit{Bizagi Modeler} has different levels of simulations.
     \begin{description}
-        \item[Process validation] User defines a duration of simulation and amount of generated instances (number of requests). Gateways are also configurable. After simulation ends, the result with summarization is displayed and the user can check if process behaves as expected. For example, if the number of requests is equal to the number of completed instances. This could occur if there are issues with synchronization with parallel gateways.
-        \item[Throughput time analysis] Focuses only on time measurement and resources are not included. The user defines consumption for requests (interval time between two instances can be generated) and also for every task (how much time task gets to complete). Analysis counts total completed tasks and also average time and total time spent on each task. For example, it is useful for predictions, e.g. ``how long customer will wait until his request is completed''.
-        \item[Resource analysis] Users can define resources and how much resource costs (fixed or cost per hour). Each task has defined which resources need and how much to execute. Also, the cost of each task and time consumption are included. This analysis is more complex and serves as the real-world simulation to achieve better results, which can help to optimize processes. A simulation results example is shown at \cref{fig:bizagi-example}.
+        \item[Process validation] -- User defines a duration of simulation and amount of generated instances (number of requests). Gateways are also configurable. After simulation ends, the result with summarization is displayed and the user can check if process behaves as expected. For example, if the number of requests is equal to the number of completed instances. This could occur if there are issues with synchronization with parallel gateways.
+        \item[Throughput time analysis] -- Focuses only on time measurement and resources are not included. The user defines consumption for requests (interval time between two instances can be generated) and also for every task (how much time task gets to complete). Analysis counts total completed tasks and also average time and total time spent on each task. For example, it is useful for predictions, e.g. ``how long customer will wait until his request is completed''.
+        \item[Resource analysis] -- Users can define resources and how much resource costs (fixed or cost per hour). Each task has defined which resources need and how much to execute. Also, the cost of each task and time consumption are included. This analysis is more complex and serves as the real-world simulation to achieve better results, which can help to optimize processes. A simulation results example is shown at \cref{fig:bizagi-example}.
     \end{description}
 
 \begin{figure}[ht!]
@@ -65,7 +65,7 @@ For gateways (element from \gls{bpmn}) users can define probability next flow (e
     \caption{\textit{Bizagi Modeler} Resource analysis example\cite{bizagi-2018}}%
     \label{fig:bizagi-example}%
 \end{figure}
-
+% -------------------------------------------------------------------------------
 \section{BPMS Architecture}
 The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Business analysts and process developers design process models and deploy them within \gls{bpms} solution. Users (process participants) has access to unified user interface which is connected with all layers of \gls{bpms}. On the right side of overview, the \textit{monitoring} stage of \gls{bpm} stage is included. Users has access to highly precious collected data through graphical views. They can more easily determine what happens and decide what next steps could be to make their business even better. 
 
@@ -75,7 +75,7 @@ The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Bus
     \caption{BPMS Architecture\cite{tibco-bpm-2016}}
     \label{fig:bpms-architecture}
 \end{figure}
-
+% -------------------------------------------------------------------------------
 \section{DEMO Role within Business Intelligence}
 The thesis focuses on ``Business Intelligence'', in other words on the fourth stage of \gls{bpm} life cycle. The goal is to provide an approach which can more precisely describe business processes and connections between collected data and these processes. In \cref{ch:theoretical-foundations} the \gls{demo} methodology was introduced and explained. Describing business processes from collected data within enterprise solution with \gls{demo} brings mainly these advantages: 
 \begin{enumerate}

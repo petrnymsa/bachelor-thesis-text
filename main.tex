@@ -40,7 +40,8 @@
 
 \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 % ---------------------------------------------
-\newenvironment{graytext}{\color{gray}}{\ignorespacesafterend}
+\definecolor{darkgray}{RGB}{64,64,64}
+\newenvironment{graytext}{\color{darkgray}}{\ignorespacesafterend}
 
 
 %\setlength{\fboxsep}{0.005pt}
@@ -56,26 +57,24 @@
 \authorWithDegrees{Petr Nymsa} %jméno autora včetně současných akademických titulů
 \author{Petr Nymsa} %jméno autora bez akademických titulů
 \supervisor{Ing. Marek Skotnica}
-\acknowledgements{Doplňte, máte-li komu a za co děkovat. V~opačném případě úplně odstraňte tento příkaz.}
+\acknowledgements{I would like to thanks to anyone who helped me write this thesis. Especially the most gratitude belongs to my supervisor Ing. Marek Skotnica for his guidance. Also many thanks goes to my friends and family for proofreading and valuable ideas and help.}
 \abstractCS{
-\todo{Rewrite this}
+Práce se zabývá problematikou vizualizace podnikových procesů v reálném čase a následné zpracování nasbíraných dat do grafických přehledů.
+V práci je hlavním zaměřením metodika DEMO, která přináší jiný způsob a pohled na modelování podnikových procesů. Cílem práce je navrhnout přístup vizualizace procesů modelovaných metodikou DEMO. Kromě vizualizace je cílem vytvořit mobilní aplikaci formou proof-of-concept, která obsahuje navrhované přístupy a také vizualizaci nasbíraných dat do různých grafických přehledů, které mohou pomoci lépe řídit podnik. 
 
-% Tato bp se zabývá (řeší)...
-% Cílem práce je
-% V práci se zaměřuji na
-% Literární rešerše se zabývá...praktická část práce navazuje...
-Cílem této práce je vytvoření metody vizualizace procesů založených na metodice DEMO. Kromě vizualice jsou rozebrány možnosti sběru dat z těchto procesů a následná jejich analýza a grafické znázornění. V práci je popsána metodika DEMO a čím se liší od systémů, které využívají notaci BPM. Pro ověření vymyšleného konceptu je vypracována ukázková implementace, mobilní aplikace, která umožní vizualizovat procesy na modelovém příkladu. 
-
-
-% čím je práce užitečná
+Práce je zaměřena více teoreticky, kde autor řeší různé přístupy vizualizací. K ověření navrhovaných přístupů je vytvořena jednoduchá mobilní aplikce, která demonstruje vizualizaci na modelových příkladech.
 }
-\abstractEN{Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.}
+\abstractEN{
+Thesis is focused on business process visualisation in real-time and processing collected data and displaying them within graphical overviews. In the thesis main focus is on DEMO methodology, which bring another approach how business process modelling can be done. Goal of thesis to propose a way how process visualisation through DEMO can be done. Besides visualisation second goal is to create mobile application in form of proof-of-concept, which contains proposed approaches and visualisation of collected data within various graphical overviews. This can help people to better lead their business. 
+
+Thesis is more theoretical, author is focused on propose various visualisation approaches. To verify proposed approaches, a simple mobile application is implemented, where visualisation is demonstrated on model examples.
+}
 \placeForDeclarationOfAuthenticity{Prague}
 \declarationOfAuthenticityOption{4} %volba Prohlášení (číslo 1-6)
 
-\keywordsCS{mobilní aplikace, vizualizace procesů, DEMO, analýza dat, business intelligence, podnikové inženýrství, procesní řízení, BPM, Xamarin}
+\keywordsCS{mobilní aplikace, vizualizace procesů, DEMO metodika, business intelligence, procesní řízení, Xamarin}
 
-\keywordsEN{mobile application, business intelligence, DEMO, enterprise engineering, business process management, BPM, analytic tool, Xamarin}
+\keywordsEN{mobile application, process visualisation, business intelligence, DEMO methodology, business process management, Xamarin}
 % \website{http://site.example/thesis} %volitelná URL práce, objeví se v tiráži - úplně odstraňte, nemáte-li URL práce
 
 \begin{document}

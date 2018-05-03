@@ -1,5 +1,5 @@
 In the first chapter, theoretical foundations are described. Firstly, terms such as BPM, Business Intelligence are explained. Then, the theory of Enterprise Ontology and DEMO methodology follow. In the end, Gantt chart is described, because it is used as part of visualisation approach. 
-
+% -------------------------------------------------------------------------------
 \section{Business Process Management}
 \gls{bpm} is an approach that focuses on modelling, analysing, improving and monitoring business processes. 
 The \gls{bpm} life-cycle can be divided to five stages as shown in \cref{fig:bpm-lifecycle}:
@@ -12,22 +12,20 @@ The \gls{bpm} life-cycle can be divided to five stages as shown in \cref{fig:bpm
 \end{figure}
 
 \begin{description}
-	\item[Design] The requirements of the business are collected, analysed and specified. The specification can be ``as is'' (state of how processes currently are) or ``to be'' (how processes would be). Accompanying graphical materials (such as flow-charts) are included.
-    \item[Model] Specification is expressed (modelled) with graphical notation \gls{bpmn}, which will be investigated later.
-    \item[Execute] Changes are implemented and deployed.
-    \item[Monitor] After deployed changes, monitoring system comes to the scene. Processes are monitored and \gls{bpms} tools are used to collect data and analyse performance through metrics - called \gls{kpi}. \gls{kpi} are defined, optimized metrics which can help to understand the performance of the current business. As an example of \gls{kpi} can be ``an average number of requests for new order per day'' and many more, individual metrics to concrete business.
-    \item[Optimize] At some point, when an appropriate number of data are collected and analysed with monitoring, optimization is done. The goal of optimization is to find issues or some improvements. After that, new specifications and improvements are created and \textit{design} stage is executed again.
+	\item[Design] -- The requirements of the business are collected, analysed and specified. The specification can be ``as is'' (state of how processes currently are) or ``to be'' (how processes would be). Accompanying graphical materials (such as flow-charts) are included.
+    \item[Model] -- Specification is expressed (modelled) with graphical notation \gls{bpmn}, which will be investigated later.
+    \item[Execute] -- Changes are implemented and deployed.
+    \item[Monitor] -- After deployed changes, monitoring system comes to the scene. Processes are monitored and \gls{bpms} tools are used to collect data and analyse performance through metrics - called \gls{kpi}. \gls{kpi} are defined, optimized metrics which can help to understand the performance of the current business. As an example of \gls{kpi} can be ``an average number of requests for new order per day'' and many more, individual metrics to concrete business.
+    \item[Optimize] -- At some point, when an appropriate number of data are collected and analysed with monitoring, optimization is done. The goal of optimization is to find issues or some improvements. After that, new specifications and improvements are created and \textit{design} stage is executed again.
 \end{description}
-
-\todo{Some conclusion about BPM?}
-
+% -------------------------------------------------------------------------------
 \subsection{Business Process Model and Notation}
 \gls{bpmn} is notation created and standardised by \textit{Object Management Group} (see \url{https://www.omg.org}). According to\cite{bpmn-org-2018} \gls{bpmn} can be described as:
 \begin{quote}
   \gls{bpmn} is a graphical notation that depicts the steps in a business process. BPMN depicts the end to end flow of a business process. The notation has been specifically designed to coordinate the sequence of processes and the messages that flow between different process participants in a related set of activities.
 \end{quote}
 The notation itself, elements which are used and how modelling is done, are not described. For this information, see\cite{bpmn-org-2018}.
-
+% -------------------------------------------------------------------------------
 \section{Business Intelligence}
 
 \gls{bi} is a way how business can collect an enormous amount of data, structure them and analyse (see \cref{fig:bi-diagram}. From \gls{bpm} life-cycle view, \gls{bi} is a \textit{Monitor} stage. Systems which are tagged as \gls{bi} tools typically offers some kind of reporting, dashboards and scorecards. 
@@ -39,7 +37,7 @@ The notation itself, elements which are used and how modelling is done, are not 
     \label{fig:bi-diagram}
 \end{figure}
 
-\textbf{Dashboard} offers graphical overviews of collected data. Dashboards are typically highly customizable and can offer different types of views for each employee to help achieve their job. Dashboards can help understand and find issues within business and potentially more quickly solve them. \cref{fig:bi-dashboard} shows an example. \todo{citation of MS POWER BI?}
+\textbf{Dashboard} offers graphical overviews of collected data. Dashboards are typically highly customizable and can offer different types of views for each employee to help achieve their job. Dashboards can help understand and find issues within business and potentially more quickly solve them. \Cref{fig:bi-dashboard} shows an example. 
 
 \textbf{Scorecards} offer monitoring of \gls{kpi} metrics and user can easy compare goals and current results. Scorecards also easily show performance of business, for example if business plan is fulfilled or financial flow (e.g if business is profiting or not,\dots). 
 
@@ -49,7 +47,7 @@ The notation itself, elements which are used and how modelling is done, are not 
     \caption{Business Intelligence dashboard example\cite{ms-business-intelligence-2018}}
     \label{fig:bi-dashboard}
 \end{figure}
-
+% -------------------------------------------------------------------------------
 \section{Enterprise ontology}
 According to\cite{gruber-translation-1993}, definition of ontology states as ``An ontology is a specification of a conceptualization''. In other words ontology is description, a formal specification, of concepts and relationships.
 
@@ -100,7 +98,7 @@ The \textbf{distinction axiom} (\cref{fig:DisctinctionAxiom}) tells us that acto
     \caption{The distinction axiom\cite{haan-modeling-2009}}
     \label{fig:DisctinctionAxiom}
 \end{figure}
-
+% -------------------------------------------------------------------------------
 \subsection{The Organization Theorem}
 
 The organization theorem combines the benefits of these axioms into one concise, comprehensive, coherent, and consistent notion of enterprise. This theorem states that the organization of an enterprise is a heterogeneous system that is constituted as the layered integration of three homogeneous systems: the B-organization (from Business), the I-organization (from Intellect), and the D-organization (from Document). Figure~ \ref{fig:OrganizationPyramid} visualizes the organization theorem and shows us that the D-organization supports the I-organization, which supports the B-organization. The coordination parts of these three systems are similar, they only differ in the kind of production: the production of the B-organization is ontological, the production in the I-organization is infological, and the production in the D-organization is datalogical.
@@ -113,7 +111,7 @@ The organization theorem combines the benefits of these axioms into one concise,
 \end{figure}
 
 \end{quotation}
-
+% -------------------------------------------------------------------------------
 \section{Modelling with DEMO}
 In this section, firstly short description of modelling aspects is provided and then a illustrative example how modelling with \gls{demo} can be more precise and shorter than creating model with \gls{bpmn}. 
 
@@ -121,8 +119,8 @@ All used elements in DEMO modelling are described in aspects models arranged as 
 
 \begin{quote}
 	\begin{description}
-		\item[Ontological transaction] involves actions that happen on the ontological level, as described by the Distinction axiom. Those involve bringing about the facts that did not exist before, making decisions, or transporting physical elements. Completion of a transaction, in a way that is described by the transaction axiom, results in a new original fact, called the P-fact.
-        \item[Actor role] There are two actor roles, the initiator and the executor. They play an important role in DEMO modelling, as each transaction needs to have exactly one initiator and one executor. On the implementation level, 1~person can (and often does) posses more actor roles.
+		\item[Ontological transaction] -- Involves actions that happen on the ontological level, as described by the Distinction axiom. Those involve bringing about the facts that did not exist before, making decisions, or transporting physical elements. Completion of a transaction, in a way that is described by the transaction axiom, results in a new original fact, called the P-fact.
+        \item[Actor role] -- There are two actor roles, the initiator and the executor. They play an important role in DEMO modelling, as each transaction needs to have exactly one initiator and one executor. On the implementation level, 1~person can (and often does) posses more actor roles.
 	\end{description}
 \end{quote}
 
@@ -170,13 +168,13 @@ An example of PSD is shown at \cref{fig:psd-example} which means exactly ``When 
     \caption{PSD example}
     \label{fig:psd-example}
 \end{figure}
-
+% -------------------------------------------------------------------------------
 \subsection{Advantage of DEMO Over BPMN}    
 \gls{bpm} notation is well defined, established and widely used. Many \gls{bpm} solutions exist around and of course, \gls{bpmn} is used ``under the hood''. These systems will be described later in \cref{ch:bpms}.
 
 One thing is absolutely clear, with enlarging business requirements, the business processes "grow up" too and so \gls{bpmn} diagrams. This can lead to very large and complex diagrams, which can be harder to read and understand. One of the advantages of DEMO is the fact, that same \gls{bpmn} diagram can be represented within DEMO notation. The result is reduced complexity with the same understanding as diagram within \gls{bpmn}. However, advantages of DEMO notation can be used not only within \gls{bpmn}. For example, students at subject MI-MEP (Modelling economic processes, translated) at \gls{ctu}\cite{ccmi-2018} transferred large Trump's flow chart\cite{quartz-trump-2017} (about highway building process) to DEMO OCD diagram. The flow chart that fills several pages, \gls{demo}'s \gls{ocd} fills only one page of size A4. 
 To summarize, DEMO can really help to better understand business processes without too much complexity of diagrams itself.
-
+% -------------------------------------------------------------------------------
 \section{Gantt chart}
 According to \cite{gantt-chart-2018}, Gantt chart was proposed in 1890 by Karol Adamiecki, but he did publish his work only in the Polish language. About the year 1910 American engineer, Henry Gantt, introduced his own version of this chart and this work became widely used and is still used by project managers. 
 Gantt chart serves as an overview of activities according to the time schedule. By simplicity, Gantt chart shows, what has to be done (an activity) and when.
