@@ -1,5 +1,3 @@
-\todo{Used technologies. Brief description of Xamarin, Signal R, .NET standard / .NET Core, XAML, ASP .NET Core.Screens, screens :)Good explanation how state of implementation is so "bad". Problems with Xamarin, SIgnalR, incompatibility. And heck, the whole implementation of Gantt chart...}
-
 To verify proposed approaches, the simple mobile application as proof-of-concept was implemented. To verification was chosen especially process instance visualisation.
 
 The given application offers:
@@ -88,18 +86,18 @@ For mobile-application was chosen Xamarin.Forms for this reasons:
 Xamarin.Forms offers many prepared controls for use, but for creation of process instance visualisation a custom control were created.  
 
 A many different approaches were tried. First one was to edit already exists controls, but it comes, that it is not suitable. Another approach was to find existing controls, which resulted to, that the requirements are too specific. Third option was to use some basic 2D engine for custom drawing and rendering. The third option seemed as best option to do, so it was chosen. 
-
+% ---------------------------------------------------------------------------------
 \subsection{SkiaSharp}
 SkiaSharp library \cite{skiasharp} provides a way how to quickly and easily do custom 2D drawing. It is used for process visualisation. Each \textit{transaction box} is custom control created with SkiaSharp's canvas -- a place-holder for custom drawings. Each \textit{transaction link} and events on timeline are also custom controls made with this library. 
-
+% ---------------------------------------------------------------------------------
 \subsection{SyncFusion Controls Library}
 SyncFusion Controls Library \todo{cite} adds many new controls to Xamarin.Forms. The Dashboard uses this library for its various types of charts. 
-
+% ---------------------------------------------------------------------------------
 \subsection{Simulation Cases}
 Main goal of proof-of-concept is to verify that proposed visualisation approach is usable. In real-world usage, many other systems and services must be developed. Also, there is not any ``real-world'' data source. So, the simulation approach was chosen. As base model was chosen Rent-A-Car company. Above that, a several simulation cases are prepared. 
-
+% ---------------------------------------------------------------------------------
 \section{Implementation Details}
-Only fundamental implementation decisions and circumstances are described. At the \cref{fig:impl-dependecies-graph} is shown ``high-level'' architecture of application. 
+Only fundamental implementation decisions and circumstances are described. At the \cref{fig:impl-dependecies-graph} is shown ``high-level'' architecture of application:
 
 \begin{figure}[ht!]
 \centering
@@ -117,6 +115,63 @@ Only fundamental implementation decisions and circumstances are described. At th
 \item{Mobile.Shared.UWP} -- A Xamarin.UWP (Universal Windows Platform) project. Same purpose as Mobile.Shared.Android.
 \item[Tests] -- Package contains several unit tests for Core.Business. 
 \end{description}
+% ---------------------------------------------------------------------------------
+\subsection{The Dashboard}
+As has been said, Dashboard uses several charts from SyncFusion library. Each chart is predefined and customized for better look. 
+% ---------------------------------------------------------------------------------
+\subsection{Simulation Casees}
+Each simulation cases is defined as XML file. Because creating and wirting testing data within XML is not so comfortable, the simple utility was implemented. The utility allows interactivetly define new simulation case.
 
+Each simulation case has three parts:
+\begin{itemize}
+\item First part defines \textit{Actors} -- the instnaces of \textit{Actor Roles}.
+\item Second part defines \textit{Process Instance} with \textit{Transaction Instaces}.
+\item Third part defines simulation \textit{chunks}. Each chunks store one or more \textit{Events}.
+\end{itemize}
 
+When simulation case runs, every ``step'' new chunk is loaded and all events from current chunk is returned to client. With this approach, it can simulate incoming data from some real data source.
 
+The utility allows to define chunks and events with interactive editor, where user can simply fill transaction id, event type, time creation and so on. 
+
+\begin{minted}[breaklines, breakaftersymbolpre= ]{xml}
+<?xml version="1.0" encoding="utf-8"?>
+<Simulation Name="Case02">
+  <Actors>
+    <Actor Id="1" ActorRoleId="1" FirstName="George" LastName="Lucas" />
+    <Actor Id="2" ActorRoleId="2" FirstName="George" LastName="Lucas" />
+    <Actor Id="3" ActorRoleId="3" FirstName="Bob" LastName="Freeman" />
+    <Actor Id="4" ActorRoleId="4" FirstName="Alice" LastName="Freeman" />
+  </Actors>
+  <ProcessInstance Id="1" KindId="1" StartTime="01-02-2018 15:34:23" ExpectedEndTime="01-02-2018 15:34:23">
+    <TransactionInstance Id="1" KindId="1" Identificator="T1" CompletionType="0" ProcessInstanceId="1" InitiatorId="0" ExecutorId="0" ParentId="0">
+      <TransactionInstance Id="2" KindId="2" Identificator="T2" CompletionType="0" ProcessInstanceId="1" InitiatorId="0" ExecutorId="0" ParentId="1" />
+    </TransactionInstance>
+    <TransactionInstance Id="3" KindId="3" Identificator="T3" CompletionType="0" ProcessInstanceId="1" InitiatorId="0" ExecutorId="0" ParentId="0">
+      <TransactionInstance Id="4" KindId="4" Identificator="T4" CompletionType="0" ProcessInstanceId="1" InitiatorId="0" ExecutorId="0" ParentId="3" />
+      <TransactionInstance Id="5" KindId="5" Identificator="T5" CompletionType="0" ProcessInstanceId="1" InitiatorId="0" ExecutorId="0" ParentId="3" />
+    </TransactionInstance>
+  </ProcessInstance>
+  <Chunks>
+    <Chunk>
+      <Event Type="0" TransactionId="1" TransactionKindId="1" RaisedById="1" Created="01-02-2018 09:00:00">
+        <CompletionChanged Completion="Requested" />
+      </Event>
+    </Chunk>
+    <Chunk>
+      <Event Type="0" TransactionId="1" TransactionKindId="1"  RaisedById="4" Created="01-02-2018 09:01:00">
+        <CompletionChanged Completion="Declined" />
+      </Event>
+    </Chunk>
+    <Chunk>
+      <Event Type="0" TransactionId="1" TransactionKindId="1"  RaisedById="1" Created="01-02-2018 09:01:10">
+        <CompletionChanged Completion="Quitted" />
+      </Event>
+    </Chunk>
+  </Chunks>
+</Simulation>
+\end{minted}
+% ---------------------------------------------------------------------------------
+\subsection{Transaction Box Control}
+The Transaction Box Control derives from 
+% ---------------------------------------------------------------------------------
+\section{Implementation Issues and Consequences}

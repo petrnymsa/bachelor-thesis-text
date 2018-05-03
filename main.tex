@@ -20,7 +20,7 @@
 \usepackage{cleveref}
 \usepackage{hyperref}
 \usepackage{afterpage}
-
+\usepackage{minted}
 
 % \usepackage{subfig}
 % % list of acronyms
@@ -134,14 +134,12 @@ Thesis is more theoretical, author is focused on propose various visualisation a
 
 \begin{figure}
 	\dirtree{%
-		.1 readme.txt\DTcomment{stručný popis obsahu CD}.
-		.1 exe\DTcomment{adresář se spustitelnou formou implementace}.
+		.1 readme.txt\DTcomment{Brief description of  CD content}.	
 		.1 src.
-		.2 impl\DTcomment{zdrojové kódy implementace}.
-		.2 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
-		.1 text\DTcomment{text práce}.
-		.2 thesis.pdf\DTcomment{text práce ve formátu PDF}.
-		.2 thesis.ps\DTcomment{text práce ve formátu PS}.
+		.2 impl\DTcomment{implementation source code}.
+		.2 thesis\DTcomment{\LaTeX{} source code of text}.
+		.1 text.
+		.2 thesis.pdf\DTcomment{Thesis text in PDF form}.
 	}
 \end{figure}
 
