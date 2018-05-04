@@ -1,9 +1,10 @@
 In this chapter state of BPM solutions is described. Two concrete solutions are examined closer. Role of DEMO within BPM systems is explained. 
+% --------------------------------------------------------------------------------------
 \section{State of BPM Solutions}
 \begin{figure}[ht!]
 	\centering
     \includegraphics[width=0.6\textwidth, keepaspectratio]{img/gartner-magic-quadrant.png}
-    \caption{Gartner Magic Quadrant\cite{gartner-2017} }
+    \caption{Gartner Magic Quadrant \cite{gartner-2017} }
     \label{fig:gartner-magic-quadrant}
 \end{figure}
 
@@ -11,18 +12,18 @@ Nowadays \gls{bpm} software supports all stages of \gls{bpm} life-cycle (design,
 
 The result is typically web based application which employees can use to do their jobs without knowing that there are some defined processes and layer of some BPM software. 
 
-According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used systems are \textit{Appian}, \textit{Pegasystems}, \textit{IBM} and many more as shown at~\cref{fig:gartner-magic-quadrant}.
+According to \textit{Gartner Magic Quadrant}~\cite{gartner-2017}, the most used systems are \textit{Appian}, \textit{Pegasystems}, \textit{IBM} and many more as shown at~\cref{fig:gartner-magic-quadrant}.
 % -------------------------------------------------------------------------------
  \subsection{Closer Look at Process Maker}
  
- \textit{ProcessMaker} (\href{https://www.processmaker.com/}{https://www.processmaker.com/}) is web-based \gls{bpm} solution which allows to build, run, monitor and optimize business processes. Building of processes is done via \gls{bpmn}. Inside designer users can define data sources (variables) which will be used later within running processes. 
+ \textit{ProcessMaker} \cite{processmaker} is web-based \gls{bpm} solution which allows to build, run, monitor and optimize business processes. Building of processes is done via \gls{bpmn}. Inside designer users can define data sources (variables) which will be used later within running processes. 
  
 \begin{figure}[ht!]
     \centering
     \subfloat{{\includegraphics[width=10cm, keepaspectratio]{img/process-maker-dashboard.PNG} }}%
     \qquad
     \subfloat{{\includegraphics[width=10cm, keepaspectratio]{img/process-maker-employee-kpi.PNG} }}%
-    \caption{ProcessMaker dashboard and KPI examples\todo{cite}}%
+    \caption{ProcessMaker dashboard and KPI examples \cite{processmaker}}%
     \label{fig:process-maker-dashboard}%
 \end{figure}
 
@@ -34,16 +35,16 @@ According to \textit{Gartner Magic Quadrant}\cite{gartner-2017}, the most used s
  \begin{figure}[ht!]
 	\centering
     \includegraphics[width=10cm, keepaspectratio]{img/process-maker-map.PNG}
-    \caption{ProcessMaker process map\todo{cite}}
+    \caption{ProcessMaker process map \cite{processmaker}}
     \label{fig:process-maker-process-map}
 \end{figure} 
  
  From end-user view, \textit{ProcessMaker} (as many others \gls{bpms}) behaves as web-based application, which allows to do his job via predefined \textit{DynaForms}. ProcessMaker moreover offers process map, which is graphical visualisation of running process. Process map is in \gls{bpmn} and each activity element has different colour to indicate its state (\cref{fig:process-maker-process-map}).
  % -------------------------------------------------------------------------------
 \subsection{Process Simulation and Analysis}
-Another tool, \textit{Bizagi Modeler} (\href{https://www.bizagi.com/uk/products/bpm-suite/modeler}{https://www.bizagi.com/uk/products/bpm-suite/modeler}), offers modelling processes with \gls{bpmn} and run simulations on top of them.
+Another tool, \textit{Bizagi Modeler}~\cite{bizagi-modeler-overview}, offers modelling processes with \gls{bpmn} and run simulations on top of them.
 
-\textit{Bizagi Modeler} for simulations defines scenarios. Each scenario has many attributes, but mainly:
+For simulations \textit{Bizagi Modeler} defines scenarios. Each scenario has many attributes, but mainly:
 \begin{description}
     \item[Resources] -- Resource is some entity (e.g. customer, employee role, equipment) which is used to define how each task of the process use these resources (e.g. task verification uses resource ``Inspection agent'').
     \item[Time consumption] -- For each task users can define how much time is consumed to complete. Consumption can be defined as simple (constant) number or with the probability distribution.
@@ -62,7 +63,7 @@ For gateways (element from \gls{bpmn}) users can define probability next flow (e
     \subfloat{{\includegraphics[width=10cm, keepaspectratio]{img/bizagi-process-simulation.png} }}%
     \qquad
     \subfloat{{\includegraphics[width=10cm, keepaspectratio]{img/bizagi-simulation-results.png} }}%
-    \caption{\textit{Bizagi Modeler} Resource analysis example\cite{bizagi-2018}}%
+    \caption{\textit{Bizagi Modeler} Resource analysis example \cite{bizagi-user-guide}}%
     \label{fig:bizagi-example}%
 \end{figure}
 % -------------------------------------------------------------------------------
@@ -72,7 +73,7 @@ The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Bus
 \begin{figure}[ht!]
 	\centering
     \includegraphics[width=12cm]{img/tibco-bpm-architecture.png}
-    \caption{BPMS Architecture\cite{tibco-bpm-2016}}
+    \caption{BPMS Architecture \cite{tibco-bpm-2016}}
     \label{fig:bpms-architecture}
 \end{figure}
 % -------------------------------------------------------------------------------
@@ -84,10 +85,8 @@ The thesis focuses on ``Business Intelligence'', in other words on the fourth st
 \item Reduced complexity –- there is only and only one way how to describe an enterprise within DEMO.
 \end{enumerate}
 
-The first stage of \gls{bpm} life-cycle (design) within \gls{demo} is well described by Dietz\cite{dietz-essence-2015}\cite{dietz-enterprise-2006}. However next stages of \gls{bpm} life-cycle are only theories ``on paper'' and they are not stated to practice. For example, \textit{M. Skotnica}\cite{diploma-skotnica-2016} with his thesis focused on first three stages and introduced an approach of \gls{bpms} based on \gls{demo}. But the next stages are not examined yet.
+The first stage of \gls{bpm} life-cycle (design) within \gls{demo} is well described by Dietz~\cite{dietz-essence-2015}~\cite{dietz-enterprise-2006}. However next stages of \gls{bpm} life-cycle are only theories ``on paper'' and they are not stated to practice. For example, \textit{M. Skotnica}~\cite{diploma-skotnica-2016} with his thesis focused on first three stages and introduced an approach of \gls{bpms} based on \gls{demo}. But the next stages are not examined yet.
 
 This thesis focuses on fourth stage (the monitoring) and the premise is that underlying \gls{bpm} solutions are not necessary based on \gls{demo}. The goal is to aggregate data from any enterprise solution, connect them with modelled enterprise within \gls{demo} methodology and display them to the user. The main difference is with the feature of process visualisation itself. Systems based on \gls{bpmn} visualise processes within \gls{bpmn} which, as was told, can be more complex, inconsistent and not so clear as approach with \gls{demo}. 
 
 In this chapter, firstly more details about \gls{bpms} were provided. On the two concrete solutions available were taken the core concepts of process modelling and their visualisations. The role of \gls{demo} within \gls{bpms} and Business Intelligence was explained. In the next chapter, the proposed approach itself is introduced and described.
-
-

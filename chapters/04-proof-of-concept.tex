@@ -10,7 +10,7 @@ In this chapter, firstly the used technologies are introduced. Then the brief ar
 % ---------------------------------------------------------------------------------
 \section{.NET Platform}
 
-For implementation is used .NET platform and programming language C\#. The .NET is free, open-source and cross-platform framework for building many different types of applications \cite{what-is-dotnet}. There is a lot of frameworks within platform, such as WPF for building native desktop applications for Windows or ASP .NET framework for building websites and server-side applications. Also there is cross-platform Xamarin framework for building mobile applications. These all frameworks were used to implement proof-of-concept. 
+For implementation is used .NET platform and programming language C\#. The .NET is free, open-source and cross-platform framework for building many different types of applications~\cite{what-is-dotnet}. There is a lot of frameworks within platform, such as WPF for building native desktop applications for Windows or ASP .NET framework for building websites and server-side applications. Also there is cross-platform Xamarin framework for building mobile applications. These all frameworks were used to implement proof-of-concept. 
 % ---------------------------------------------------------------------------------
 \subsection{.NET Standard}
 \begin{figure}[ht!]
@@ -22,7 +22,7 @@ For implementation is used .NET platform and programming language C\#. The .NET 
 
 Earlier years within .NET platform was problem with many different implementations of .NET itself. There was the ``original'' (full) .NET. Then a newer, open-source and cross-platform version .NET Core and third was Xamarin. Each platform have different base libraries and if developers wanted to share code between these platforms, there was a lot of work to do. 
 
-The new approach was introduced \cite{introducing-dotnet-standard}, the .NET Standard -- the unified platform which defines set of APIs that each .NET subset platform must implement. This allows to developers easily share code and write libraries that can be used anywhere. The great graphical summarization is shown at \cref{fig:dotnet-overview}. Actual version is .NET Standard 2.0. The newer version 2.1 will be introduced within Q2 2018. 
+The new approach was introduced~\cite{introducing-dotnet-standard}, the .NET Standard -- the unified platform which defines set of APIs that each .NET subset platform must implement. This allows to developers easily share code and write libraries that can be used anywhere. The great graphical summarization is shown at \cref{fig:dotnet-overview}. Actual version is .NET Standard 2.0. The newer version 2.1 will be introduced within Q2 2018. 
 % ---------------------------------------------------------------------------------
 \subsection{.NET Core}
 The .NET Core is open-source, cross-platform version of .NET Framework. It is new and highly frequently updated framework which becomes very popular. It has many ``ports'' of frameworks from full .NET such as ASP .NET or Entity Framework -- an Object-Relationship-Mapping tool for databases. 
@@ -30,7 +30,7 @@ The .NET Core is open-source, cross-platform version of .NET Framework. It is ne
 \section{Xamarin}
 Xamarin is platform for developing native mobile applications in cross-platform way. Developers use C\# language and .NET Standard to implement mobile application. When the application is being build, the code is compiled to native platform code. 
 
-Following summarization is taken from \cite{xamarin-understand-platform}:
+Following summarization is taken from~\cite{xamarin-understand-platform}:
 \begin{itemize}
 \item On iOS, C\# is ahead-of-time (AOT) compiled to ARM assembly language. The .NET framework is included, with unused classes being stripped out during linking to reduce the application size. Apple does not allow runtime code generation on iOS, so some language features are not available.
 \item On Android, C\# is compiled to IL and packaged with MonoVM. Unused classes in the framework are stripped out during linking. The application runs side-by-side with Android runtime.
@@ -69,7 +69,7 @@ Within ASP .NET Core a web application was created and library SignalR was chose
 \caption{How SignalR works \cite{signal-r-overview}}
 \label{fig:signal-r-overview}
 \end{figure}
-According to \cite{signal-r-overview} SignalR is: ``a library for ASP .NET which offers adding real-time web functionality to applications. Real-time web functionality is the ability to have server code push content to connected clients instantly as it becomes available, rather than having the server wait for a client to request new data''. SignalR handles ``many things'' for developers automatically, such as connection management or choosing transporting types. SignalR firstly try to use WebSocket and if it fails, automatically fall back to older transports.
+According to~\cite{signal-r-overview} SignalR is: ``a library for ASP .NET which offers adding real-time web functionality to applications. Real-time web functionality is the ability to have server code push content to connected clients instantly as it becomes available, rather than having the server wait for a client to request new data''. SignalR handles ``many things'' for developers automatically, such as connection management or choosing transporting types. SignalR firstly try to use WebSocket and if it fails, automatically fall back to older transports.
 
 On the server, developer defines a \textit{Hub}. Hub defines contract which clients will use and communicate through. On the client-side, developers creates \textit{Hub Proxy} -- connection to specific \textit{Hub}. An example how it works is shown at \cref{fig:signal-r-overview}.
 % ---------------------------------------------------------------------------------
@@ -88,10 +88,10 @@ Xamarin.Forms offers many prepared controls for use, but for creation of process
 A many different approaches were tried. First one was to edit already exists controls, but it comes, that it is not suitable. Another approach was to find existing controls, which resulted to, that the requirements are too specific. Third option was to use some basic 2D engine for custom drawing and rendering. The third option seemed as best option to do, so it was chosen. 
 % ---------------------------------------------------------------------------------
 \subsection{SkiaSharp}
-SkiaSharp library \cite{skiasharp} provides a way how to quickly and easily do custom 2D drawing. It is used for process visualisation. Each \textit{transaction box} is custom control created with SkiaSharp's canvas -- a place-holder for custom drawings. Each \textit{transaction link} and events on timeline are also custom controls made with this library. 
+SkiaSharp library~\cite{skiasharp} provides a way how to quickly and easily do custom 2D drawing. It is used for process visualisation. Each \textit{transaction box} is custom control created with SkiaSharp's canvas -- a place-holder for custom drawings. Each \textit{transaction link} and events on timeline are also custom controls made with this library. 
 % ---------------------------------------------------------------------------------
-\subsection{SyncFusion Controls Library}
-SyncFusion Controls Library \cite{syncfusion} adds many new controls to Xamarin.Forms. The Dashboard uses this library for its various types of charts. 
+\subsection{Syncfusion Controls Library}
+Syncfusion Controls Library~\cite{syncfusion} adds many new controls to Xamarin.Forms. The Dashboard uses this library for its various types of charts. 
 % ---------------------------------------------------------------------------------
 \subsection{Simulation Cases}
 Main goal of proof-of-concept is to verify that proposed visualisation approach is usable. In real-world usage, many other systems and services must be developed. Also, there is not any ``real-world'' data source. So, the simulation approach was chosen. As base model was chosen Rent-A-Car company. Above that, a several simulation cases are prepared. 
@@ -117,7 +117,7 @@ Only fundamental implementation decisions and circumstances are described. At th
 \end{description}
 % ---------------------------------------------------------------------------------
 \subsection{The Dashboard}
-As has been said, Dashboard uses several charts from SyncFusion library. Each chart is predefined and customized for better look. 
+As has been said, Dashboard uses several charts from Syncfusion library. Each chart is predefined and customized for better look. 
 % ---------------------------------------------------------------------------------
 \subsection{Simulation Cases}
 Each simulation cases is defined as XML file. Because creating and writing testing data within XML is not so comfortable, the simple utility was implemented. The utility allows interactively define new simulation case.

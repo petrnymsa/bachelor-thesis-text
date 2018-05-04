@@ -6,7 +6,7 @@ The main goal of this thesis is to propose an approach which will be able to cre
     \end{enumerate}
 % -----------------------------------------------------------------------
 \section{Business Data Aggregation}
-Each enterprise system collects precious data within the business. These data are important in many ways. One is for business analysts. The analyst can with these collected data analyse processes and optimize them. Although every enterprise solution has differently defined structure of these data and every \gls{bpms} has a different approach how it works with them, the core concept of how data can be described remains the same. 
+Each enterprise system collects precious data within the business. These data are important in many ways. One is for business analysts. The analyst can analyse processes and optimize them with these collected data. Although every enterprise solution has differently defined structure of these data and every \gls{bpms} has a different approach how it works with them, the core concept of how data can be described remains the same. 
 Within \gls{bpms} there are elements which can be transformed always to the \gls{demo} concepts.
 \begin{itemize}
 \item There are always some kind of \textit{Actor roles} and concrete \textit{Actors}. Commonly \gls{bpms} defines \textit{Actor roles} as ``roles'' and \textit{Actors} defines as ``users''.
@@ -68,7 +68,7 @@ The brief explanation of each entity from domain model:
 \subsection{A Time Estimate Computation}
 Each \textit{Transaction Kind} has three time attributes -- \textit{Optimistic}, \textit{Normal}, \textit{Pessimistic} time estimate. Each one indicates how quickly given task could be completed. These attributes are set manually and it is an important decision which values are given. From this three attributes, the resulting one is computed.  
 
-Computation is done through technique \textit{Three Point Estimation} \cite{beta-distribution}. 
+Computation is done through technique \textit{Three Point Estimation}~\cite{beta-distribution}. 
 The manager can take a simple average of this three attributes, however, the weighted average is more precise.
 The following formula comes from \textit{Beta distribution} also known as \textit{PERT}:
 
