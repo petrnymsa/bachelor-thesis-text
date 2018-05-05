@@ -1,4 +1,4 @@
-To verify proposed approaches, the simple mobile application as proof-of-concept was implemented. To verification was chosen especially process instance visualisation.
+To verify proposed approaches, the mobile application as proof-of-concept was implemented. For verification was chosen especially process instance visualisation.
 
 The given application offers:
 \begin{enumerate}
@@ -6,7 +6,7 @@ The given application offers:
 \item Concept of dashboard
 \end{enumerate}
 
-In this chapter, firstly the used technologies are introduced. Then the brief architecture of mobile application and implementation itself are explained. In the end, the
+Frstly the used technologies are introduced. Then the brief architecture of mobile application and implementation itself are explained. In the end, the issues with implementation are described. 
 % ---------------------------------------------------------------------------------
 \section{.NET Platform}
 
@@ -22,7 +22,7 @@ For implementation is used .NET platform and programming language C\#. The .NET 
 
 Earlier years within .NET platform was problem with many different implementations of .NET itself. There was the ``original'' (full) .NET. Then a newer, open-source and cross-platform version .NET Core and third was Xamarin. Each platform have different base libraries and if developers wanted to share code between these platforms, there was a lot of work to do. 
 
-The new approach was introduced~\cite{introducing-dotnet-standard}, the .NET Standard -- the unified platform which defines set of APIs that each .NET subset platform must implement. This allows to developers easily share code and write libraries that can be used anywhere. The great graphical summarization is shown at \cref{fig:dotnet-overview}. Actual version is .NET Standard 2.0. The newer version 2.1 will be introduced within Q2 2018. 
+The new approach was introduced~\cite{introducing-dotnet-standard}. The .NET Standard is the unified platform which defines set of APIs that each .NET subset platform must implement. This allows to developers easily share code and write libraries that can be used anywhere. The great graphical summarization is shown at \cref{fig:dotnet-overview}. Actual version is .NET Standard 2.0. The newer version 2.1 will be introduced within Q2 2018. 
 % ---------------------------------------------------------------------------------
 \subsection{.NET Core}
 The .NET Core is open-source, cross-platform version of .NET Framework. It is new and highly frequently updated framework which becomes very popular. It has many ``ports'' of frameworks from full .NET such as ASP .NET or Entity Framework -- an Object-Relationship-Mapping tool for databases. 
@@ -53,14 +53,14 @@ Within Xamarin there are two main approaches how to build applications (see \cre
 \label{fig:xamarin-ui-renderer}
 \end{figure}
 
-Second one is called Xamarin.Forms, which is build on top of first one and allows to define user interfaces in cross-platform way. Developers use XAML, the declaration language similar to XML to define user interface. When application is being build, defined controls are transformed to native controls. This transformation is done through concept called ``Control renderer''. Within shared library, an interface for control is defined. On each platform is implemented render which transforms given control to native one. An example is shown at \cref{fig:xamarin-ui-renderer}.
+Second one is called Xamarin.Forms, which is build on top of first one and allows to define user interfaces in cross-platform way. Developers use XAML, the declaration language similar to XML to define user interface. When application is being build, defined controls are transformed to native controls. This transformation is done through concept called ``Control renderer''. Within shared library, an interface for control is defined. On each platform is implemented renderer which transforms given control to native one. An example is shown at \cref{fig:xamarin-ui-renderer}.
 % ---------------------------------------------------------------------------------
 \section{Another Used Technologies}
 The implementation is divided to two parts. First one is mobile application and second one is server-side, the concept of \textit{Data Aggregation Service}. 
 
 For server-side implementation was chosen ASP .NET Core -- a newer version of ASP .NET, framework for creating server applications  (services, REST API, \dots) and websites.
 
-Within ASP .NET Core a web application was created and library SignalR was chosen.
+Within ASP .NET Core a web application was created and library SignalR was chosen for real-time communication between clients and server.
 % ---------------------------------------------------------------------------------
 \subsection{SignalR}
 \begin{figure}[ht!]
@@ -71,7 +71,7 @@ Within ASP .NET Core a web application was created and library SignalR was chose
 \end{figure}
 According to~\cite{signal-r-overview} SignalR is: ``a library for ASP .NET which offers adding real-time web functionality to applications. Real-time web functionality is the ability to have server code push content to connected clients instantly as it becomes available, rather than having the server wait for a client to request new data''. SignalR handles ``many things'' for developers automatically, such as connection management or choosing transporting types. SignalR firstly try to use WebSocket and if it fails, automatically fall back to older transports.
 
-On the server, developer defines a \textit{Hub}. Hub defines contract which clients will use and communicate through. On the client-side, developers creates \textit{Hub Proxy} -- connection to specific \textit{Hub}. An example how it works is shown at \cref{fig:signal-r-overview}.
+On the server, developer defines a \textit{Hub}. \textit{Hub} defines contract which clients will use and communicate through. On the client-side, developers creates \textit{Hub Proxy} -- connection to specific \textit{Hub}. An example how it works is shown at \cref{fig:signal-r-overview}.
 % ---------------------------------------------------------------------------------
 \section{Implementation Decisions}
 For implementation were chosen a quite new and interesting technologies and combinations of them.
@@ -83,18 +83,18 @@ For mobile-application was chosen Xamarin.Forms for this reasons:
 \item Xamarin.Forms are more faster for developing with cross-platform way -- the user interface is written once.
 \end{itemize}
 
-Xamarin.Forms offers many prepared controls for use, but for creation of process instance visualisation a custom control were created.  
+Xamarin.Forms offers many prepared controls for use, but for creation of process instance visualisation a custom controls were created.  
 
-A many different approaches were tried. First one was to edit already exists controls, but it comes, that it is not suitable. Another approach was to find existing controls, which resulted to, that the requirements are too specific. Third option was to use some basic 2D engine for custom drawing and rendering. The third option seemed as best option to do, so it was chosen. 
+A many different approaches were tried. First one was edit already existing controls, but it was found, that it is not suitable. Another approach was to find existing controls, which resulted to, that the requirements are too specific and required controls do not exists. Third option was to use some basic 2D engine for custom drawing and rendering. The third option seemed as best option to do, so it was chosen. 
 % ---------------------------------------------------------------------------------
 \subsection{SkiaSharp}
-SkiaSharp library~\cite{skiasharp} provides a way how to quickly and easily do custom 2D drawing. It is used for process visualisation. Each \textit{transaction box} is custom control created with SkiaSharp's canvas -- a place-holder for custom drawings. Each \textit{transaction link} and events on timeline are also custom controls made with this library. 
+SkiaSharp library~\cite{skiasharp} provides a way how to quickly and easily do custom 2D drawing. It is used for process visualisation. Each \textit{transaction box} is custom control created with SkiaSharp's canvas -- a place-holder for custom drawings. Each \textit{transaction link} is also custom controls made with this library. 
 % ---------------------------------------------------------------------------------
 \subsection{Syncfusion Controls Library}
 Syncfusion Controls Library~\cite{syncfusion} adds many new controls to Xamarin.Forms. The Dashboard uses this library for its various types of charts. 
 % ---------------------------------------------------------------------------------
 \subsection{Simulation Cases}
-Main goal of proof-of-concept is to verify that proposed visualisation approach is usable. In real-world usage, many other systems and services must be developed. Also, there is not any ``real-world'' data source. So, the simulation approach was chosen. As base model was chosen Rent-A-Car company. Above that, a several simulation cases are prepared. 
+Main goal of proof-of-concept is to verify that proposed visualisation approach is usable. In real-world usage, many other systems and services must be developed. Also there is not any ``real-world'' data source. For this reason, the simulation approach was chosen. As base model is chosen Rent-A-Car company. From RAC model several simulation cases are preapred.
 % ---------------------------------------------------------------------------------
 \section{Implementation Details}
 Only fundamental implementation decisions and circumstances are described. At the \cref{fig:impl-dependecies-graph} is shown ``high-level'' architecture of application:
@@ -110,7 +110,7 @@ Only fundamental implementation decisions and circumstances are described. At th
 \item[Core.Business] -- The \textit{Data Domain Model} is placed here, because mobile and server applications use it. Also classes for simulations and XML parsers are there.
 \item[Server] -- The simple ASP .NET Core with SignalR application for serving a simulation data.
 \item[Mobile.Shared] -- A shared part of Xamarin application. All business logic and user interface are implemented here.
-\item[Mobile.Shared.Android] -- A Xamarin.Android project. There are Android specific implementations and initialization for Xamarin.Forms on Android. Also all the graphic assets (logo, icons, \dots) are placed within this project.
+\item[Mobile.Shared.Android] -- A Xamarin.Android project. There are Android specific implementations and initialization for Xamarin.Forms. Also all the graphic assets (logo, icons, \dots) are placed in this project.
 \item[Mobile.Shared.iOS] -- A Xamarin.iOS project. Same purpose as Mobile.Shared.Android.
 \item{Mobile.Shared.UWP} -- A Xamarin.UWP (Universal Windows Platform) project. Same purpose as Mobile.Shared.Android.
 \item[Tests] -- Package contains several unit tests for Core.Business. 
@@ -129,9 +129,9 @@ Each simulation case has three parts:
 \item Third part defines simulation \textit{chunks}. Each chunks store one or more \textit{Events}.
 \end{itemize}
 
-When simulation case runs, every ``step'' new chunk is loaded and all events from current chunk is returned to client. With this approach, it can simulate incoming data from some real data source.
+When simulation case runs, every ``simulation step'' new chunk is loaded and all events from chunk are returned to client. With this approach, it can simulate incoming data from real data source.
 
-The utility allows to define chunks and events with interactive editor, where user can simply fill transaction id, event type, time creation and so on. An example of simulation case:
+The utility allows to define chunks and events with interactive editor, where user can simply fill transaction id, event type, time creation and type of C-Act. An example of simulation case:
 
 \begin{minted}[breaklines, breakaftersymbolpre= ]{xml}
 <?xml version="1.0" encoding="utf-8"?>
@@ -182,26 +182,26 @@ The process instance visualisation is done as follows:
 A note about the Transaction Box Control. It derives from \mintinline{C}{SKCanvasView}, which comes from SkiaSharp. The class provides method \mintinline{C}{OnPaintSurface} which is called every time when the graphics must be refreshed. An argument \mintinline{C}{SKPaintSurfaceEventArgs} provides \mintinline{C}{SKCanvas} which contains methods for basic 2D drawing. 
 % ---------------------------------------------------------------------------------
 \section{Implementation Issues and Consequences}
-The implementation uses .NET Standard 2.0. This version is recommended for creation of new Xamarin applications. But many used libraries, such as SkiaSharp (which is originally written as PCL) are ported to work within .NET Standard.
+The implementation uses .NET Standard 2.0. This version is recommended for new Xamarin applications. But many used libraries, such as SkiaSharp (which is originally written as PCL) are ported to work within .NET Standard.
 
 During implementation many issues occurred, especially with Xamarin and SignalR library.
 % ---------------------------------------------------------------------------------
 \subsection{Xamarin.Forms Issues}
-As has been said there are two main approaches how to develop with Xamarin platform. For implementation was chosen Xamarin.Forms. During implementation many issues with compatibility, run-time errors a bugs occurred. 
+As has been said there are two main approaches how to develop with Xamarin platform. For implementation was chosen Xamarin.Forms. During implementation many issues with compatibility, run-time errors and bugs occurred. 
 
-Although Xamarin platform is not new and by authors well used, there are still many issues, which make development very hard, sometimes nearly impossible. There are few common issues. For example:
+Although Xamarin platform is not new and it is well used, there are still many issues, which make development very hard, sometimes nearly impossible. There are few common issues. For example:
 \begin{itemize}
-\item Sometimes shared code still behaved differently on each platforms. For example, simple selecting item within ListView control (a list of items which is scrollable). On UWP platform, the ListView selected internally always different item then was really selected. 
+\item Sometimes shared code behaves differently on each platforms. For example, simple selecting item within ListView control (a list of items which is scrollable). On UWP platform, the ListView selected different item than the real one. 
 \item Debugging application hangs with unknown errors.
 \item Many issues with compiling XAML and ``fake'' error messages. 
 \end{itemize}
 
 Fortunately, this issues are addressed and they are in repairing process. These issues led to, that only Android platform is tested. UWP platform was during development omitted due to incompatibility with current version. The iOS platform was omitted at the beginning, because development for this platform requires device with macOS. 
 
-In the end, result is that Xamarin.Native is better approach. Xamarin.Forms are really great for form-based applications, but if developers want something really specific, it is better to define user interfaces within each platform separately. 
+In the end, result is that Xamarin.Native could be a better approach. Xamarin.Forms are really great for form-based applications, but if developers want something really specific, it is better to define user interfaces within each platform separately. 
 % ---------------------------------------------------------------------------------
 \subsection{SignalR Core Issues}
-The SignalR for now is in the development process. Although it is supported within .NET Standard 2.0 during development was find out, that there are incompatibility issues between SignalR Core, .NET Standard 2.0 and Xamarin platform. Again this issues are now reported and they will be repaired with version 2.1 which will come out in Q2 2018.
+The SignalR for now is in the development process. Although it is supported with .NET Standard 2.0 during development was find out, that there are incompatibility issues between SignalR Core, .NET Standard 2.0 and Xamarin platform. Again this issue is reported and it will be repaired with version 2.1 which will come out in Q2 2018.
 
 This issue led to two things:
 \begin{enumerate}
@@ -210,7 +210,7 @@ This issue led to two things:
 \end{enumerate}
 % ---------------------------------------------------------------------------------
 \section{The Result}
-The goal of implementation was successfully completed, despite the described issues. The process visualisation is implemented and proofed with prepared simulation cases. The mobile application is implemented as ``Mobile Service for Rent-A-Car  company''. On the following figures is shown result. 
+The goal of implementation was successfully completed, despite the described issues. The process visualisation is implemented and proofed with prepared simulation cases. The mobile application is implemented as ``Mobile Service for Rent-A-Car  company''. Following figures show the result. 
 
 
 \begin{figure}[ht!]

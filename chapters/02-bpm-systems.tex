@@ -1,4 +1,4 @@
-In this chapter state of BPM solutions is described. Two concrete solutions are examined closer. Role of DEMO within BPM systems is explained. 
+The state of BPM solutions is described in this chapter. Two concrete solutions are examined closer. Role of DEMO within BPM systems is explained. 
 % --------------------------------------------------------------------------------------
 \section{State of BPM Solutions}
 \begin{figure}[ht!]
@@ -8,7 +8,7 @@ In this chapter state of BPM solutions is described. Two concrete solutions are 
     \label{fig:gartner-magic-quadrant}
 \end{figure}
 
-Nowadays \gls{bpm} software supports all stages of \gls{bpm} life-cycle (design, modelling, execution, monitoring and optimization). These systems also offer real-time collaboration, integration with cloud and mobile devices. Many systems also integrate artificial intelligence - for predictive analysis or some automatic decisions. \gls{bpm} software allows to create highly productive application, where is no need to manual implementation of business rules. \gls{bpms} includes defining processes, data models and also user interfaces. Also highly customized monitoring stage is included, which means users can customize \gls{kpi} metrics, appearance of dashboard and so on. On top of that functions, some solutions have ability to display (visualise) current running processes.  
+Nowadays \gls{bpm} software supports all stages of \gls{bpm} life-cycle (design, modelling, execution, monitoring and optimization). These systems also offer real-time collaboration, integration with cloud and mobile devices. Many systems also integrate artificial intelligence -- for predictive analysis or automatic decisions. \gls{bpm} software allows to create highly productive applications, where is no need to manual implementation of business rules. \gls{bpms} includes defining processes, data models and also user interfaces. Also highly customized monitoring stage is included, which means users can customize \gls{kpi} metrics, appearance of dashboard and so on. On top of that functions, almost every solution has ability to display (visualise) current running processes.  
 
 The result is typically web based application which employees can use to do their jobs without knowing that there are some defined processes and layer of some BPM software. 
 
@@ -27,8 +27,8 @@ According to \textit{Gartner Magic Quadrant}~\cite{gartner-2017}, the most used 
     \label{fig:process-maker-dashboard}%
 \end{figure}
 
- After process is designed and variables defined, next step is to define user interface, called DynaForms. End users interact mainly with \textit{DynaForms}, where they fill appropriate pieces of data. 
- Inside designer of \textit{DynaForms}, user connects data fields with variables from defined processes. Also user can define input or output documents for processes or define events (called triggers) what will happen when some kind of event occurred.
+ When process is designed and variables defined, next step is to define user interface, called \textit{DynaForms}. End users interact mainly with \textit{DynaForms}, where they fill appropriate pieces of data. 
+ Inside designer of \textit{DynaForms}, user connects data fields with variables from defined processes. The user can also define input or output documents for processes or define events (called triggers) what will happen when some kind of event occurred.
  
  When processes are defined and \textit{DynaForms} created, processes can be deployed. After deploy, \gls{kpi}s and dashboards can be managed. \textit{ProcessMaker} offers creating custom metrics, which will be precise to business requirements and customizing of dashboards. Many graphs are interactive, which can display more detailed information. An example is shown at \cref{fig:process-maker-dashboard}.
  
@@ -51,11 +51,11 @@ For simulations \textit{Bizagi Modeler} defines scenarios. Each scenario has man
     \item[Cost] -- Users can define for tasks how much execution cost (in a financial way).    
 \end{description}
 
-For gateways (element from \gls{bpmn}) users can define probability next flow (e.g. probability for ``yes'' than ``no''). \textit{Bizagi Modeler} has different levels of simulations.
+For gateways (element from \gls{bpmn}) users can define probability of the next flow (e.g. probability for ``yes'' than ``no''). \textit{Bizagi Modeler} has different levels of simulations.
     \begin{description}
-        \item[Process validation] -- User defines a duration of simulation and amount of generated instances (number of requests). Gateways are also configurable. After simulation ends, the result with summarization is displayed and the user can check if process behaves as expected. For example, if the number of requests is equal to the number of completed instances. This could occur if there are issues with synchronization with parallel gateways.
-        \item[Throughput time analysis] -- Focuses only on time measurement and resources are not included. The user defines consumption for requests (interval time between two instances can be generated) and also for every task (how much time task gets to complete). Analysis counts total completed tasks and also average time and total time spent on each task. For example, it is useful for predictions, e.g. ``how long customer will wait until his request is completed''.
-        \item[Resource analysis] -- Users can define resources and how much resource costs (fixed or cost per hour). Each task has defined which resources need and how much to execute. Also, the cost of each task and time consumption are included. This analysis is more complex and serves as the real-world simulation to achieve better results, which can help to optimize processes. A simulation results example is shown at \cref{fig:bizagi-example}.
+        \item[Process validation] -- User defines a duration of simulation and amount of generated instances (number of requests). Gateways are also configurable. After simulation ends, the result with summarization is displayed and the user can check if process behaves as expected. For example, if the number of requests is equal to the number of completed instances. This could occur if there are issues with synchronization at parallel gateways.
+        \item[Throughput time analysis] -- Focuses only on the time measurement and the resources are not included. The user defines consumption for requests (interval time between two instances can be generated) and also for every task (how much time task gets to complete). Analysis counts total completed tasks and also average time and total time spent on each task. For example, it is useful for predictions, e.g. ``how long customer will wait until his request is completed''.
+        \item[Resource analysis] -- Users can define resources and how much resource costs (fixed or cost per hour). Each task has defined which resources needs and how much to execute. Also, the cost of each task and time consumption are included. This analysis is more complex and serves as the real-world simulation to achieve better results, which can help to optimize processes. A simulation results example is shown at \cref{fig:bizagi-example}.
     \end{description}
 
 \begin{figure}[ht!]
@@ -68,7 +68,7 @@ For gateways (element from \gls{bpmn}) users can define probability next flow (e
 \end{figure}
 % -------------------------------------------------------------------------------
 \section{BPMS Architecture}
-The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Business analysts and process developers design process models and deploy them within \gls{bpms} solution. Users (process participants) has access to unified user interface which is connected with all layers of \gls{bpms}. On the right side of overview, the \textit{monitoring} stage of \gls{bpm} stage is included. Users has access to highly precious collected data through graphical views. They can more easily determine what happens and decide what next steps could be to make their business even better. 
+The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Business analysts and process developers design process models and deploy them within \gls{bpms} solution. Users (process participants) has access to unified user interface which is connected with all layers of \gls{bpms}. On the right side of overview, the BPM \textit{monitoring} stage is included. Users has access to highly precious collected data through graphical views. They can more easily determine what happens and decide what next steps could be to make their business even better. 
 
 \begin{figure}[ht!]
 	\centering
@@ -78,9 +78,9 @@ The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Bus
 \end{figure}
 % -------------------------------------------------------------------------------
 \section{DEMO Role within Business Intelligence}
-The thesis focuses on ``Business Intelligence'', in other words on the fourth stage of \gls{bpm} life cycle. The goal is to provide an approach which can more precisely describe business processes and connections between collected data and these processes. In \cref{ch:theoretical-foundations} the \gls{demo} methodology was introduced and explained. Describing business processes from collected data within enterprise solution with \gls{demo} brings mainly these advantages: 
+The thesis focuses on ``Business Intelligence'', in other words on the fourth stage of \gls{bpm} life cycle. The goal is to provide an approach how connections between business processes and collected data can be described. In \cref{ch:theoretical-foundations} the \gls{demo} methodology was introduced and explained. Describing business processes from collected data within enterprise solution with \gls{demo} brings mainly these advantages: 
 \begin{enumerate}
-\item Consistency -- within \gls{demo} the models are consistent. 
+\item Consistency -- The \gls{demo} models are consistent \todo{EXPLAIN}. 
 \item Clear assignment of responsibility -- within \gls{demo}, each transaction has clearly defined the responsibility of actor roles. 
 \item Reduced complexity –- there is only and only one way how to describe an enterprise within DEMO.
 \end{enumerate}
