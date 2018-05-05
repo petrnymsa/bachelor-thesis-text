@@ -71,7 +71,7 @@ Within ASP .NET Core a web application was created and library SignalR was chose
 \end{figure}
 According to~\cite{signal-r-overview} SignalR is: ``a library for ASP .NET which offers adding real-time web functionality to applications. Real-time web functionality is the ability to have server code push content to connected clients instantly as it becomes available, rather than having the server wait for a client to request new data''. SignalR handles ``many things'' for developers automatically, such as connection management or choosing transporting types. SignalR firstly try to use WebSocket and if it fails, automatically fall back to older transports.
 
-On the server, developer defines a \textit{Hub}. \textit{Hub} defines contract which clients will use and communicate through. On the client-side, developers creates \textit{Hub Proxy} -- connection to specific \textit{Hub}. An example how it works is shown at \cref{fig:signal-r-overview}.
+On the server, developer defines a \textit{Hub}. \textit{Hub} defines contract which clients will use and communicate through. On the client-side, developers creates \textit{Hub Proxy} -- connection to specific \textit{Hub}. The example how it works is shown at \cref{fig:signal-r-overview}.
 % ---------------------------------------------------------------------------------
 \section{Implementation Decisions}
 For implementation were chosen a quite new and interesting technologies and combinations of them.
@@ -180,6 +180,16 @@ The process instance visualisation is done as follows:
 \end{enumerate}
 
 A note about the Transaction Box Control. It derives from \mintinline{C}{SKCanvasView}, which comes from SkiaSharp. The class provides method \mintinline{C}{OnPaintSurface} which is called every time when the graphics must be refreshed. An argument \mintinline{C}{SKPaintSurfaceEventArgs} provides \mintinline{C}{SKCanvas} which contains methods for basic 2D drawing. 
+% ---------------------------------------------------------------------------------
+\section{Application Testing}
+The mobile application as a whole product were tested manually several times. Several people were familliared to  thesis problematic and tried to use the application. The main part of manual testing was done on process visulisation, where were main issues with usability. 
+
+Based on this manual testing and response from testers, the whole concept of visualisaiton was several times modified. 
+\begin{itemize}
+\item Application force landscape orientation for process visualisation. The portrait orientation not useful.
+\item The time-line size is bigger due to fact, that earlier version had too small font and it was barely readable.
+\item As has been said in \cref{ch:proposed-approach}, first intent was to wire time-line and transaction boxes together. First implemented concept showed that due to smaller screen sizes, user must often scroll to get information -- it was unclear and unusable. The result is nearly two independent parts where each serves for another purpose. 
+\end{itemize}
 % ---------------------------------------------------------------------------------
 \section{Implementation Issues and Consequences}
 The implementation uses .NET Standard 2.0. This version is recommended for new Xamarin applications. But many used libraries, such as SkiaSharp (which is originally written as PCL) are ported to work within .NET Standard.

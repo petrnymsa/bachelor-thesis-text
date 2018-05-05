@@ -67,20 +67,25 @@ For gateways (element from \gls{bpmn}) users can define probability of the next 
     \label{fig:bizagi-example}%
 \end{figure}
 % -------------------------------------------------------------------------------
-\section{BPMS Architecture}
-The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Business analysts and process developers design process models and deploy them within \gls{bpms} solution. Users (process participants) has access to unified user interface which is connected with all layers of \gls{bpms}. On the right side of overview, the BPM \textit{monitoring} stage is included. Users has access to highly precious collected data through graphical views. They can more easily determine what happens and decide what next steps could be to make their business even better. 
+\subsection{The BPM Solutions Use Cases}
+Based on described analysis of this two concrete solutions, the basic use cases were identified. The use cases can be divided into two categories. The first category provides overviews over collected data and works only with existing data. This is helpful for analysis of the current state. Users have a great summarization of data which can really help to make the decision in their business.
 
-\begin{figure}[ht!]
-	\centering
-    \includegraphics[width=12cm]{img/tibco-bpm-architecture.png}
-    \caption{BPMS Architecture \cite{tibco-bpm-2016}}
-    \label{fig:bpms-architecture}
-\end{figure}
+The second category offers functionalities to analyse and simulate processes. Analysts can define models and create the simulation based on them. From these simulations and results, analysts have precious data which can use to optimize processes before they are used in real-world usage. These analyses can have many purposes. One can provide analysis based on ``What if\dots'' where analysts define available resources, costs and so on. This analysis is helpful for pre-deploy analysis -- the point where analysts starting to define processes and want to quickly verify efficiency. 
+Another type of analysis can be ``As is\dots'' which is basically the first category. The third type can be based on predictive analysis -- this analysis use existing collected data and analysts define additional attributes. The analysis tries to predict based on collected data and added attributes how the processes will behave. This can help to optimize processes. 
+% -------------------------------------------------------------------------------
+% \section{BPMS Architecture}
+% The common \gls{bpms} architecture is shown at~\cref{fig:bpms-architecture}. Business analysts and process developers design process models and deploy them within \gls{bpms} solution. Users (process participants) have access to unified user interface which is connected with all layers of \gls{bpms}. On the right side of overview, the BPM \textit{monitoring} stage is included. Users have access to highly precious collected data through graphical views. They can more easily determine what happens and decide what next steps could be to make their business even better. 
+
+% \begin{figure}[ht!]
+% 	\centering
+%     \includegraphics[width=12cm]{img/tibco-bpm-architecture.png}
+%     \caption{BPMS Architecture \cite{tibco-bpm-2016}}
+%     \label{fig:bpms-architecture}
+% \end{figure}
 % -------------------------------------------------------------------------------
 \section{DEMO Role within Business Intelligence}
 The thesis focuses on ``Business Intelligence'', in other words on the fourth stage of \gls{bpm} life cycle. The goal is to provide an approach how connections between business processes and collected data can be described. In \cref{ch:theoretical-foundations} the \gls{demo} methodology was introduced and explained. Describing business processes from collected data within enterprise solution with \gls{demo} brings mainly these advantages: 
 \begin{enumerate}
-\item Consistency -- The \gls{demo} models are consistent \todo{EXPLAIN}. 
 \item Clear assignment of responsibility -- within \gls{demo}, each transaction has clearly defined the responsibility of actor roles. 
 \item Reduced complexity –- there is only and only one way how to describe an enterprise within DEMO.
 \end{enumerate}

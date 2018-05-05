@@ -1,4 +1,4 @@
-The main goal of this thesis is to propose an approach which will be able to create the graphical overviews of critical business data and make decisions based on them. This chapter describes each part of the proposed approach. The chapter is divided into these parts:    
+The main goal of this thesis is to propose an approach which will be able to create the graphical overviews of business data and make decisions based on them. This chapter describes each part of the proposed approach. The chapter is divided into these parts:    
     \begin{enumerate}
       \item Which kind of data the application collects and how works with them.
       \item How real-time process visualization is done.
@@ -9,7 +9,7 @@ The main goal of this thesis is to propose an approach which will be able to cre
 Each enterprise system collects precious data within the business. These data are important in many ways. One is for business analysts. The analyst can analyse processes and optimize them with these collected data. Although every enterprise solution has differently defined structure of these data and every \gls{bpms} has a different approach how it works with them, the core concept of how data can be described remains the same. 
 Within \gls{bpms} there are elements which can be transformed always to the \gls{demo} concepts.
 \begin{itemize}
-\item There are always some kind of \textit{Actor roles} and concrete \textit{Actors}. Commonly \gls{bpms} defines \textit{Actor roles} as ``roles'' and \textit{Actors} defines as ``users''.
+\item There are always some kind of \textit{Actor roles} and concrete \textit{Actors}.
 \item The processes itself can be transformed to \textit{Transactions}. In~\cref{ch:theoretical-foundations} was explained that each process can be described on ontological level and has precise definition what kind of process it is and the responsibilities of \textit{Actor Roles}.
 \item Each \gls{bpms} provides some kind of events, which can be used to determine what exactly happened and how it is connected to the model defined within \gls{demo}.
 \end{itemize}
@@ -21,9 +21,9 @@ Within \gls{bpms} there are elements which can be transformed always to the \gls
   \label{fig:bi-demo-overview}
 \end{figure}    
 
-In this way, the system of visualisation based on \gls{demo} can be nearly independent from other systems within the enterprise. The architecture of Business Intelligence based on \gls{demo} is shown at~\cref{fig:bi-demo-overview}. The enterprise does not need necessary a \gls{bpms}. Within an enterprise, many systems and applications exist. Even without \gls{bpm} solutions within the enterprise, there is still the same kind of processes and actor roles which can be modelled through \gls{demo}.
+In this way, the system of visualisation based on \gls{demo} can be nearly independent from other systems within the enterprise. The architecture of Business Intelligence based on \gls{demo} is shown at~\cref{fig:bi-demo-overview}. The enterprise does not need necessary a \gls{bpms}. Within an enterprise, many systems and applications exist. Even without \gls{bpm} solutions within the enterprise, there are still the same kind of processes and actor roles which can be modelled through \gls{demo}.
 
-Inside an enterprise, there can be many systems and (not necessary) in front of them can be a \gls{bpm} solution. On the ``borders'' of the \textit{Enterprise} is placed \textit{Data Aggregation Service}. This service has the responsibility of getting data from an \textit{Enterprise} and transforming them into the structure that \textit{Business Intelligence Services} can use. Collected data from \textit{Data Aggregation Service} are mapped to defined \textit{DEMO Model}.
+Many systems can be inside and enterperise and (not necessary) in front of them can be a \gls{bpm} solution. On the ``borders'' of the \textit{Enterprise} is placed \textit{Data Aggregation Service}. This service has the responsibility of getting data from an \textit{Enterprise} and transforming them into the structure that \textit{Business Intelligence Services} can use. Collected data from \textit{Data Aggregation Service} are mapped to defined \textit{DEMO Model}.
 With this approach, \textit{Business Intelligence Services} can take advantages of \gls{demo} without the requirement to be dependent directly on enterprise systems.
 % ----------------------------------------------------------------------------------------
 \subsection{Business Data Domain Model}
@@ -58,7 +58,7 @@ The brief explanation of each entity from domain model:
 
 \item[Transaction Instance] -- Each \textit{Transaction Kind} could have more than one instance. Transaction Instance includes information about \textit{Completion} and \textit{Requested Time}. The instance itself can have more than one chilf. 
 
-\item[Event] --Defines event which can occur during the running process. Each event has time creation (\textit{Created}) and duration how long it take to between the last event and before the event was created.
+\item[Event] --Defines event which can occur during the running process. Each event has time creation (\textit{Created}) and duration how long it takes between.
 
 % \item[Completion Changed Event] Event which describes that some C-Act happened within the transaction. 
 % \item[Initiator / Executor Event] Events which describe that initiator or executor were assigned to \textit{Transaction Instance}. In other words, \textit{Transaction Instance} was initiated or executed by given initiator or executor respectively.
@@ -106,7 +106,7 @@ The \gls{ocd} and \gls{psd} of \gls{rac} are shown at~\cref{fig:rac-ocd} and \cr
 % ----------------------------------------------------------------------------------------
 \section{Data Labelling}
 As has been said, every system within enterprise provides some collection of data. Problem is, if enterprise does note use centralized solution (a some form of \gls{bpms}), format of collected data can be very different. 
-However collected data can be structured and then processed via procedure, named ``labelling''. Every system can provide collected data with some structured form. Then sooner defined \textit{Data Aggregation Service} must have mechanism how this structure can be mapped to defined \gls{demo} model. This mechanism will be for every enterprise and theirs systems unique, however fundamental idea and work-flow is the same.
+However collected data can be structured and then processed via procedure, named ``labelling''. Every system can provide collected data with some structured form. Then sooner defined \textit{Data Aggregation Service} must have mechanism how this structure can be mapped to defined \gls{demo} model. This mechanism will be unique for every enterprise and theirs systems, however fundamental idea and work-flow is the same.
 
 Firstly used terms are defined:
 \begin{description}
@@ -121,7 +121,7 @@ Firstly used terms are defined:
 
 \Cref{tab:rac-log} shows a shortened log from \textit{Rent-A-Car} company. The ``case id'' is equal to 1 (which is generally some internal identifier) and it is omitted from the table. Also, timestamps are omitted because they are not, for now, important.  
 
-There are several activities, resources and roles. ``Labelling'' mechanism must distinguish each one of activities and assign appropriate \textit{Transaction} and \textit{Coordination-act} from \gls{demo} model. Also ``roles'' must be assigned to \textit{Actor roles} and ``resource'' is assigned as \textit{Actor}. An shortened example of ``labelling'' is shown at~\cref{tab:rac-log-labelling}. The ``role'' and \textit{Actor roles} are absolutely the same. 
+There are several activities, resources and roles. ``Labelling'' mechanism must distinguish each activity and assign appropriate \textit{Transaction} and \textit{Coordination-act} from \gls{demo} model. Also ``roles'' must be assigned to \textit{Actor roles} and ``resource'' is assigned as \textit{Actor}. The shortened example of ``labelling'' is shown at~\cref{tab:rac-log-labelling}. The ``role'' and \textit{Actor roles} are absolutely the same. 
 
 \begin{table}[ht!]
 \centering
@@ -150,7 +150,7 @@ There are several activities, resources and roles. ``Labelling'' mechanism must 
 %     Customer Returned the Car & Peter Freeman & Driver \\ \hline
 %     Car Returned & Bob Hershel & Car Issuer \\ \hline  
 \end{tabular}
-\caption{An example log of Rent-A-Car company}
+\caption{The example log of Rent-A-Car company}
 \label{tab:rac-log}
   
 \begin{tabular}{ | c | c | c | }
@@ -207,7 +207,7 @@ With this approach first two conditions are accomplished:
 \item Consistency is tied with \gls{ocd} itself (ii).
 \end{enumerate}
 
-However, the (iii) and (iv) are not so straightforward. The third condition (iii) is not accomplished because DEMO is used and it does not have to be easy to understand. In every enterprise, there are specialists (business analysts) that have the responsibility to analyse given enterprise and specify models (for example within \gls{demo}). Other people do not need to have knowledge about this methodology, overall they do not need to have knowledge about this models either. Although \gls{ocd} itself is very concise, it is not so suitable for smaller screens of mobile devices. This implies, that also (iv) is violated.
+However, the (iii) and (iv) are not so straightforward. The third condition (iii) is not accomplished because DEMO is used and it does not have to be easy to understand. In every enterprise, there are specialists (business analysts) that have the responsibility to analyse given enterprise and specify models (for example within \gls{demo}). Other people do not need to have knowledge about this methodology, overall they do not need to have knowledge about this models either. Although \gls{ocd} itself is very concise, it is not so suitable for smaller screens of mobile devices. This implies, that (iv) is also violated.
 % ----------------------------------------------------------------------------------------
 \section{A Better Option}
 Gantt chart is widely used in time-management projects and systems. It is well known, established and used. It was found that Gantt chart offers the best approach, how tasks can be visualised. Chosen approach is highly inspired by it and visualisation is based on it. 
@@ -215,7 +215,7 @@ Gantt chart is widely used in time-management projects and systems. It is well k
 The visualisation is divided into two parts:
 \begin{enumerate}
 \item The ``Gantt-chart canvas'' where each transaction has own form of progress bars which displays transaction's current state.
-\item Time-line which offers chronological overview which events occurred and when. 
+\item Time-line that offers chronological overview which events already occurred and when. 
 \end{enumerate}
 % ----------------------------------------------------------------------------------------
 \subsection{Transaction Box Element}
@@ -309,10 +309,10 @@ To put it simply, \textit{Data Query} is named query over collected data. This c
 \label{fig:query-editor}
 \end{figure}
 
-In \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}. It is simple, form-based editor, where employees within an enterprise can define \textit{data queries}. The user defines \textit{name} of the query and builds the query with interactive guide. For simplicity, the guide can be imagined as interactive way how to build a SQL query with clauses as ``join, where, group by, order by, \dots'' Result is, that editor allows to non-technical users still define basic queries over collected data without requirement to have knowledge, how concretely ``grab'' the data . An example of query editor (as a prototype) is shown at \cref{fig:query-editor}.
+In \gls{bpm} solution (based on \gls{demo}) is defined \textit{query editor}. It is simple, form-based editor, where employees within an enterprise can define \textit{data queries}. The user defines \textit{name} of the query and builds the query with interactive guide. For simplicity, the guide can be imagined as interactive way how to build a SQL query with clauses as ``join, where, group by, order by, \dots'' Result is, that editor allows to non-technical users still define basic queries over collected data without requirement to have knowledge, how concretely ``grab'' the data. The example of query editor (as a prototype) is shown at \cref{fig:query-editor}.
 
 \subsection{Widgets}
-Each overview within dashboard is called \textit{widget}. Widgets provide one concrete type of view. Widgets has defined \textit{name} and associated \textit{data query}. Each widget is highly customisable, but they are sorted to several base types.
+Each overview within dashboard is called \textit{widget}. Widgets provide one concrete type of view. Widgets have defined \textit{name} and associated \textit{data query}. Each widget is highly customisable, but they are sorted to several base types.
 % ----------------------------------------------------------------------------------------
 \subsection{Summary Widget}
 The summary widget provides, by its name, summarization of collected data. It is commonly displayed as ``Pie chart''. The typical usage, for example, can be: ``Summary of the ratio between Accepted and Declined contracts'' or ``Actual state of all contracts, number of requested, stated, declined, accepted and so on'',~\dots
@@ -345,7 +345,7 @@ The main approach how visualise processes were explained. However, there are man
 \subsection{\gls{ocd} with Summary Information}
 At the beginning of this chapter has been said, that \gls{ocd} is not suitable for real-time visualisation, but it still has a valuable information and it can be suitable for another approach. 
 
-On top of the diagram, the collected summary of information can be shown. For example on top of each transaction can be the summary of success rate -- the ratio between accepted and failed transactions. An example is shown at \cref{fig:ocd-sum}.
+On top of the diagram, the collected summary of information can be shown. For example on top of each transaction can be the summary of success rate -- the ratio between accepted and failed transactions. The example is shown at \cref{fig:ocd-sum}.
 
 \begin{figure}[ht!]
 \centering
@@ -355,7 +355,7 @@ On top of the diagram, the collected summary of information can be shown. For ex
 \end{figure}
 % ----------------------------------------------------------------------------------------
 \subsection{Heat map}
-An interesting visualisation is heat map. The \gls{ocd} can be used again. The heat map can display various information. For example, for each transaction is collected average ``executing time'' -- the time how long  \textit{execution phase} takes to finish. The more waiting time it is, the more heat around transaction is. In other words, more heat means more colour to red. This can be easily used to indicate ``bottle-necks'' within defined processes -- to find problematic transactions where the improvements steps are required. An example is show at \cref{fig:ocd-heat-map}
+An interesting visualisation is heat map. The \gls{ocd} can be used again. The heat map can display various information. For example, for each transaction is collected average ``executing time'' -- the time how long  \textit{execution phase} takes to finish. The more waiting time it is, the more heat around transaction is. In other words, more heat means more red colour around. This can be easily used to indicate ``bottle-necks'' within defined processes -- to find problematic transactions where the improvements steps are required. An example is show at \cref{fig:ocd-heat-map}
 
 \begin{figure}[ht!]
 \centering
