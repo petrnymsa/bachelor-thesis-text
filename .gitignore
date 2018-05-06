@@ -11,6 +11,10 @@
 *.lof
 *.glsdefs
 *.lot
+*.acr
+*.glg
+*.gls
+*.alg
 
 # PDF output - usually a bad idea to keep this in Git
 *.pdf
